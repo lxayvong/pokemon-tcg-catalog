@@ -71,7 +71,7 @@ function publicSheetRecordCell(row,index){
  return cell?.v==null?"":String(cell.v);
 }
 function publicSheetDocuments(table,label){
- const docs=[],problems=[];
+ const byId=new Map(),problems=[];
  (table.rows||[]).forEach((row,index)=>{
   const id=publicSheetRecordCell(row,0).trim();
   if(!id||id.toLowerCase()==="id")return;
@@ -89,11 +89,23 @@ function publicSheetDocuments(table,label){
   if(label==="profile"&&!["balanced","sealed","rip"].includes(value.strategy)){
    problems.push(location+": invalid profile strategy");return;
   }
-  docs.push(value);
+  const stamp=publicSheetRecordCell(row,3);
+  if(byId.has(id)){
+   problems.push(location+": duplicate "+id+" ID; rows must be consolidated before edits can sync");
+   if(label==="wishlist"){
+    // Display all distinct products from duplicate rows, but do not write over
+    // either row automatically. The save endpoint separately rejects duplicates.
+    const prev=byId.get(id),entries=new Map(prev.value.items.map(x=>[x.productId,x]));
+    for(const item of value.items)if(!entries.has(item.productId)||stamp>prev.stamp)entries.set(item.productId,item);
+    const newest=stamp>=prev.stamp?value:prev.value;
+    byId.set(id,{value:{...newest,items:[...entries.values()]},stamp:stamp>prev.stamp?stamp:prev.stamp});
+   }else if(stamp>byId.get(id).stamp)byId.set(id,{value,stamp});
+  }else byId.set(id,{value,stamp});
  });
+ const docs=[...byId.values()].map(x=>x.value);
  if(problems.length){
   publicSheetsState.parseWarnings.push(...problems);
-  console.warn("Skipped invalid shared spreadsheet rows:",problems);
+  console.warn("Shared spreadsheet row issues:",problems);
   if(!docs.length)throw Error(problems.slice(0,3).join("; "));
  }
  return docs;
