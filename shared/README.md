@@ -26,6 +26,19 @@ The latest dated price observations, precise product matches, and first-party re
 
 The price refresh is an **overlay** on the older archived catalog snapshots. It updates verified exact-product variants only. Unknown products retain their previous dated values or remain unverified rather than receiving invented prices. An observation date is never silently promoted to the current day.
 
+
+## Bulk TCGplayer market-price synchronization
+
+A real source-matched bulk updater has been added for all 141 product identities:
+
+- `shared/catalog-price-map.json` holds all 141 canonical products and their **known** exact TCGplayer product IDs. Currently only 29 entries had authoritative TCGplayer IDs stored, so records without IDs require an unambiguous exact-product-name match. This is not a license to guess.
+- `scripts/update_tcgplayer_markets.py --date YYYY-MM-DD` downloads TCGCSV category 3 products and market price rows server-side, checks the actual upstream `last-updated.txt` date, and refuses to apply an earlier price snapshot under a newer date.
+- `shared/tcgplayer-market-daily.js` is the resulting **dated market-only overlay** loaded after the manually sourced reference snapshots in both apps. At creation it contains no rows; it does not alter existing quotes or dates until a verified pull succeeds.
+- `shared/tcgplayer-market-audit.json` records which products had exact matches, which are unpriced/unmatched, and which would be ambiguous. A successful run never invents values for missing products.
+- `.github/workflows/tcg-market-prices.yml` offers a manual GitHub Actions dispatch and a daily UTC schedule **after TCGCSV's normal 20:00 UTC update**. For a one-time Nov 12 pull, supply `market_date=2026-11-12` **only after** the TCGCSV feed itself reports that date.
+- This workflow commits to the Git branch using `GITHUB_TOKEN`. **GitHub Pages may not rebuild from a GITHUB_TOKEN-generated push** on branch-based Pages. Verify the deployment method before depending on unattended published updates.
+- Product-level `reportedAt` is the *actual verified source observation date*, never the run date alone. A catalog-wide research date must never be represented as proof that 141 products received new market quotes.
+
 ## App cache updates
 
 When updating shared assets, bump the query versions in desktop `index.html` and Android `index.html`. Also update `android/service-worker.js`'s `CACHE_NAME` and `SHELL` URLs to force an updated Android app shell. The desktop service worker intentionally leaves product data and pricing network-only.
