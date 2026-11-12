@@ -44,7 +44,7 @@ function queryAppsScriptReceipt(requestId){
   document.head.appendChild(node);
  });
 }
-async function anonymousSave(kind,requestedId=null){
+async function anonymousSaveImmediate(kind,requestedId=null){
  const id=requestedId||(kind==="profile"?currentProfile()?.id:currentWishlist()?.id);
  const doc=workspace[kind==="profile"?"profiles":"wishlists"].find(x=>x.id===id);
  if(!doc)return anonymousSaveNotice("Select a "+kind+" to save.",true);
@@ -54,12 +54,31 @@ async function anonymousSave(kind,requestedId=null){
   anonymousSaveNotice("✓ "+doc.name+" saved in this browser. Shared saving needs one-time owner setup.");
   return;
  }
- if(publicWriteState.busy)return anonymousSaveNotice("Another shared save is in progress. Try again.",true);
- const snapshot=JSON.parse(JSON.stringify(doc)),raw=JSON.stringify(snapshot);
- if(raw.length>45000)return anonymousSaveNotice("Wish list too large for a single shared sheet record.",true);
+ 
  const baseline=publicSheetBaseline();
  const key=kind+":"+id;
- const expected=Object.prototype.hasOwnProperty.call(baseline,key)?baseline[key]:"";
+ // A visitor may add an item before the anonymous page-load read completes.
+ // Fetch the authoritative row first rather than sending expected="" and
+ // receiving a conflict for a list that already exists.
+ if(!Object.prototype.hasOwnProperty.call(baseline,key)){
+  try{
+   const tab=kind==="profile"?(window.POKEMON_GOOGLE_SHEETS?.profilesTab||"Profiles"):(window.POKEMON_GOOGLE_SHEETS?.wishlistsTab||"Wishlists");
+   const table=await publicSheetQuery(tab);
+   const remote=(table.rows||[]).find(row=>String(row.c?.[0]?.v??"")===id);
+   const rawRemote=remote?.c?.[2]?.v==null?"":String(remote.c[2].v);
+   baseline[key]=rawRemote;
+   // Preserve any products added in other browsers. Current local edits win
+   // for a matching product; remote-only additions are merged in.
+   if(rawRemote&&kind==="wishlist"){
+    const current=JSON.parse(rawRemote),ids=new Set(doc.items.map(item=>item.productId));
+    for(const item of current.items||[])if(!ids.has(item.productId)){doc.items.push(item);ids.add(item.productId);}
+    saveWorkspace();refreshWorkspace();render();
+   }
+  }catch(err){return anonymousSaveNotice("Couldn't read shared "+kind+" before saving: "+err.message+". Local changes retained.",true);}
+ }
+ const snapshot=JSON.parse(JSON.stringify(doc)),raw=JSON.stringify(snapshot);
+ if(raw.length>45000)return anonymousSaveNotice("Wish list too large for a single shared sheet record.",true);
+ const expected=baseline[key]||"";
  const requestId=makeRequestId();
  publicWriteState.busy=true;
  anonymousSaveNotice("Saving "+doc.name+" to shared Google Sheets...");
@@ -115,6 +134,26 @@ async function anonymousSave(kind,requestedId=null){
   }
  }catch(error){anonymousSaveNotice("Shared save failed; browser copy retained: "+error.message,true);}
  finally{publicWriteState.busy=false;if(field)field.disabled=false;}
+}
+// Serialize and coalesce writes: no edits are silently dropped while another
+// shared save is in progress. Each document's latest state is read when its
+// turn starts, and saves are confirmed against the public spreadsheet.
+const queuedWrites=new Map();
+let writeDrainActive=false;
+async function anonymousSave(kind,requestedId=null){
+ const id=requestedId||(kind==="profile"?currentProfile()?.id:currentWishlist()?.id);
+ if(!id)return anonymousSaveNotice("Select a "+kind+" to save.",true);
+ const key=kind+":"+id;
+ queuedWrites.set(key,{kind,id});
+ if(writeDrainActive)return;
+ writeDrainActive=true;
+ try{
+  while(queuedWrites.size){
+   const [nextKey,job]=queuedWrites.entries().next().value;
+   queuedWrites.delete(nextKey);
+   await anonymousSaveImmediate(job.kind,job.id);
+  }
+ }finally{writeDrainActive=false;}
 }
 function setupAnonymousSaveUI(){
  const status=document.getElementById("anonymous-save-status");
