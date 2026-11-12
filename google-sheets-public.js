@@ -37,14 +37,18 @@ function publicSheetQuery(sheetName){
   document.head.appendChild(script);
  });
 }
+function publicSheetRecordCell(row,index){
+ const cell=row?.c?.[index];
+ return cell?.v==null?"":String(cell.v);
+}
 function publicSheetDocuments(table,label){
  const docs=[];
  (table.rows||[]).forEach((row,index)=>{
   const cells=row.c||[],id=String(cells[0]?.v??"").trim();
   if(!id||id==="ID")return;
   const location=(label==="profile"?"Profiles":"Wishlists")+" row "+(index+2);
-  const content=cells[2]?.v;
-  if(typeof content!=="string")throw new Error(location+": missing saved JSON");
+  const content=publicSheetRecordCell(row,2);
+  if(!content)throw new Error(location+": missing saved JSON");
   let documentValue;
   try{documentValue=JSON.parse(content);}
   catch(ex){throw new Error(location+": invalid JSON ("+ex.message+")");}
@@ -73,7 +77,15 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
   let clean=!hasExistingStorage||initialDocumentUnmodified(kind,existing);
   if(Object.prototype.hasOwnProperty.call(previousBaseline,k))clean=JSON.stringify(existing)===previousBaseline[k];
   if(clean)next[index]=record;
-  else protectedCount++;
+  else if(kind==="wishlist"){
+   // Local unsynced edits should not hide products already saved by others.
+   // Preserve local values for matching products, import remote-only products.
+   const merged={...record,...existing,items:[...(existing.items||[])]};
+   const ids=new Set(merged.items.map(item=>item.productId));
+   for(const item of record.items||[])if(!ids.has(item.productId)){merged.items.push(item);ids.add(item.productId);}
+   next[index]=merged;
+   protectedCount++;
+  }else protectedCount++;
  }
  workspace[prop]=next;
  return protectedCount;
