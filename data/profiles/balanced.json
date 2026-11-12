@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "balanced",
+  "name": "Balanced Buyer",
+  "strategy": "balanced",
+  "buyDiscountPct": 35,
+  "considerDiscountPct": 18,
+  "maxMsrpPremiumPct": 10,
+  "maxPricePerPack": null,
+  "minScore": 0
+}
