@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "id": "balanced",
+      "name": "Balanced Buyer",
+      "strategy": "balanced",
+      "buyDiscountPct": 35,
+      "considerDiscountPct": 18,
+      "maxMsrpPremiumPct": 10,
+      "maxPricePerPack": null,
+      "minScore": 0
+    },
+    {
+      "id": "sealed",
+      "name": "Sealed Collector",
+      "strategy": "sealed",
+      "buyDiscountPct": 30,
+      "considerDiscountPct": 15,
+      "maxMsrpPremiumPct": 20,
+      "maxPricePerPack": null,
+      "minScore": 7
+    },
+    {
+      "id": "rip",
+      "name": "Pack Ripper",
+      "strategy": "rip",
+      "buyDiscountPct": 20,
+      "considerDiscountPct": 8,
+      "maxMsrpPremiumPct": 5,
+      "maxPricePerPack": 8,
+      "minScore": 6
+    }
+  ]
+}
