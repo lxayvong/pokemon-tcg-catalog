@@ -105,32 +105,23 @@ async function anonymousSaveImmediate(kind,requestedId=null){
   // A confirmed public sheet reread below is required to report success.
   const body=new URLSearchParams({kind,id,payload:raw,expected,requestId});
   await fetch(url,{method:"POST",mode:"no-cors",body,cache:"no-store",redirect:"follow"});
-  let confirmed=false,conflict=false,readbackError="",receiptError="",lastServerReceipt=null;
+  // The deployed Apps Script may be an older version without a receipt GET
+  // endpoint. Verify against the actual public Sheet instead. The Visualization
+  // API can lag behind a completed Apps Script write, so allow propagation.
+  let confirmed=false,conflict=false,readbackError="",sawExpected=false;
   const tab=kind==="profile"?(window.POKEMON_GOOGLE_SHEETS?.profilesTab||"Profiles"):(window.POKEMON_GOOGLE_SHEETS?.wishlistsTab||"Wishlists");
-  for(let attempt=0;attempt<5;attempt++){
-   await new Promise(r=>setTimeout(r,450+attempt*250));
-   // The receipt is a diagnostic. The sheet readback is still used to verify
-   // the exact persisted data and avoid reporting success on an opaque POST.
-   const checks=await Promise.allSettled([
-    publicSheetQuery(tab),
-    attempt===0||attempt===2||attempt===4?queryAppsScriptReceipt(requestId):Promise.resolve(null)
-   ]);
-   if(checks[0].status==="fulfilled"){
+  const delays=[600,850,1100,1450,1900,2500,3300,4300];
+  for(const delay of delays){
+   await new Promise(resolve=>setTimeout(resolve,delay));
+   try{
+    const table=await publicSheetQuery(tab);
     readbackError="";
-    const table=checks[0].value;
-    for(const row of table.rows||[]){
-     if(String(row.c?.[0]?.v||"")!==id)continue;
-     const content=String(row.c?.[2]?.v||"");
-     const receipt=String(row.c?.[4]?.v||"");
-     if(content===raw&&(receipt===requestId||content!==expected)){confirmed=true;break;}
-     if(content!==expected&&receipt!==requestId)conflict=true;
-    }
-   }else readbackError=checks[0].reason?.message||"Unable to read shared sheet";
-   if(checks[1].status==="fulfilled"&&checks[1].value){
-    lastServerReceipt=checks[1].value;
-    if(lastServerReceipt.status==="error"||lastServerReceipt.status==="conflict")break;
-   }else if(checks[1].status==="rejected")receiptError=checks[1].reason?.message||"Save diagnostics unavailable";
-   if(confirmed)break;
+    const row=(table.rows||[]).find(r=>String(r.c?.[0]?.v??"")===id);
+    const content=row?.c?.[2]?.v==null?"":String(row.c[2].v);
+    if(content===raw){confirmed=true;break;}
+    if(content===expected){sawExpected=true;continue;}
+    if(content!==expected){conflict=true;break;}
+   }catch(e){readbackError=e?.message||"Unable to read shared spreadsheet";}
   }
   if(confirmed){
    baseline[key]=raw;
@@ -144,16 +135,14 @@ async function anonymousSaveImmediate(kind,requestedId=null){
    anonymousSaveNotice("✓ "+doc.name+" saved to shared Google Sheets.");
    if(typeof showCatalogToast==="function")showCatalogToast(doc.name+" saved to shared Sheets");
   }else{
-   const serverFailure=lastServerReceipt&&(lastServerReceipt.status==="error"||lastServerReceipt.status==="conflict")
-     ?lastServerReceipt.message:null;
+   // A missing receipt callback is not evidence that the POST failed. A slow
+   // public read can still be catching up. Keep pending edits intact.
    let message;
-   if(serverFailure)message="Google Sheets rejected the save: "+serverFailure;
-   else if(conflict)message="Save conflict: another visitor updated "+kind+" '"+doc.name+"'. Reload the shared copy before retrying.";
-   else if(readbackError)message="Save not confirmed. Spreadsheet readback failed: "+readbackError+(receiptError?". Diagnostics: "+receiptError:"");
-   else message="Save not confirmed. Apps Script did not provide a verified sheet update."+
-      (receiptError?" "+receiptError:" Check Apps Script deployment and execution logs.");
-   if(kind==="wishlist")setCatalogSheetSync(id,"error");
-   anonymousSaveNotice(message,true);
+   if(conflict)message="Google Sheets changed while saving "+doc.name+". Your browser changes are retained; use Retry sync to reconcile.";
+   else if(readbackError)message="Save sent, but Google Sheets could not be read to confirm it: "+readbackError+". Browser changes retained.";
+   else message="Save sent, but Google Sheets hasn't reflected the update yet. Your changes remain in this browser; Retry sync after a moment.";
+   if(kind==="wishlist")setCatalogSheetSync(id,conflict?"error":"unconfirmed");
+   anonymousSaveNotice(message,conflict);
   }
  }catch(error){if(kind==="wishlist")setCatalogSheetSync(id,"error");anonymousSaveNotice("Shared save failed; browser copy retained: "+error.message,true);}
  finally{publicWriteState.busy=false;if(field)field.disabled=false;}
