@@ -41,9 +41,10 @@ async function gsConnect(){
   if(!token?.access_token)throw Error("Google did not return an access token");
   gs.token=token.access_token;
   gs.expiresAt=Date.now()+Math.max(60,Number(token.expires_in)||3600)*1000-30000;
-  gsStatus("Google access granted. Click Load from Sheets to view the current shared data.");
+  gsStatus("Connected to Google. Loading shared profiles and wish lists...");
  }catch(e){gsStatus("Google connection failed: "+e.message,true);}
  finally{gs.busy=false;gsControls();}
+ if(gs.token&&gs.expiresAt>Date.now())await gsLoad();
 }
 function gsDisconnect(){
  if(gs.token&&window.google?.accounts?.oauth2?.revoke)google.accounts.oauth2.revoke(gs.token,()=>{});
