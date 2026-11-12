@@ -121,6 +121,10 @@ async function autoLoadPublicSheets(){
   ]);
   const profiles=profileResult.status==="fulfilled"?profileResult.value:[],
         wishlists=wishlistResult.status==="fulfilled"?wishlistResult.value:[];
+  if(wishlistResult.status==="fulfilled"){
+   publicSheetsState.remoteCounts=Object.fromEntries(wishlists.map(list=>[list.id,new Set(list.items.map(item=>item.productId)).size]));
+   publicSheetsState.lastReadAt=Date.now();
+  }
   const warnings=[...publicSheetsState.parseWarnings];
   if(profileResult.status==="rejected")warnings.push("Profiles: "+profileResult.reason.message);
   if(wishlistResult.status==="rejected")warnings.push("Wishlists: "+wishlistResult.reason.message);
@@ -143,8 +147,10 @@ async function autoLoadPublicSheets(){
   publicSheetNotice("Shared data loaded ("+count+" records)"+
    (protectedCount?"; "+protectedCount+" locally edited record(s) preserved":"")+
    (warnings.length?"; "+warnings.join("; "):""),warnings.length>0);
+  if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
  }catch(err){
   publicSheetNotice("Google Sheets read failed: "+(err?.message||"Unknown read error")+". Browser-saved data is still available.",true);
+  if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
   console.warn("Public Sheets read failed:",err);
  }
 }
