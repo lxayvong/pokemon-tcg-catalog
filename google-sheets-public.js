@@ -4,6 +4,12 @@
  * Local edits are preserved when they differ from the last loaded snapshot.
  */
 const PUBLIC_SHEET_BASELINE_KEY="pokemonCatalogPublicSheetsBaselineV1";
+const PUBLIC_PENDING_KEY="pokemonCatalogPendingSheetsWritesV1";
+const PUBLIC_LOCAL_BACKUP_KEY="pokemonCatalogPreSyncBackupV1";
+function pendingSheetWrites(){try{return JSON.parse(localStorage.getItem(PUBLIC_PENDING_KEY)||"{}")||{}}catch{return {}}}
+function markSheetPending(kind,id){const o=pendingSheetWrites();o[kind+":"+id]=Date.now();localStorage.setItem(PUBLIC_PENDING_KEY,JSON.stringify(o))}
+function clearSheetPending(kind,id){const o=pendingSheetWrites();delete o[kind+":"+id];localStorage.setItem(PUBLIC_PENDING_KEY,JSON.stringify(o))}
+
 const publicSheetsState={status:"idle"};
 function publicSheetNotice(msg,error=false){
  publicSheetsState.status=error?"error":"ready";
@@ -76,14 +82,20 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
   const existing=byId.get(record.id),k=kind+":"+record.id;
   let clean=!hasExistingStorage||initialDocumentUnmodified(kind,existing);
   if(Object.prototype.hasOwnProperty.call(previousBaseline,k))clean=JSON.stringify(existing)===previousBaseline[k];
+  // Shared wishlist rows are authoritative on page load, unless a local edit
+  // is explicitly queued or has failed to sync.
+  if(kind==="wishlist"&&!pendingSheetWrites()[k]){
+   if(JSON.stringify(existing)!==JSON.stringify(record)){
+    try{const backup=JSON.parse(localStorage.getItem(PUBLIC_LOCAL_BACKUP_KEY)||"{}");backup[k]=existing;localStorage.setItem(PUBLIC_LOCAL_BACKUP_KEY,JSON.stringify(backup))}catch(_){}
+   }
+   next[index]=record;
+   continue;
+  }
   if(clean)next[index]=record;
   else if(kind==="wishlist"){
-   // Local unsynced edits should not hide products already saved by others.
-   // Preserve local values for matching products, import remote-only products.
-   const merged={...record,...existing,items:[...(existing.items||[])]};
-   const ids=new Set(merged.items.map(item=>item.productId));
-   for(const item of record.items||[])if(!ids.has(item.productId)){merged.items.push(item);ids.add(item.productId);}
-   next[index]=merged;
+   // Keep unsynced local edits intact, including removals; remote data will
+   // be adopted when the next verified save clears this pending marker.
+   next[index]=existing;
    protectedCount++;
   }else protectedCount++;
  }
