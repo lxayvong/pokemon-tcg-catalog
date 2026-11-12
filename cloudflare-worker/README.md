@@ -90,6 +90,10 @@ window.POKEMON_CLOUD_SAVE_URL = "https://pokemon-tcg-cloud-save.YOUR-SUBDOMAIN.w
 
 Commit this one public URL. Then open the catalog, choose **Sign in with GitHub**, and authorize the app. **Load shared wish list/profile** first to receive the latest file SHA. After editing, click **Save ... to GitHub**. A successful GitHub commit SHA confirms the save.
 
+## Reading shared lists without signing in
+
+The website's **View published wish list** and **View published profile** buttons read the current public JSON directly from GitHub. They work before Worker setup. This overwrites that one person's browser copy only after an explicit confirmation and does not authorize any commits. The authenticated **Load shared** buttons still retrieve the authoritative file SHA required for safe writes.
+
 ## How conflict protection works
 
 - One list/profile = one file. Laem's edits cannot overwrite Joe's file.
