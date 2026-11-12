@@ -21,8 +21,10 @@ function priceUrl_(s){return /^https:\/\/[^\s/]+\.[^\s/]+(?:\/[^\s]*)?$/i.test(S
 function priceKey_(r){
  // Exact same source, product, effective observation and price means same observation.
  var raw=[r.kind,r.productId,r.source||r.retailer,r.sourceUrl,r.observedDate,Number(r.price).toFixed(2),r.evidenceType].join("|");
- var bytes=Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,raw);
- return bytes.map(function(x){return ("0"+(x<0?x+256:x).toString(16)).slice(-2);}).join("");
+ // Two deterministic 32-bit fingerprints; portable for seed imports and Apps Script.
+ var a=2166136261,b=2246822519;
+ for(var i=0;i<raw.length;i++){var c=raw.charCodeAt(i);a=Math.imul(a^c,16777619)>>>0;b=Math.imul(b^c,2246822519)>>>0;}
+ return ("00000000"+a.toString(16)).slice(-8)+("00000000"+b.toString(16)).slice(-8);
 }
 function priceValidate_(r){
  if(!r||!["market","retail"].includes(r.kind)||!priceId_(r.productId))return "Invalid kind or product ID";
