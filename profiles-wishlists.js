@@ -9,14 +9,16 @@ function cleanWorkspace(raw){
  const unique=arr=>[...new Set(arr.map(x=>x.id))].map(id=>arr.find(x=>x.id===id));
  const profileRows=unique(profiles.filter(x=>x&&typeof x.name==="string"&&typeof x.id==="string")).map(x=>({...PROFILE_SEEDS[0],...x}));
  const lists=unique(wishlists.filter(x=>x&&typeof x.name==="string"&&typeof x.id==="string")).map(x=>({...x,profileId:x.profileId||profileRows[0]?.id||"balanced",items:Array.isArray(x.items)?x.items.filter(i=>i&&typeof i.productId==="string"):[]}));
- return {schemaVersion:1,profiles:profileRows.length?profileRows:PROFILE_SEEDS.map(x=>({...x})),wishlists:lists,activeProfileId:obj.activeProfileId||profileRows[0]?.id||"balanced",activeWishlistId:obj.activeWishlistId||lists[0]?.id||null};
+ return {schemaVersion:1,profiles:profileRows.length?profileRows:PROFILE_SEEDS.map(x=>({...x})),wishlists:lists,activeProfileId:obj.activeProfileId||profileRows[0]?.id||"balanced",activeWishlistId:obj.activeWishlistId??null};
 }
 function loadWorkspace(){try{return cleanWorkspace(JSON.parse(localStorage.getItem(WORKSPACE_STORAGE_KEY)||"null"))}catch(_){return cleanWorkspace(null)}}
 let workspace=loadWorkspace();
+// Require an explicit wish-list choice on every page load.
+workspace.activeWishlistId=null;
 function saveWorkspace(){localStorage.setItem(WORKSPACE_STORAGE_KEY,JSON.stringify(workspace))}
 function workspaceId(){return "u"+Date.now().toString(36)+Math.random().toString(36).slice(2,9)}
 function currentProfile(){return workspace.profiles.find(p=>p.id===workspace.activeProfileId)||workspace.profiles[0]}
-function currentWishlist(){return workspace.wishlists.find(w=>w.id===workspace.activeWishlistId)||workspace.wishlists[0]}
+function currentWishlist(){return workspace.wishlists.find(w=>w.id===workspace.activeWishlistId)||null}
 function newProfile(name){const obj={...PROFILE_SEEDS[0],id:workspaceId(),name:String(name).trim()};if(!obj.name)throw Error("Profile name is required");workspace.profiles.push(obj);workspace.activeProfileId=obj.id;saveWorkspace();return obj}
 function newWishlist(name){const obj={id:workspaceId(),name:String(name).trim(),profileId:currentProfile()?.id||"balanced",items:[]};if(!obj.name)throw Error("Wish list name is required");workspace.wishlists.push(obj);workspace.activeWishlistId=obj.id;saveWorkspace();return obj}
 function savedProductRecord(product,observed,details,ratings,verdict){
