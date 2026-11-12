@@ -72,7 +72,7 @@ async function oauthStart(req,env){
 function authPopupMessage(payload,env){
  const msg=JSON.stringify(payload).replace(/</g,"\\u003c");
  const target=JSON.stringify(env.APP_ORIGIN);
- const html='<!doctype html><meta charset="utf-8"><title>Catalog sign in</title><p>You can close this window.</p><script>if(window.opener){window.opener.postMessage('+msg+','+target+');window.close();}else{document.body.textContent="Sign-in window must be opened from the catalog.";}<\\/script>';
+ const html='<!doctype html><meta charset="utf-8"><title>Catalog sign in</title><p>You can close this window.</p><script>if(window.opener){window.opener.postMessage('+msg+','+target+');window.close();}else{document.body.textContent="Sign-in window must be opened from the catalog.";}</script>';
  return new Response(html,{headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store","Content-Security-Policy":"default-src 'none'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"}});
 }
 async function oauthCallback(req,env){
