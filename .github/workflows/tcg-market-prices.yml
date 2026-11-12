@@ -1,0 +1,45 @@
+name: Refresh TCGplayer sealed market prices
+on:
+  workflow_dispatch:
+    inputs:
+      market_date:
+        description: "Upstream TCGCSV price snapshot date (YYYY-MM-DD), blank for UTC today"
+        required: false
+        type: string
+  schedule:
+    # TCGCSV publishes around 20:00 UTC; leave time for the daily build.
+    - cron: "35 21 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: tcg-market-price-sync
+  cancel-in-progress: false
+jobs:
+  update-market-prices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Check out catalog
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull exact TCGplayer Market Price records
+        run: |
+          EXPECTED="${{ github.event.inputs.market_date }}"
+          if [ -z "$EXPECTED" ]; then EXPECTED="$(date -u +%F)"; fi
+          python scripts/update_tcgplayer_markets.py --date "$EXPECTED"
+      - name: Commit actual verified price results
+        run: |
+          if git diff --quiet -- shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json; then
+            echo "No updated prices returned."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json
+          git commit -m "Refresh dated TCGplayer Market Price snapshot from TCGCSV"
+          git push
