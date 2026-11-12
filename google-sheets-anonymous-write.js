@@ -67,24 +67,35 @@ async function anonymousSaveImmediate(kind,requestedId=null){
  const baseline=publicSheetBaseline();
  const key=kind+":"+id;
  if(kind==="wishlist")setCatalogSheetSync(id,"saving");
- // A visitor may add an item before the anonymous page-load read completes.
- // Fetch the authoritative row first rather than sending expected="" and
- // receiving a conflict for a list that already exists.
- if(!Object.prototype.hasOwnProperty.call(baseline,key)){
-  try{
-   const tab=kind==="profile"?(window.POKEMON_GOOGLE_SHEETS?.profilesTab||"Profiles"):(window.POKEMON_GOOGLE_SHEETS?.wishlistsTab||"Wishlists");
-   const table=await publicSheetQuery(tab);
-   const remote=(table.rows||[]).find(row=>String(row.c?.[0]?.v??"")===id);
-   const rawRemote=remote?.c?.[2]?.v==null?"":String(remote.c[2].v);
-   baseline[key]=rawRemote;
-   // Preserve any products added in other browsers. Current local edits win
-   // for a matching product; remote-only additions are merged in.
-   if(rawRemote&&kind==="wishlist"){
-    const current=JSON.parse(rawRemote),ids=new Set(doc.items.map(item=>item.productId));
-    for(const item of current.items||[])if(!ids.has(item.productId)){doc.items.push(item);ids.add(item.productId);}
-    saveWorkspace();refreshWorkspace();render();
+ // Read actual current spreadsheet contents on EVERY write. A cached browser
+ // baseline can be stale, particularly after a failed confirmation or refresh.
+ // If duplicate IDs exist, refuse to overwrite an arbitrary row.
+ try{
+  const tab=kind==="profile"?(window.POKEMON_GOOGLE_SHEETS?.profilesTab||"Profiles"):(window.POKEMON_GOOGLE_SHEETS?.wishlistsTab||"Wishlists");
+  const table=await publicSheetQuery(tab);
+  const matches=(table.rows||[]).filter(row=>String(row.c?.[0]?.v??"")===id);
+  if(matches.length>1)throw Error("Multiple Google Sheets rows share ID '"+id+"'. Consolidate those rows before saving to avoid losing items.");
+  const remote=matches[0],rawRemote=remote?.c?.[2]?.v==null?"":String(remote.c[2].v);
+  baseline[key]=rawRemote;
+  if(rawRemote&&kind==="wishlist"){
+   let current;
+   try{current=JSON.parse(rawRemote);}
+   catch{throw Error("Current Google Sheet record has invalid JSON. No changes were sent.");}
+   if(!Array.isArray(current.items))throw Error("Current Google Sheet wish list has invalid items. No changes were sent.");
+   const removed=typeof pendingWishlistDeletes==="function"?pendingWishlistDeletes(id):new Set();
+   const ids=new Set(doc.items.map(item=>item.productId));
+   for(const item of current.items){
+    if(!ids.has(item.productId)&&!removed.has(item.productId)){
+     doc.items.push(item);ids.add(item.productId);
+    }
    }
-  }catch(err){if(kind==="wishlist")setCatalogSheetSync(id,"error");return anonymousSaveNotice("Couldn't read shared "+kind+" before saving: "+err.message+". Local changes retained.",true);}
+   saveWorkspace();
+   refreshWorkspace();
+   render();
+  }
+ }catch(err){
+  if(kind==="wishlist")setCatalogSheetSync(id,"error");
+  return anonymousSaveNotice("Shared save paused to protect sheet data: "+err.message+" Browser changes retained.",true);
  }
  const snapshot=JSON.parse(JSON.stringify(doc)),raw=JSON.stringify(snapshot);
  if(raw.length>45000)return anonymousSaveNotice("Wish list too large for a single shared sheet record.",true);
@@ -92,6 +103,7 @@ async function anonymousSaveImmediate(kind,requestedId=null){
  if(expected===raw){
   if(kind==="wishlist"){publicSheetsState.remoteCounts=publicSheetsState.remoteCounts||{};publicSheetsState.remoteCounts[id]=new Set(doc.items.map(item=>item.productId)).size;setCatalogSheetSync(id,"synced");}
   if(typeof clearSheetPending==="function")clearSheetPending(kind,id);
+  if(kind==="wishlist"&&typeof clearWishlistDeletes==="function")clearWishlistDeletes(id);
   anonymousSaveNotice("✓ "+doc.name+" already up to date in Google Sheets.");
   return;
  }
@@ -131,7 +143,10 @@ async function anonymousSaveImmediate(kind,requestedId=null){
     publicSheetsState.remoteCounts[id]=new Set(snapshot.items.map(item=>item.productId)).size;
     setCatalogSheetSync(id,"synced");
    }
-   if(JSON.stringify(workspace[kind==="profile"?"profiles":"wishlists"].find(x=>x.id===id))===raw&&typeof clearSheetPending==="function")clearSheetPending(kind,id);
+   if(JSON.stringify(workspace[kind==="profile"?"profiles":"wishlists"].find(x=>x.id===id))===raw){
+    if(typeof clearSheetPending==="function")clearSheetPending(kind,id);
+    if(kind==="wishlist"&&typeof clearWishlistDeletes==="function")clearWishlistDeletes(id);
+   }
    anonymousSaveNotice("✓ "+doc.name+" saved to shared Google Sheets.");
    if(typeof showCatalogToast==="function")showCatalogToast(doc.name+" saved to shared Sheets");
   }else{
