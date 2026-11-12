@@ -46,7 +46,8 @@ function doPost(e){
     const present=pos>=0?String(rows[pos][2]||""):"";
     if(present!==expected)return output_("Conflict: document changed","conflict");
     const n=pos>=0?pos+2:last+1;
-    sheet.getRange(n,1,1,5).setValues([[id,doc.name,raw,new Date().toISOString(),requestId]]);
+    const safeName=/^[=+@-]/.test(doc.name)?"\'"+doc.name:doc.name;
+    sheet.getRange(n,1,1,5).setValues([[id,safeName,raw,new Date().toISOString(),requestId]]);
     SpreadsheetApp.flush();
     return output_("Saved","ok");
   }catch(ex){
