@@ -13,6 +13,9 @@ function anonymousSaveNotice(text,error=false){
  const el=document.getElementById("anonymous-save-status");
  if(el){el.textContent=text;el.dataset.status=error?"error":(text.startsWith("Saving")?"pending":"ok");}
  if(typeof workspaceNotify==="function")workspaceNotify(text);
+ if(error&&typeof showCatalogToast==="function")showCatalogToast(text,true);
+ const summary=document.getElementById("public-data-status");
+ if(summary&&anonymousSaveReady())summary.textContent=error?"⚠ Sheet sync failed":text.startsWith("Saving")?"Syncing wish list...":text.startsWith("✓")?"✓ Sheet up to date":summary.textContent;
 }
 function makeRequestId(){
  const bytes=new Uint8Array(12);crypto.getRandomValues(bytes);
@@ -79,6 +82,10 @@ async function anonymousSaveImmediate(kind,requestedId=null){
  const snapshot=JSON.parse(JSON.stringify(doc)),raw=JSON.stringify(snapshot);
  if(raw.length>45000)return anonymousSaveNotice("Wish list too large for a single shared sheet record.",true);
  const expected=baseline[key]||"";
+ if(expected===raw){
+  anonymousSaveNotice("✓ "+doc.name+" already up to date in Google Sheets.");
+  return;
+ }
  const requestId=makeRequestId();
  publicWriteState.busy=true;
  anonymousSaveNotice("Saving "+doc.name+" to shared Google Sheets...");
@@ -106,7 +113,7 @@ async function anonymousSaveImmediate(kind,requestedId=null){
      if(String(row.c?.[0]?.v||"")!==id)continue;
      const content=String(row.c?.[2]?.v||"");
      const receipt=String(row.c?.[4]?.v||"");
-     if(receipt===requestId&&content===raw){confirmed=true;break;}
+     if(content===raw&&(receipt===requestId||content!==expected)){confirmed=true;break;}
      if(content!==expected&&receipt!==requestId)conflict=true;
     }
    }else readbackError=checks[0].reason?.message||"Unable to read shared sheet";
