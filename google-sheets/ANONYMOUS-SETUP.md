@@ -48,6 +48,19 @@ Commit the configuration. The website will then:
 
 **If verification fails, the website retains the browser copy and clearly reports that the shared save was not confirmed.** Do not assume a save succeeded solely because a request was submitted.
 
+## Update the live script to enable detailed errors
+
+**Important after the November 12 update:** Editing `AnonymousSave.gs` in GitHub does **not** update the web app already deployed on Google.
+
+1. In your spreadsheet, open **Extensions > Apps Script**.
+2. Replace the code in the live `Code.gs` editor with the current [AnonymousSave.gs](https://github.com/lxayvong/pokemon-tcg-catalog/blob/main/google-sheets/AnonymousSave.gs) and save.
+3. Choose **Deploy > Manage deployments**, edit the existing Web app deployment, choose **New version**, and click **Deploy**.
+4. Keep the same `/exec` URL. The catalog already has it configured; you don't need to change the website URL.
+
+This adds a read-only `doGet` request-receipt endpoint so that the browser can show the **specific server-side response** to a write: invalid data, a version conflict, a missing tab, or another Apps Script exception. It does not expose spreadsheet credentials. The browser still checks the actual shared spreadsheet to verify the content was saved.
+
+If the live script hasn't been updated yet, saves may still work, but the browser cannot inspect the cross-origin POST result. It will report that detailed diagnostics are unavailable and show any public-sheet readback errors instead of inventing a success.
+
 ## Other details
 
 - The Apps Script serializes writes using a lock and checks against the last loaded record to reduce silent overwrites.
