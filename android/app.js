@@ -26,30 +26,7 @@ function setConnection(text,kind="busy"){
  $("retry-button").hidden=kind==="ok"&&!state.unsynced.size;
 }
 function stamp(){return new Date().toISOString();}
-function sheetQuery(tab){
- return new Promise((resolve,reject)=>{
-  if(!cfg.spreadsheetId)return reject(new Error("Google Sheet is not configured"));
-  const cb="__androidSheet_"+Math.random().toString(36).slice(2);
-  const script=document.createElement("script");
-  let done=false;
-  const timer=setTimeout(()=>finish(new Error("Google Sheets did not respond in 12 seconds")),12000);
-  function finish(error,result){
-   if(done)return;done=true;clearTimeout(timer);
-   delete window[cb];script.remove();
-   error?reject(error):resolve(result);
-  }
-  window[cb]=res=>{
-   if(res?.status!=="ok"||!Array.isArray(res?.table?.rows))return finish(new Error(
-    (res?.errors||[]).map(x=>x.message||x.detailed_message).join("; ")||"Invalid Google Sheets response"));
-   finish(null,res.table);
-  };
-  script.onerror=()=>finish(new Error("Cannot access the public Google Sheet"));
-  script.src="https://docs.google.com/spreadsheets/d/"+encodeURIComponent(cfg.spreadsheetId)+
-   "/gviz/tq?sheet="+encodeURIComponent(tab)+"&headers=0&tqx="+
-   encodeURIComponent("out:json;responseHandler:"+cb)+"&_="+Date.now();
-  document.head.appendChild(script);
- });
-}
+function sheetQuery(tab){return window.PokemonSheetsClient.query(tab)}
 function col(row,n){return row?.c?.[n]?.v==null?"":String(row.c[n].v);}
 function parseSheet(table,kind){
  const out=[],seen=new Set();
