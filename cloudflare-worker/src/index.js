@@ -140,3 +140,5 @@ export default {async fetch(req,env){
   return cors(r,req,env);
  }catch(e){console.error("Worker unexpected error",e);return cors(error("Unexpected server error",500),req,env);}
 }};
+
+export {validateDocument, authorized, allowedId, docUrl};
