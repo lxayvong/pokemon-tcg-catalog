@@ -4,6 +4,12 @@
  * after rereading the public Google Sheet and matching a unique request ID.
  */
 const publicWriteState={busy:false};
+window.catalogSheetSync=window.catalogSheetSync||{};
+function setCatalogSheetSync(id,state){
+ if(!id)return;
+ window.catalogSheetSync[id]={state,updatedAt:Date.now()};
+ if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
+}
 function anonymousSaveURL(){
  const u=window.POKEMON_GOOGLE_SHEETS?.anonymousSaveUrl||"";
  return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(u)?u:null;
@@ -14,8 +20,7 @@ function anonymousSaveNotice(text,error=false){
  if(el){el.textContent=text;el.dataset.status=error?"error":(text.startsWith("Saving")?"pending":"ok");}
  if(typeof workspaceNotify==="function")workspaceNotify(text);
  if(error&&typeof showCatalogToast==="function")showCatalogToast(text,true);
- const summary=document.getElementById("public-data-status");
- if(summary&&anonymousSaveReady())summary.textContent=error?"⚠ Sheet sync failed":text.startsWith("Saving")?"Syncing wish list...":text.startsWith("✓")?"✓ Sheet up to date":summary.textContent;
+ if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
 }
 function makeRequestId(){
  const bytes=new Uint8Array(12);crypto.getRandomValues(bytes);
@@ -54,12 +59,14 @@ async function anonymousSaveImmediate(kind,requestedId=null){
  try{saveWorkspace();}catch(err){return anonymousSaveNotice("Local saving failed: "+err.message,true);}
  const url=anonymousSaveURL();
  if(!url){
-  anonymousSaveNotice("✓ "+doc.name+" saved in this browser. Shared saving needs one-time owner setup.");
+  if(kind==="wishlist")setCatalogSheetSync(id,"error");
+  anonymousSaveNotice("Saved in browser only. Google Sheets sync is not configured.",true);
   return;
  }
  
  const baseline=publicSheetBaseline();
  const key=kind+":"+id;
+ if(kind==="wishlist")setCatalogSheetSync(id,"saving");
  // A visitor may add an item before the anonymous page-load read completes.
  // Fetch the authoritative row first rather than sending expected="" and
  // receiving a conflict for a list that already exists.
@@ -77,12 +84,13 @@ async function anonymousSaveImmediate(kind,requestedId=null){
     for(const item of current.items||[])if(!ids.has(item.productId)){doc.items.push(item);ids.add(item.productId);}
     saveWorkspace();refreshWorkspace();render();
    }
-  }catch(err){return anonymousSaveNotice("Couldn't read shared "+kind+" before saving: "+err.message+". Local changes retained.",true);}
+  }catch(err){if(kind==="wishlist")setCatalogSheetSync(id,"error");return anonymousSaveNotice("Couldn't read shared "+kind+" before saving: "+err.message+". Local changes retained.",true);}
  }
  const snapshot=JSON.parse(JSON.stringify(doc)),raw=JSON.stringify(snapshot);
  if(raw.length>45000)return anonymousSaveNotice("Wish list too large for a single shared sheet record.",true);
  const expected=baseline[key]||"";
  if(expected===raw){
+  if(kind==="wishlist"){publicSheetsState.remoteCounts=publicSheetsState.remoteCounts||{};publicSheetsState.remoteCounts[id]=new Set(doc.items.map(item=>item.productId)).size;setCatalogSheetSync(id,"synced");}
   if(typeof clearSheetPending==="function")clearSheetPending(kind,id);
   anonymousSaveNotice("✓ "+doc.name+" already up to date in Google Sheets.");
   return;
@@ -127,6 +135,11 @@ async function anonymousSaveImmediate(kind,requestedId=null){
   if(confirmed){
    baseline[key]=raw;
    localStorage.setItem(PUBLIC_SHEET_BASELINE_KEY,JSON.stringify(baseline));
+   if(kind==="wishlist"){
+    publicSheetsState.remoteCounts=publicSheetsState.remoteCounts||{};
+    publicSheetsState.remoteCounts[id]=new Set(snapshot.items.map(item=>item.productId)).size;
+    setCatalogSheetSync(id,"synced");
+   }
    if(JSON.stringify(workspace[kind==="profile"?"profiles":"wishlists"].find(x=>x.id===id))===raw&&typeof clearSheetPending==="function")clearSheetPending(kind,id);
    anonymousSaveNotice("✓ "+doc.name+" saved to shared Google Sheets.");
    if(typeof showCatalogToast==="function")showCatalogToast(doc.name+" saved to shared Sheets");
@@ -139,9 +152,10 @@ async function anonymousSaveImmediate(kind,requestedId=null){
    else if(readbackError)message="Save not confirmed. Spreadsheet readback failed: "+readbackError+(receiptError?". Diagnostics: "+receiptError:"");
    else message="Save not confirmed. Apps Script did not provide a verified sheet update."+
       (receiptError?" "+receiptError:" Check Apps Script deployment and execution logs.");
+   if(kind==="wishlist")setCatalogSheetSync(id,"error");
    anonymousSaveNotice(message,true);
   }
- }catch(error){anonymousSaveNotice("Shared save failed; browser copy retained: "+error.message,true);}
+ }catch(error){if(kind==="wishlist")setCatalogSheetSync(id,"error");anonymousSaveNotice("Shared save failed; browser copy retained: "+error.message,true);}
  finally{publicWriteState.busy=false;if(field)field.disabled=false;}
 }
 // Serialize and coalesce writes: no edits are silently dropped while another
@@ -155,6 +169,7 @@ async function anonymousSave(kind,requestedId=null){
  const key=kind+":"+id;
  queuedWrites.set(key,{kind,id});
  if(typeof markSheetPending==="function")markSheetPending(kind,id);
+ if(kind==="wishlist")setCatalogSheetSync(id,"saving");
  if(writeDrainActive)return;
  writeDrainActive=true;
  try{
