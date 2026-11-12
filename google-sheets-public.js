@@ -9,6 +9,29 @@ const PUBLIC_LOCAL_BACKUP_KEY="pokemonCatalogPreSyncBackupV1";
 function pendingSheetWrites(){try{return JSON.parse(localStorage.getItem(PUBLIC_PENDING_KEY)||"{}")||{}}catch{return {}}}
 function markSheetPending(kind,id){const o=pendingSheetWrites();o[kind+":"+id]=Date.now();localStorage.setItem(PUBLIC_PENDING_KEY,JSON.stringify(o))}
 function clearSheetPending(kind,id){const o=pendingSheetWrites();delete o[kind+":"+id];localStorage.setItem(PUBLIC_PENDING_KEY,JSON.stringify(o))}
+const PUBLIC_PENDING_DELETES_KEY="pokemonCatalogPendingWishlistDeletesV1";
+function wishlistPendingDeleteMap(){
+ try{return JSON.parse(localStorage.getItem(PUBLIC_PENDING_DELETES_KEY)||"{}")||{}}
+ catch{return {}}
+}
+function pendingWishlistDeletes(id){return new Set(wishlistPendingDeleteMap()[id]||[])}
+function markWishlistDelete(id,productId){
+ const rows=wishlistPendingDeleteMap(),items=new Set(rows[id]||[]);
+ items.add(productId);rows[id]=[...items];
+ localStorage.setItem(PUBLIC_PENDING_DELETES_KEY,JSON.stringify(rows));
+}
+function unmarkWishlistDelete(id,productId){
+ const rows=wishlistPendingDeleteMap();
+ if(!rows[id])return;
+ rows[id]=rows[id].filter(x=>x!==productId);
+ if(!rows[id].length)delete rows[id];
+ localStorage.setItem(PUBLIC_PENDING_DELETES_KEY,JSON.stringify(rows));
+}
+function clearWishlistDeletes(id){
+ const rows=wishlistPendingDeleteMap();delete rows[id];
+ localStorage.setItem(PUBLIC_PENDING_DELETES_KEY,JSON.stringify(rows));
+}
+
 
 const publicSheetsState={status:"idle"};
 function publicSheetNotice(msg,error=false){
@@ -100,9 +123,13 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
   }
   if(clean)next[index]=record;
   else if(kind==="wishlist"){
-   // Keep unsynced local edits intact, including removals; remote data will
-   // be adopted when the next verified save clears this pending marker.
-   next[index]=existing;
+   // Never let an unsynced local snapshot hide already-published items.
+   // Preserve local edits for matching products and import remote-only items.
+   // Pending removals are tracked as tombstones until Google confirms them.
+   const removed=typeof pendingWishlistDeletes==="function"?pendingWishlistDeletes(record.id):new Set();
+   const incoming=new Map((record.items||[]).filter(x=>!removed.has(x.productId)).map(x=>[x.productId,x]));
+   for(const item of existing.items||[])incoming.set(item.productId,item);
+   next[index]={...record,...existing,items:[...incoming.values()]};
    protectedCount++;
   }else protectedCount++;
  }
