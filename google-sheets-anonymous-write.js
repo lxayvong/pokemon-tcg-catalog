@@ -83,6 +83,7 @@ async function anonymousSaveImmediate(kind,requestedId=null){
  if(raw.length>45000)return anonymousSaveNotice("Wish list too large for a single shared sheet record.",true);
  const expected=baseline[key]||"";
  if(expected===raw){
+  if(typeof clearSheetPending==="function")clearSheetPending(kind,id);
   anonymousSaveNotice("✓ "+doc.name+" already up to date in Google Sheets.");
   return;
  }
@@ -126,6 +127,7 @@ async function anonymousSaveImmediate(kind,requestedId=null){
   if(confirmed){
    baseline[key]=raw;
    localStorage.setItem(PUBLIC_SHEET_BASELINE_KEY,JSON.stringify(baseline));
+   if(JSON.stringify(workspace[kind==="profile"?"profiles":"wishlists"].find(x=>x.id===id))===raw&&typeof clearSheetPending==="function")clearSheetPending(kind,id);
    anonymousSaveNotice("✓ "+doc.name+" saved to shared Google Sheets.");
    if(typeof showCatalogToast==="function")showCatalogToast(doc.name+" saved to shared Sheets");
   }else{
@@ -152,6 +154,7 @@ async function anonymousSave(kind,requestedId=null){
  if(!id)return anonymousSaveNotice("Select a "+kind+" to save.",true);
  const key=kind+":"+id;
  queuedWrites.set(key,{kind,id});
+ if(typeof markSheetPending==="function")markSheetPending(kind,id);
  if(writeDrainActive)return;
  writeDrainActive=true;
  try{
