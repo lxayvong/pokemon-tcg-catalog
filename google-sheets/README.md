@@ -4,6 +4,14 @@
 
 The public catalog stays at https://lxayvong.github.io/pokemon-tcg-catalog/. Laem, Donny, Joe, and additional users edit profiles and wish lists **on the website**, then click **Save selected wish list** or **Save selected profile**. Data is stored in a single shared Google spreadsheet, under the Google account granting access.
 
+## Automatic read-only loading for visitors
+
+The catalog now tries to load the `Profiles` and `Wishlists` tabs **automatically on page load**, without Google sign-in. This uses Google's public Visualization endpoint. It works only if the spreadsheet is shared with **Anyone with the link → Viewer** (or otherwise published for anonymous viewing). **Do not choose Editor** for public link access. This setting means all profile and wish-list data, including notes, are publicly readable, so do not put private details in these documents.
+
+Guests can see shared data without signing in. Editors use Google OAuth only when they need to write or synchronize changes. The app retains locally edited records when a public refresh would overwrite unsynced changes, and displays shared load status in the collapsed Profiles & Wish Lists header. If anonymous access isn't permitted, the app falls back to browser-saved data and shows the configuration guidance.
+
+**Important:** The website itself cannot change the spreadsheet's Google sharing settings. The owner must enable Viewer link access. A private sheet cannot be read anonymously without a server-side proxy or a different public read-only data source.
+
 ## 1. Create a Google spreadsheet
 
 Create an ordinary blank Google Sheet, e.g. **Pokémon Catalog Shared Data**.
