@@ -96,6 +96,28 @@ async function cloudSave(kind){
  }catch(e){cloudStatus((e.status===409?"Save conflict. Someone else updated this file; export local changes before reloading. ":"Save failed. ")+e.message,"error");}
  finally{syncCloudControls();}
 }
+async function loadPublishedCopy(kind){
+ const ref=cloudIdentity(kind);if(!ref)return cloudStatus("Select a "+kind+" first.","error");
+ if(!/^[a-z0-9][a-z0-9-]{0,63}$/.test(ref.id))return cloudStatus("Invalid shared document ID.","error");
+ if(!confirm("Replace this browser's "+kind+" with the published GitHub copy? Export local edits first if needed."))return;
+ const u="https://raw.githubusercontent.com/lxayvong/pokemon-tcg-catalog/main/data/"+(kind==="wishlist"?"wishlists":"profiles")+"/"+encodeURIComponent(ref.id)+".json?ts="+Date.now();
+ try{
+  cloudStatus("Loading public GitHub copy...");
+  const response=await fetch(u,{cache:"no-store"});
+  if(!response.ok)throw Error("Published JSON not found (HTTP "+response.status+")");
+  const doc=await response.json();
+  if(doc.id!==ref.id||typeof doc.name!=="string")throw Error("Published document identity mismatch");
+  if(kind==="wishlist"&&!Array.isArray(doc.items))throw Error("Invalid published wish list");
+  if(kind==="profile"&&!["balanced","sealed","rip"].includes(doc.strategy))throw Error("Invalid published profile");
+  const list=kind==="wishlist"?workspace.wishlists:workspace.profiles;
+  const i=list.findIndex(v=>v.id===ref.id);if(i<0)throw Error("This entry is not in your browser workspace");
+  list[i]=doc;saveWorkspace();refreshWorkspace();render();
+  // Reading a public copy is not proof of the current file SHA; signed-in users
+  // must still use the authenticated Load button before committing.
+  cloud.loaded.delete(ref.key);cloud.sha.delete(ref.key);syncCloudControls();
+  cloudStatus("Loaded published "+kind+" from GitHub. Viewing works without sign-in; saving requires an approved account.","ok");
+ }catch(e){cloudStatus("Public load failed: "+e.message,"error");}
+}
 function cloudLogout(){cloud.session=null;cloud.user=null;cloud.loaded.clear();cloud.sha.clear();sessionStorage.removeItem("pokemonCatalogCloudSession");cloudStatus("Signed out. Browser-only saving is still available.");syncCloudControls();}
 function setupCloudUI(){
  cloud.url=cloudSettings();
@@ -107,6 +129,7 @@ function setupCloudUI(){
   if(load)load.onclick=()=>cloudLoad(kind);
   if(save)save.onclick=()=>cloudSave(kind);
  }
+ for(const kind of ["wishlist","profile"]){const b=document.getElementById("cloud-public-"+kind);if(b)b.onclick=()=>loadPublishedCopy(kind);}
  window.addEventListener("message",cloudOnMessage);
  try{cloud.session=JSON.parse(sessionStorage.getItem("pokemonCatalogCloudSession")||"null");}catch{cloud.session=null;}
  if(cloud.session?.expiresAt&&cloud.session.expiresAt<Date.now()){cloud.session=null;sessionStorage.removeItem("pokemonCatalogCloudSession");}
