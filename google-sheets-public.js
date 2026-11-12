@@ -103,9 +103,9 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
   const existing=byId.get(record.id),k=kind+":"+record.id;
   let clean=!hasExistingStorage||initialDocumentUnmodified(kind,existing);
   if(Object.prototype.hasOwnProperty.call(previousBaseline,k))clean=JSON.stringify(existing)===previousBaseline[k];
-  // Shared wishlist rows are authoritative on page load, unless a local edit
-  // is explicitly queued or has failed to sync.
-  if(kind==="wishlist"&&!pendingSheetWrites()[k]){
+  // Google Sheets is authoritative for both profiles and wish lists,
+  // except when this browser has an explicitly pending unsynced edit.
+  if(!pendingSheetWrites()[k]){
    if(JSON.stringify(existing)!==JSON.stringify(record)){
     try{const backup=JSON.parse(localStorage.getItem(PUBLIC_LOCAL_BACKUP_KEY)||"{}");backup[k]=existing;localStorage.setItem(PUBLIC_LOCAL_BACKUP_KEY,JSON.stringify(backup))}catch(_){}
    }
