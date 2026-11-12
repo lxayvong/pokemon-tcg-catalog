@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Pokémon TCG Catalog app icon">
+<rect width="512" height="512" rx="116" fill="#101d37"/>
+<rect x="12" y="12" width="488" height="488" rx="108" fill="none" stroke="#314c7f" stroke-width="5"/>
+<circle cx="256" cy="256" r="173" fill="#0b1427"/>
+<path d="M90 254a166 166 0 0 1 332 0Z" fill="#ed424c"/>
+<path d="M90 258a166 166 0 0 0 332 0Z" fill="#f7f9ff"/>
+<path d="M114 193a153 153 0 0 1 70-75" fill="none" stroke="#ff9ca0" stroke-width="16" stroke-linecap="round"/>
+<path d="M91 256H421" fill="none" stroke="#101b2d" stroke-width="26"/>
+<circle cx="256" cy="256" r="66" fill="#101b2d"/>
+<circle cx="256" cy="256" r="43" fill="#f8fafc"/>
+<circle cx="256" cy="256" r="26" fill="#dfebff"/>
+</svg>
