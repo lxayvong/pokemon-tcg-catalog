@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "sealed",
+  "name": "Sealed Collector",
+  "strategy": "sealed",
+  "buyDiscountPct": 30,
+  "considerDiscountPct": 15,
+  "maxMsrpPremiumPct": 20,
+  "maxPricePerPack": null,
+  "minScore": 7
+}
