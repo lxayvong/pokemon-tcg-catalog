@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "wishlists": [
+    {
+      "id": "laem",
+      "name": "Laem",
+      "profileId": "balanced",
+      "items": []
+    },
+    {
+      "id": "donny",
+      "name": "Donny",
+      "profileId": "balanced",
+      "items": []
+    },
+    {
+      "id": "joe",
+      "name": "Joe",
+      "profileId": "balanced",
+      "items": []
+    }
+  ]
+}
