@@ -8,5 +8,5 @@ window.POKEMON_GOOGLE_SHEETS = {
   spreadsheetId: "1v0EfD5ROoQOVUmz6ISodfNU3j37RGefm-53tZtpRIa8",
   profilesTab: "Profiles",
   wishlistsTab: "Wishlists",
-  anonymousSaveUrl: ""
+  anonymousSaveUrl: "https://script.google.com/macros/s/AKfycbzHLI6Du4hLA4sNUGfb5ySICq17T22VkEpmZ_ENrJKyfaZNHVbVZsjoKUKC76W7EuJi/exec"
 };
