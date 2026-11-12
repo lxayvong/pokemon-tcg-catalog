@@ -119,3 +119,33 @@ function priceGetStats(productId,asOf){
   latest:sorted.length?sorted[sorted.length-1]:null,
   direction7d:priceTrend_(eligible,7,day,2),direction30d:priceTrend_(eligible,30,day,2),direction90d:priceTrend_(eligible,90,day,2)};
 }
+
+function priceSaveSetRelease(record){
+ if(!record||typeof record.setName!=="string"||!record.setName.trim()||!priceDate_(record.releaseDate)||!priceUrl_(record.sourceUrl)||record.releaseDate>priceUtc_().slice(0,10))throw Error("Invalid sourced set release");
+ var sh=priceDbTab_(PRICE_DB_V1.setTab),lock=LockService.getScriptLock();lock.waitLock(30000);
+ try{
+  var values=sh.getLastRow()>1?sh.getRange(2,1,sh.getLastRow()-1,1).getValues():[];
+  var at=values.findIndex(function(v){return v[0]===record.setName;});
+  var row=[record.setName,record.releaseDate,record.sourceUrl,priceUtc_(),"Set launch is NOT automatically the release date of each associated sealed product"];
+  sh.getRange(at<0?sh.getLastRow()+1:at+2,1,1,row.length).setValues([row]);
+  return {setName:record.setName,releaseDate:record.releaseDate};
+ }finally{lock.releaseLock();}
+}
+function priceGetRelease(productId,setName){
+ if(!priceId_(productId))throw Error("Invalid product ID");
+ var sh=priceDbTab_(PRICE_DB_V1.releaseTab),n=sh.getLastRow();
+ var rows=n>1?sh.getRange(2,1,n-1,6).getValues():[];
+ var match=rows.find(function(r){return r[0]===productId&&r[2]==="confirmed";});
+ var out={originalReleaseDate:match?String(match[1]):null,productReleaseVerified:!!match,sourceUrl:match?match[3]:null,setReleaseDate:null,setReleaseSourceUrl:null};
+ if(setName){
+  sh=priceDbTab_(PRICE_DB_V1.setTab);n=sh.getLastRow();
+  rows=n>1?sh.getRange(2,1,n-1,5).getValues():[];
+  var set=rows.find(function(r){return r[0]===setName;});
+  if(set){out.setReleaseDate=String(set[1]);out.setReleaseSourceUrl=set[2];}
+ }
+ return out;
+}
+function priceGetProductOverview(productId,setName,asOf){
+ var stats=priceGetStats(productId,asOf),release=priceGetRelease(productId,setName);
+ return {productId:productId,release:release,market:stats};
+}
