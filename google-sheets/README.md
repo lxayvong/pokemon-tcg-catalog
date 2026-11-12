@@ -1,3 +1,5 @@
+> **Current approach (November 2026): No-login sharing.** Visitors can view and, once the owner deploys the Apps Script endpoint, save shared profiles and wish lists without signing in. Follow [ANONYMOUS-SETUP.md](ANONYMOUS-SETUP.md) for setup. The historical Google OAuth instructions below describe the previous implementation and are no longer required for the active website.
+
 # Google Sheets shared storage (recommended)
 
 **Status:** Frontend and Google Sheets API integration are committed. You must still create a spreadsheet and a Google OAuth web client before remote saves work. No Cloudflare Worker, GitHub App, service account or Apps Script deployment is required.
