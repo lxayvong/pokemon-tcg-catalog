@@ -79,8 +79,12 @@ def same_variant(wanted, candidate, group):
     for alias in ALIASES.get(wanted["set"], []):
         candidates.add(norm(alias) + " " + name)
         candidates.add(name + " " + norm(alias))
-    if cand in candidates:
-        # Avoid "ETB styles may vary" matching one specific artwork.
+    # Generic titles such as "Elite Trainer Box" recur in multiple sets.
+    # Require the source group to identify the exact set if the title omits it.
+    accepted_set_names = [wanted["set"], *ALIASES.get(wanted["set"], [])]
+    group_matches_set = any(norm(alias) in group_name for alias in accepted_set_names if len(norm(alias)) > 2)
+    title_matches_set = any(norm(alias) in cand for alias in accepted_set_names if len(norm(alias)) > 2)
+    if cand in candidates and (group_matches_set or title_matches_set):
         return True
     # Whole-name + set, no arbitrary partial/fuzzy matching.
     for prefix in (set_name, *[norm(x) for x in ALIASES.get(wanted["set"], [])]):
