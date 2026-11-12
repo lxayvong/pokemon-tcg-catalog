@@ -7,8 +7,8 @@ const PUBLIC_SHEET_BASELINE_KEY="pokemonCatalogPublicSheetsBaselineV1";
 const publicSheetsState={status:"idle"};
 function publicSheetNotice(msg,error=false){
  publicSheetsState.status=error?"error":"ready";
- const header=document.getElementById("public-data-status");if(header)header.textContent=msg;
- const lower=document.getElementById("public-sheet-status");if(lower)lower.textContent=msg;
+ const header=document.getElementById("public-data-status");if(header){header.textContent=msg;header.dataset.status=error?"error":"ok";}
+ const lower=document.getElementById("public-sheet-status");if(lower){lower.textContent=msg;lower.dataset.status=error?"error":"ok";}
 }
 function publicSheetBaseline(){
  try{const o=JSON.parse(localStorage.getItem(PUBLIC_SHEET_BASELINE_KEY)||"{}");return o&&typeof o==="object"?o:{}}catch{return {};}
@@ -25,10 +25,14 @@ function publicSheetQuery(sheetName){
   const finish=(err,table)=>{if(complete)return;complete=true;clearTimeout(timer);delete window[callback];script.remove();err?reject(err):resolve(table);};
   const timer=setTimeout(()=>finish(new Error("Google Sheets did not respond; check public Viewer access")),9000);
   window[callback]=res=>{
-   if(res?.status!=="ok"||!res.table?.rows)return finish(new Error("Spreadsheet is unavailable for anonymous viewing"));
+   if(res?.status!=="ok"){
+    const detail=Array.isArray(res?.errors)?res.errors.map(e=>e.detailed_message||e.message||e.reason).filter(Boolean).join("; "):"";
+    return finish(new Error(detail||"Google returned "+String(res?.status||"an invalid response")));
+   }
+   if(!Array.isArray(res.table?.rows))return finish(new Error("Google Sheets response did not include table rows"));
    finish(null,res.table);
   };
-  script.onerror=()=>finish(new Error("Google Sheets public read failed"));
+  script.onerror=()=>finish(new Error("Google Sheets public endpoint could not be reached. Check public Viewer access and network permissions."));
   script.src=source;
   document.head.appendChild(script);
  });
@@ -76,7 +80,8 @@ async function autoLoadPublicSheets(){
  publicSheetNotice("Loading shared profiles & wish lists...");
  try{
   const [profileTable,wishlistTable]=await Promise.all([
-   publicSheetQuery(cfg.profilesTab||"Profiles"),publicSheetQuery(cfg.wishlistsTab||"Wishlists")
+   publicSheetQuery(cfg.profilesTab||"Profiles").catch(e=>{throw new Error("Profiles tab: "+e.message);}),
+   publicSheetQuery(cfg.wishlistsTab||"Wishlists").catch(e=>{throw new Error("Wishlists tab: "+e.message);})
   ]);
   const profiles=publicSheetDocuments(profileTable,"profile"),wishlists=publicSheetDocuments(wishlistTable,"wishlist");
   if(!profiles.length&&!wishlists.length)throw new Error("Spreadsheet has no readable profile or wish-list rows");
@@ -99,7 +104,7 @@ async function autoLoadPublicSheets(){
    ?"Shared data loaded ("+count+" records); "+protectedCount+" locally edited record(s) kept"
    :"Shared data loaded ("+count+" records)");
  }catch(err){
-  publicSheetNotice("Shared data unavailable. Enable Anyone with link → Viewer, or use local lists.",true);
-  console.warn("Public Sheets read skipped:",err.message);
+  publicSheetNotice("Google Sheets read failed: "+(err?.message||"Unknown read error")+". Browser-saved data is still available.",true);
+  console.warn("Public Sheets read failed:",err);
  }
 }
