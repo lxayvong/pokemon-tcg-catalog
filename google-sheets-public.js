@@ -43,28 +43,7 @@ function publicSheetBaseline(){
  try{const o=JSON.parse(localStorage.getItem(PUBLIC_SHEET_BASELINE_KEY)||"{}");return o&&typeof o==="object"?o:{}}catch{return {};}
 }
 function publicSheetQuery(sheetName){
- return new Promise((resolve,reject)=>{
-  const c=window.POKEMON_GOOGLE_SHEETS||{},id=c.spreadsheetId;
-  if(!/^[A-Za-z0-9_-]{20,}$/.test(id||""))return reject(new Error("Spreadsheet ID not configured"));
-  // Google Visualization API supports a JSONP response handler for public sheets.
-  const callback="__pokemonPublicSheet_"+Math.random().toString(36).slice(2);
-  const script=document.createElement("script");
-  const source="https://docs.google.com/spreadsheets/d/"+encodeURIComponent(id)+"/gviz/tq?sheet="+encodeURIComponent(sheetName)+"&headers=0&tqx="+encodeURIComponent("out:json;responseHandler:"+callback)+"&_="+Date.now();
-  let complete=false;
-  const finish=(err,table)=>{if(complete)return;complete=true;clearTimeout(timer);delete window[callback];script.remove();err?reject(err):resolve(table);};
-  const timer=setTimeout(()=>finish(new Error("Google Sheets did not respond; check public Viewer access")),9000);
-  window[callback]=res=>{
-   if(res?.status!=="ok"){
-    const detail=Array.isArray(res?.errors)?res.errors.map(e=>e.detailed_message||e.message||e.reason).filter(Boolean).join("; "):"";
-    return finish(new Error(detail||"Google returned "+String(res?.status||"an invalid response")));
-   }
-   if(!Array.isArray(res.table?.rows))return finish(new Error("Google Sheets response did not include table rows"));
-   finish(null,res.table);
-  };
-  script.onerror=()=>finish(new Error("Google Sheets public endpoint could not be reached. Check public Viewer access and network permissions."));
-  script.src=source;
-  document.head.appendChild(script);
- });
+ return window.PokemonSheetsClient.query(sheetName);
 }
 function publicSheetRecordCell(row,index){
  const cell=row?.c?.[index];
