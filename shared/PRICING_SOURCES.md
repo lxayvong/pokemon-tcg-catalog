@@ -46,10 +46,13 @@ The price is the merchant's listed price, **not** confirmation that inventory is
 | Phantasmal Flames Elite Trainer Box | Best Buy | $49.99 | https://www.bestbuy.com/product/-/6645345 | In store only |
 | Phantasmal Flames Elite Trainer Box | Target | $59.99 | https://www.target.com/p/-/A-94860231 | Listed out of stock |
 | Phantasmal Flames Booster Bundle | Best Buy | $26.94 | https://www.bestbuy.com/product/PassiveCollectibles/6645343 | In store only |
+| 30th Anniversary Celebration Elite Trainer Box | Best Buy | $49.99 | https://www.bestbuy.com/product/pokemon/6685559 | In store only |
+| Phantasmal Flames Booster Box | Best Buy | $160.99 | https://www.bestbuy.com/product/pokemon-trading-card-game-mega-evolution-phantasmal-flames-booster-box-36-packs/6645341 | In store only |
+| Delta Reign Booster Box | Best Buy | $160.99 | https://www.bestbuy.com/product/pokemon/6689677 | Coming soon |
 
 ## Coverage and caveats
 
-- Exactly 25 market values and six retailer product listings were newly refreshed. The other records retain their previously dated prices, nulls, and unverified labels. **Do not change an old price's observation date simply because the catalog is redeployed.**
+- Exactly 25 market values and nine retailer product listings were newly refreshed. The other records retain their previously dated prices, nulls, and unverified labels. **Do not change an old price's observation date simply because the catalog is redeployed.**
 - Each retailer offer is matched to a named first-party product page with verified manufacturer or retailer SKU where available.
 - Market snapshot prices and posted retail prices have different meanings. A retailer's MSRP-like product price must not be substituted for the TCGplayer market price.
 - More frequent fully automated market updates would require a compliant, authorized source/API or scheduled owner-side data pipeline; the current website does not promise real-time updates.
