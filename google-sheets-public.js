@@ -20,7 +20,7 @@ function publicSheetQuery(sheetName){
   // Google Visualization API supports a JSONP response handler for public sheets.
   const callback="__pokemonPublicSheet_"+Math.random().toString(36).slice(2);
   const script=document.createElement("script");
-  const source="https://docs.google.com/spreadsheets/d/"+encodeURIComponent(id)+"/gviz/tq?sheet="+encodeURIComponent(sheetName)+"&headers=1&tqx="+encodeURIComponent("out:json;responseHandler:"+callback);
+  const source="https://docs.google.com/spreadsheets/d/"+encodeURIComponent(id)+"/gviz/tq?sheet="+encodeURIComponent(sheetName)+"&headers=0&tqx="+encodeURIComponent("out:json;responseHandler:"+callback)+"&_="+Date.now();
   let complete=false;
   const finish=(err,table)=>{if(complete)return;complete=true;clearTimeout(timer);delete window[callback];script.remove();err?reject(err):resolve(table);};
   const timer=setTimeout(()=>finish(new Error("Google Sheets did not respond; check public Viewer access")),9000);
@@ -95,30 +95,34 @@ async function autoLoadPublicSheets(){
  if(!cfg.spreadsheetId)return publicSheetNotice("Shared lists not configured",true);
  publicSheetNotice("Loading shared profiles & wish lists...");
  try{
-  const [profileTable,wishlistTable]=await Promise.all([
-   publicSheetQuery(cfg.profilesTab||"Profiles").catch(e=>{throw new Error("Profiles tab: "+e.message);}),
-   publicSheetQuery(cfg.wishlistsTab||"Wishlists").catch(e=>{throw new Error("Wishlists tab: "+e.message);})
+  const [profileResult,wishlistResult]=await Promise.allSettled([
+   publicSheetQuery(cfg.profilesTab||"Profiles").then(table=>publicSheetDocuments(table,"profile")),
+   publicSheetQuery(cfg.wishlistsTab||"Wishlists").then(table=>publicSheetDocuments(table,"wishlist"))
   ]);
-  const profiles=publicSheetDocuments(profileTable,"profile"),wishlists=publicSheetDocuments(wishlistTable,"wishlist");
-  if(!profiles.length&&!wishlists.length)throw new Error("Spreadsheet has no readable profile or wish-list rows");
+  const profiles=profileResult.status==="fulfilled"?profileResult.value:[],
+        wishlists=wishlistResult.status==="fulfilled"?wishlistResult.value:[];
+  const warnings=[];
+  if(profileResult.status==="rejected")warnings.push("Profiles: "+profileResult.reason.message);
+  if(wishlistResult.status==="rejected")warnings.push("Wishlists: "+wishlistResult.reason.message);
+  if(!profiles.length&&!wishlists.length)throw new Error(warnings.join("; ")||"Spreadsheet has no readable profile or wish-list rows");
   const hasExistingStorage=!!localStorage.getItem(WORKSPACE_STORAGE_KEY);
   const previousBaseline=publicSheetBaseline();
-  const protectedCount=mergePublicDocs("profile",profiles,previousBaseline,hasExistingStorage)+
-    mergePublicDocs("wishlist",wishlists,previousBaseline,hasExistingStorage);
+  const protectedCount=(profileResult.status==="fulfilled"?mergePublicDocs("profile",profiles,previousBaseline,hasExistingStorage):0)+
+    (wishlistResult.status==="fulfilled"?mergePublicDocs("wishlist",wishlists,previousBaseline,hasExistingStorage):0);
   // Save the source baseline, not the local merge, so subsequent browser edits
   // remain distinguishable from the last public read.
-  const baseline={};
-  for(const p of profiles)baseline["profile:"+p.id]=JSON.stringify(p);
-  for(const w of wishlists)baseline["wishlist:"+w.id]=JSON.stringify(w);
+  const baseline={...previousBaseline};
+  if(profileResult.status==="fulfilled")for(const p of profiles)baseline["profile:"+p.id]=JSON.stringify(p);
+  if(wishlistResult.status==="fulfilled")for(const w of wishlists)baseline["wishlist:"+w.id]=JSON.stringify(w);
   localStorage.setItem(PUBLIC_SHEET_BASELINE_KEY,JSON.stringify(baseline));
   workspace=cleanWorkspace(workspace);
   saveWorkspace();
   refreshWorkspace();
   render();
   const count=profiles.length+wishlists.length;
-  publicSheetNotice(protectedCount
-   ?"Shared data loaded ("+count+" records); "+protectedCount+" locally edited record(s) kept"
-   :"Shared data loaded ("+count+" records)");
+  publicSheetNotice("Shared data loaded ("+count+" records)"+
+   (protectedCount?"; "+protectedCount+" locally edited record(s) preserved":"")+
+   (warnings.length?"; "+warnings.join("; "):""),warnings.length>0);
  }catch(err){
   publicSheetNotice("Google Sheets read failed: "+(err?.message||"Unknown read error")+". Browser-saved data is still available.",true);
   console.warn("Public Sheets read failed:",err);
