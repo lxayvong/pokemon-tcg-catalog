@@ -149,3 +149,30 @@ function priceGetProductOverview(productId,setName,asOf){
  var stats=priceGetStats(productId,asOf),release=priceGetRelease(productId,setName);
  return {productId:productId,release:release,market:stats};
 }
+
+/** Optional owner-run smoke test; does not mutate any spreadsheet cells. */
+function priceRunSelfTests(){
+ var up=[
+  {date:"2026-11-05",price:100,verified:true,evidenceType:"direct-observation"},
+  {date:"2026-11-12",price:110,verified:true,evidenceType:"direct-observation"}
+ ];
+ var stable=[
+  {date:"2026-11-05",price:100,verified:true,evidenceType:"direct-observation"},
+  {date:"2026-11-12",price:101,verified:true,evidenceType:"direct-observation"}
+ ];
+ var down=[
+  {date:"2026-11-05",price:110,verified:true,evidenceType:"direct-observation"},
+  {date:"2026-11-12",price:100,verified:true,evidenceType:"direct-observation"}
+ ];
+ var result={
+  up7:priceTrend_(up,7,"2026-11-12",2).direction==="up",
+  down7:priceTrend_(down,7,"2026-11-12",2).direction==="down",
+  stable7:priceTrend_(stable,7,"2026-11-12",2).direction==="stable",
+  noResearchTrend:priceTrend_([{date:"2026-11-11",price:100,verified:true,evidenceType:"research-snapshot"}],7,"2026-11-12",2).direction==="insufficient-history",
+  noFabricatedMonth:priceTrend_(up,30,"2026-11-12",2).direction==="insufficient-history",
+  validLeapDay:priceDate_("2024-02-29")==="2024-02-29",
+  badDate:priceDate_("2026-02-30")===null
+ };
+ if(Object.keys(result).some(function(k){return !result[k];}))throw Error("Price-history test failed: "+JSON.stringify(result));
+ Logger.log(JSON.stringify(result));return result;
+}
