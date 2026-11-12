@@ -143,43 +143,18 @@ function updateProduct(id,field,raw){
  item[field]=value;enqueue(list.id,{type:"edit",productId:id,field,value});
  renderHeader();message("Change queued for Google Sheets");
 }
-async function verifyWrite(id,payload){
- const expected=JSON.stringify(payload);
- let lastError="",consecutiveErrors=0;
- for(const delay of [550,800,1050,1400,1750,2200,2900,3700]){
-  await sleep(delay);
-  try{
-   const record=await readRemote(id);
-   if(record.raw===expected||JSON.stringify(record.doc)===expected)return {ok:true,doc:record.doc};
-   lastError="Google Sheets has not reflected the update yet";
-   consecutiveErrors=0;
-  }catch(e){lastError=e.message;if(++consecutiveErrors>=2)break;}
- }
- return {ok:false,error:lastError};
-}
-function randomReq(){
- const bytes=crypto.getRandomValues(new Uint8Array(12));
- return "req-"+[...bytes].map(x=>x.toString(16).padStart(2,"0")).join("");
-}
 async function sendChanges(id,ops){
  if(!navigator.onLine)throw Error("Offline. Your in-memory changes have not been saved.");
- if(!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(cfg.anonymousSaveUrl||""))
-  throw Error("Google Apps Script save endpoint is not configured");
- const current=await readRemote(id);
+ const current=await window.PokemonSheetsClient.readDocument("wishlist",id);
  const local=listById(id);
  if(!local)throw Error("Wish list was removed");
- const base=current.doc?structuredClone(current.doc):{id:local.id,name:local.name,profileId:local.profileId||"balanced",items:[]};
+ const base=current.doc?structuredClone(current.doc):
+  {id:local.id,name:local.name,profileId:local.profileId||"balanced",items:[]};
  for(const op of ops)applyOp(base,op);
- // If a previous attempt actually saved, don't POST again.
- if(JSON.stringify(base)===current.raw)return base;
  const raw=JSON.stringify(base);
- if(raw.length>45000)throw Error("This wish list exceeds the 45 KB save limit");
- const body=new URLSearchParams({kind:"wishlist",id,payload:raw,expected:current.raw,requestId:randomReq()});
- // Opaque no-CORS response cannot prove success. Public Sheet readback can.
- await fetch(cfg.anonymousSaveUrl,{method:"POST",mode:"no-cors",cache:"no-store",redirect:"follow",body});
- const result=await verifyWrite(id,base);
- if(!result.ok)throw Error("Save not confirmed: "+result.error+". Use Retry sync; don't refresh yet.");
- return result.doc;
+ if(raw===current.raw)return base;
+ await window.PokemonSheetsClient.writeDocument({kind:"wishlist",id,payload:raw,expected:current.raw});
+ return base;
 }
 async function drain(){
  if(state.draining)return;
