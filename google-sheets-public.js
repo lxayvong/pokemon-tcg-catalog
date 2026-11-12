@@ -39,19 +39,23 @@ function publicSheetQuery(sheetName){
 }
 function publicSheetDocuments(table,label){
  const docs=[];
- for(const row of table.rows||[]){
+ (table.rows||[]).forEach((row,index)=>{
   const cells=row.c||[],id=String(cells[0]?.v??"").trim();
-  if(!id||id==="ID")continue;
+  if(!id||id==="ID")return;
+  const location=(label==="profile"?"Profiles":"Wishlists")+" row "+(index+2);
   const content=cells[2]?.v;
-  if(typeof content!=="string")continue;
-  try{
-   const documentValue=JSON.parse(content);
-   if(!documentValue||documentValue.id!==id||typeof documentValue.name!=="string")continue;
-   if(label==="wishlist"&&!Array.isArray(documentValue.items))continue;
-   if(label==="profile"&&!["balanced","sealed","rip"].includes(documentValue.strategy))continue;
-   docs.push(documentValue);
-  }catch{ /* Ignore invalid row, never execute cell content. */ }
- }
+  if(typeof content!=="string")throw new Error(location+": missing saved JSON");
+  let documentValue;
+  try{documentValue=JSON.parse(content);}
+  catch(ex){throw new Error(location+": invalid JSON ("+ex.message+")");}
+  if(!documentValue||documentValue.id!==id||typeof documentValue.name!=="string")
+   throw new Error(location+": document ID or name mismatch");
+  if(label==="wishlist"&&!Array.isArray(documentValue.items))
+   throw new Error(location+": missing wish-list items");
+  if(label==="profile"&&!["balanced","sealed","rip"].includes(documentValue.strategy))
+   throw new Error(location+": invalid decision-profile strategy");
+  docs.push(documentValue);
+ });
  return docs;
 }
 function initialDocumentUnmodified(kind,local){
