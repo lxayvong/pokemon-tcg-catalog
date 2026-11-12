@@ -22,7 +22,7 @@
    }
    window[callback]=response=>{
     if(response?.status!=="ok"){
-     const explanation=(response?.errors||[]).map(e=>e.detailed_message||e.message||e.reason).filter(Boolean).join("; ");
+     const explanation=(Array.isArray(response?.errors)?response.errors:[]).map(e=>e.detailed_message||e.message||e.reason).filter(Boolean).join("; ");
      return finish(Error(explanation||"Google Sheets returned an error"));
     }
     if(!Array.isArray(response.table?.rows))return finish(Error("Google Sheets returned no table rows"));
