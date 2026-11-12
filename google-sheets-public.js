@@ -51,7 +51,7 @@ function publicSheetDocuments(table,label){
  return docs;
 }
 function initialDocumentUnmodified(kind,local){
- if(kind==="wishlist")return Array.isArray(local.items)&&local.items.length===0;
+ if(kind==="wishlist"){const seed=WISHLIST_SEEDS.find(x=>x.id===local.id);return !!seed&&local.name===seed.name&&local.profileId===seed.profileId&&Array.isArray(local.items)&&local.items.length===0;}
  const seed=PROFILE_SEEDS.find(x=>x.id===local.id);
  return !!seed&&["name","strategy","buyDiscountPct","considerDiscountPct","maxMsrpPremiumPct","maxPricePerPack","minScore"].every(k=>local[k]===seed[k]);
 }
@@ -99,7 +99,7 @@ async function autoLoadPublicSheets(){
    ?"Shared data loaded ("+count+" records); "+protectedCount+" locally edited record(s) kept"
    :"Shared data loaded ("+count+" records)");
  }catch(err){
-  publicSheetNotice("Shared data unavailable; using locally saved lists",true);
+  publicSheetNotice("Shared data unavailable. Enable Anyone with link → Viewer, or use local lists.",true);
   console.warn("Public Sheets read skipped:",err.message);
  }
 }
