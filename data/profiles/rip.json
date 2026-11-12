@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "rip",
+  "name": "Pack Ripper",
+  "strategy": "rip",
+  "buyDiscountPct": 20,
+  "considerDiscountPct": 8,
+  "maxMsrpPremiumPct": 5,
+  "maxPricePerPack": 8,
+  "minScore": 6
+}
