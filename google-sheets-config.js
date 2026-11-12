@@ -1,10 +1,12 @@
-/* Public OAuth configuration only. Never store OAuth client secrets here.
- * Configure after creating a Google Cloud OAuth Web client and a shared spreadsheet.
+/* Shared Pokémon TCG wish-list and profile storage. Public configuration only.
+ * Anonymous reads require Google Sheet sharing: Anyone with the link -> Viewer.
+ * To enable anonymous writing, deploy google-sheets/AnonymousSave.gs as an
+ * owner-executed Apps Script Web App with access Anyone, then paste its /exec URL.
+ * Treat the URL as PUBLIC. Never put passwords or API secrets here.
  */
 window.POKEMON_GOOGLE_SHEETS = {
-  clientId: "58530634649-c0a9kgm9avesng1dupha60e5kdtimck4.apps.googleusercontent.com",
   spreadsheetId: "1v0EfD5ROoQOVUmz6ISodfNU3j37RGefm-53tZtpRIa8",
   profilesTab: "Profiles",
   wishlistsTab: "Wishlists",
-  anonymousSaveUrl: "" // Paste your deployed Apps Script /exec URL here (public writes)
+  anonymousSaveUrl: ""
 };
