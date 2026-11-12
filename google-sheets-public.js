@@ -48,24 +48,31 @@ function publicSheetRecordCell(row,index){
  return cell?.v==null?"":String(cell.v);
 }
 function publicSheetDocuments(table,label){
- const docs=[];
+ const docs=[],problems=[];
  (table.rows||[]).forEach((row,index)=>{
-  const cells=row.c||[],id=String(cells[0]?.v??"").trim();
-  if(!id||id==="ID")return;
-  const location=(label==="profile"?"Profiles":"Wishlists")+" row "+(index+2);
+  const id=publicSheetRecordCell(row,0).trim();
+  if(!id||id.toLowerCase()==="id")return;
+  const location=(label==="profile"?"Profiles":"Wishlists")+" row "+(index+1);
   const content=publicSheetRecordCell(row,2);
-  if(!content)throw new Error(location+": missing saved JSON");
-  let documentValue;
-  try{documentValue=JSON.parse(content);}
-  catch(ex){throw new Error(location+": invalid JSON ("+ex.message+")");}
-  if(!documentValue||documentValue.id!==id||typeof documentValue.name!=="string")
-   throw new Error(location+": document ID or name mismatch");
-  if(label==="wishlist"&&!Array.isArray(documentValue.items))
-   throw new Error(location+": missing wish-list items");
-  if(label==="profile"&&!["balanced","sealed","rip"].includes(documentValue.strategy))
-   throw new Error(location+": invalid decision-profile strategy");
-  docs.push(documentValue);
+  if(!content){problems.push(location+": empty JSON cell C");return;}
+  let value;
+  try{value=JSON.parse(content)}catch(e){problems.push(location+": invalid JSON");return;}
+  if(!value||value.id!==id||typeof value.name!=="string"){
+   problems.push(location+": ID mismatch or missing name");return;
+  }
+  if(label==="wishlist"&&!Array.isArray(value.items)){
+   problems.push(location+": invalid items list");return;
+  }
+  if(label==="profile"&&!["balanced","sealed","rip"].includes(value.strategy)){
+   problems.push(location+": invalid profile strategy");return;
+  }
+  docs.push(value);
  });
+ if(problems.length){
+  publicSheetsState.parseWarnings.push(...problems);
+  console.warn("Skipped invalid shared spreadsheet rows:",problems);
+  if(!docs.length)throw Error(problems.slice(0,3).join("; "));
+ }
  return docs;
 }
 function initialDocumentUnmodified(kind,local){
@@ -105,6 +112,7 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
 async function autoLoadPublicSheets(){
  const cfg=window.POKEMON_GOOGLE_SHEETS||{};
  if(!cfg.spreadsheetId)return publicSheetNotice("Shared lists not configured",true);
+ publicSheetsState.parseWarnings=[];
  publicSheetNotice("Loading shared profiles & wish lists...");
  try{
   const [profileResult,wishlistResult]=await Promise.allSettled([
@@ -113,7 +121,7 @@ async function autoLoadPublicSheets(){
   ]);
   const profiles=profileResult.status==="fulfilled"?profileResult.value:[],
         wishlists=wishlistResult.status==="fulfilled"?wishlistResult.value:[];
-  const warnings=[];
+  const warnings=[...publicSheetsState.parseWarnings];
   if(profileResult.status==="rejected")warnings.push("Profiles: "+profileResult.reason.message);
   if(wishlistResult.status==="rejected")warnings.push("Wishlists: "+wishlistResult.reason.message);
   if(!profiles.length&&!wishlists.length)throw new Error(warnings.join("; ")||"Spreadsheet has no readable profile or wish-list rows");
