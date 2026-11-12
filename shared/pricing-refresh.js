@@ -181,3 +181,19 @@ for(const [set,name,retailer,amount,url,sku,manufacturerSku,availability] of PRI
  observedAt:PRICING_REFRESH_DATE,matchMethod:"retailerSku"});
  PRICING_REFRESH_STATS.retailerOffers++;
 }
+
+
+/* US MSRPs documented in TCGplayer seller product breakdowns.
+ * Leave all other unknown MSRP cells null rather than imputing by format. */
+const RESEARCHED_OFFICIAL_MSRPS=[
+ ["Mega Evolution","Booster Bundle",26.94,"https://seller.tcgplayer.com/blog/mega-evolution-quick-facts"],
+ ["Mega Evolution","Build & Battle Box",21.99,"https://seller.tcgplayer.com/blog/mega-evolution-quick-facts"],
+ ["Ascended Heroes","Elite Trainer Box",49.99,"https://seller.tcgplayer.com/blog/ascended-heroes-quick-facts"],
+ ["Ascended Heroes","Pokémon Center ETB",59.99,"https://seller.tcgplayer.com/blog/ascended-heroes-quick-facts"],
+ ["Ascended Heroes","Booster Bundle",26.94,"https://seller.tcgplayer.com/blog/ascended-heroes-quick-facts"]
+];
+for(const [set,name,amount,sourceUrl] of RESEARCHED_OFFICIAL_MSRPS){
+ const product=productById.get(canonicalId(set,name));
+ if(product&&product.pricing.msrp.amount==null)
+  product.pricing.msrp={amount,currency:"USD",source:"TCGplayer seller guide: published US MSRP",sourceUrl,verified:true};
+}
