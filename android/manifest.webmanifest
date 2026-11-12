@@ -1,0 +1,38 @@
+{
+  "id": "./",
+  "name": "Pokémon TCG Catalog · Android",
+  "short_name": "TCG Catalog",
+  "description": "A mobile-first sealed Pokémon TCG catalog with shared Google Sheets wish lists.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#091224",
+  "background_color": "#091224",
+  "categories": [
+    "shopping",
+    "productivity"
+  ],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "prefer_related_applications": false
+}
