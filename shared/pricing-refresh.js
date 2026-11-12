@@ -81,7 +81,21 @@ const PRICE_RESEARCH_MARKET=[
   "2026-11-10",
   "https://catchemtcg.com/rip"
  ]
-];
+,
+ ["Delta Reign","Booster Box",193.62,"2026-11-12","https://catchemtcg.com/board"],
+ ["Delta Reign","Booster Bundle",42.65,"2026-11-12","https://catchemtcg.com/board"],
+ ["Delta Reign","Elite Trainer Box",82.66,"2026-11-12","https://catchemtcg.com/board"],
+ ["Delta Reign","Pokémon Center ETB",154.93,"2026-11-12","https://catchemtcg.com/board"],
+ ["Prismatic Evolutions","Pokémon Center ETB",379.21,"2026-11-12","https://catchemtcg.com/board"],
+ ["Mega Evolution","Pokémon Center ETB (Mega Gardevoir)",170.4,"2026-11-12","https://catchemtcg.com/board"],
+ ["Mega Evolution","Pokémon Center ETB (Mega Lucario)",190.91,"2026-11-12","https://catchemtcg.com/board"],
+ ["Mega Evolution","Elite Trainer Box (Mega Gardevoir)",107.9,"2026-11-12","https://catchemtcg.com/board"],
+ ["Mega Evolution","Elite Trainer Box (Mega Lucario)",113.27,"2026-11-12","https://catchemtcg.com/board"],
+ ["Surging Sparks","Pokémon Center ETB",243.14,"2026-11-12","https://catchemtcg.com/board"],
+ ["Chaos Rising","Pokémon Center ETB",116.85,"2026-11-12","https://catchemtcg.com/board"],
+ ["Ascended Heroes","Pokémon Center ETB",318.79,"2026-11-12","https://catchemtcg.com/board"],
+ ["Pokémon 151","Zapdos ex Collection",108.15,"2026-11-12","https://catchemtcg.com/board"],
+ ["30th Anniversary Celebration","UPC Night",381.27,"2026-11-12","https://catchemtcg.com/board"]];
 const PRICE_RESEARCH_RETAIL=[
  [
   "30th Anniversary Celebration",
