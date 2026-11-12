@@ -157,7 +157,10 @@ const PRICE_RESEARCH_RETAIL=[
   "10-10191-109",
   "in-store-only"
  ]
-];
+,
+ ["30th Anniversary Celebration","Elite Trainer Box","Best Buy",49.99,"https://www.bestbuy.com/product/pokemon/6685559","6685559","10-10447-110","in-store-only"],
+ ["Phantasmal Flames","Booster Box","Best Buy",160.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-mega-evolution-phantasmal-flames-booster-box-36-packs/6645341","6645341","10-10190-119","in-store-only"],
+ ["Delta Reign","Booster Box","Best Buy",160.99,"https://www.bestbuy.com/product/pokemon/6689677","6689677","10-10446-120","coming-soon"]];
 const PRICING_REFRESH_STATS={markets:0,retailerOffers:0,missing:[]};
 for(const [set,name,amount,reportedAt,sourceUrl] of PRICE_RESEARCH_MARKET){
  const record=productById.get(canonicalId(set,name));
