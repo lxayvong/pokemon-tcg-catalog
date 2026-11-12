@@ -1,0 +1,852 @@
+{
+  "schemaVersion": 1,
+  "description": "Canonical catalog identity map for TCGCSV TCGplayer daily market price updater; do not infer matching variants.",
+  "products": [
+    {
+      "id": "ptcg:evolving-skies:booster-box",
+      "set": "Evolving Skies",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:evolving-skies:elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
+      "set": "Evolving Skies",
+      "name": "Elite Trainer Box (Glaceon/Vaporeon/Sylveon/Espeon)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:booster-bundle",
+      "set": "Pokémon 151",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:elite-trainer-box",
+      "set": "Pokémon 151",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:blooming-waters",
+      "set": "Pokémon 151",
+      "name": "Blooming Waters",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:ultra-premium-collection",
+      "set": "Pokémon 151",
+      "name": "Ultra-Premium Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:elite-trainer-box",
+      "set": "Prismatic Evolutions",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:booster-bundle",
+      "set": "Prismatic Evolutions",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:crown-zenith:elite-trainer-box",
+      "set": "Crown Zenith",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:crown-zenith:sea-sky-collection",
+      "set": "Crown Zenith",
+      "name": "Sea & Sky Collection",
+      "tcgplayerProductId": "563307"
+    },
+    {
+      "id": "ptcg:surging-sparks:booster-box",
+      "set": "Surging Sparks",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:surging-sparks:elite-trainer-box",
+      "set": "Surging Sparks",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:twilight-masquerade:booster-box",
+      "set": "Twilight Masquerade",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:twilight-masquerade:elite-trainer-box",
+      "set": "Twilight Masquerade",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:lost-origin:booster-box",
+      "set": "Lost Origin",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:fusion-strike:booster-box",
+      "set": "Fusion Strike",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:brilliant-stars:booster-box",
+      "set": "Brilliant Stars",
+      "name": "Booster Box",
+      "tcgplayerProductId": "256141"
+    },
+    {
+      "id": "ptcg:delta-reign:booster-box",
+      "set": "Delta Reign",
+      "name": "Booster Box",
+      "tcgplayerProductId": "712094"
+    },
+    {
+      "id": "ptcg:delta-reign:booster-bundle",
+      "set": "Delta Reign",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:delta-reign:elite-trainer-box",
+      "set": "Delta Reign",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:delta-reign:pokemon-center-etb",
+      "set": "Delta Reign",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:phantasmal-flames:booster-box",
+      "set": "Phantasmal Flames",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:phantasmal-flames:elite-trainer-box",
+      "set": "Phantasmal Flames",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:shrouded-fable:elite-trainer-box",
+      "set": "Shrouded Fable",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:stellar-crown:booster-box",
+      "set": "Stellar Crown",
+      "name": "Booster Box",
+      "tcgplayerProductId": "557354"
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:booster-bundle",
+      "set": "30th Anniversary Celebration",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:elite-trainer-box",
+      "set": "30th Anniversary Celebration",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:pokemon-center-etb",
+      "set": "30th Anniversary Celebration",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:mini-tin",
+      "set": "30th Anniversary Celebration",
+      "name": "Mini Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:knock-out-collection",
+      "set": "30th Anniversary Celebration",
+      "name": "Knock Out Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:2-pack-blister",
+      "set": "30th Anniversary Celebration",
+      "name": "2-Pack Blister",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:poster-collection",
+      "set": "30th Anniversary Celebration",
+      "name": "Poster Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:tech-sticker-lucario",
+      "set": "30th Anniversary Celebration",
+      "name": "Tech Sticker: Lucario",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:tech-sticker-alolan-exeggutor",
+      "set": "30th Anniversary Celebration",
+      "name": "Tech Sticker: Alolan Exeggutor",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:greninja-ex-box",
+      "set": "30th Anniversary Celebration",
+      "name": "Greninja ex Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:sylveon-ex-box",
+      "set": "30th Anniversary Celebration",
+      "name": "Sylveon ex Box",
+      "tcgplayerProductId": "704155"
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:binder-collection",
+      "set": "30th Anniversary Celebration",
+      "name": "Binder Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:ditto-premium-collection",
+      "set": "30th Anniversary Celebration",
+      "name": "Ditto Premium Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:figure-collection-mew",
+      "set": "30th Anniversary Celebration",
+      "name": "Figure Collection: Mew",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:figure-collection-mewtwo",
+      "set": "30th Anniversary Celebration",
+      "name": "Figure Collection: Mewtwo",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:upc-day",
+      "set": "30th Anniversary Celebration",
+      "name": "UPC Day",
+      "tcgplayerProductId": "704190"
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:upc-night",
+      "set": "30th Anniversary Celebration",
+      "name": "UPC Night",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:poster-collection",
+      "set": "Pokémon 151",
+      "name": "Poster Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:binder-collection",
+      "set": "Pokémon 151",
+      "name": "Binder Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:alakazam-ex-collection",
+      "set": "Pokémon 151",
+      "name": "Alakazam ex Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-151:zapdos-ex-collection",
+      "set": "Pokémon 151",
+      "name": "Zapdos ex Collection",
+      "tcgplayerProductId": "502007"
+    },
+    {
+      "id": "ptcg:pokemon-151:mini-tin",
+      "set": "Pokémon 151",
+      "name": "Mini Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:pokemon-center-etb",
+      "set": "Prismatic Evolutions",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:poster-collection",
+      "set": "Prismatic Evolutions",
+      "name": "Poster Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:binder-collection",
+      "set": "Prismatic Evolutions",
+      "name": "Binder Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:tech-sticker-collection",
+      "set": "Prismatic Evolutions",
+      "name": "Tech Sticker Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:surging-sparks:booster-bundle-retail",
+      "set": "Surging Sparks",
+      "name": "Booster Bundle (Retail)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:surging-sparks:pokemon-center-etb",
+      "set": "Surging Sparks",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:twilight-masquerade:booster-bundle",
+      "set": "Twilight Masquerade",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:twilight-masquerade:pokemon-center-etb",
+      "set": "Twilight Masquerade",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:stellar-crown:elite-trainer-box",
+      "set": "Stellar Crown",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:stellar-crown:booster-bundle",
+      "set": "Stellar Crown",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:shrouded-fable:booster-bundle",
+      "set": "Shrouded Fable",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": "553031"
+    },
+    {
+      "id": "ptcg:shrouded-fable:kingdra-ex-special-illustration-collection",
+      "set": "Shrouded Fable",
+      "name": "Kingdra ex Special Illustration Collection",
+      "tcgplayerProductId": "553001"
+    },
+    {
+      "id": "ptcg:shrouded-fable:greninja-ex-special-illustration-collection",
+      "set": "Shrouded Fable",
+      "name": "Greninja ex Special Illustration Collection",
+      "tcgplayerProductId": "553002"
+    },
+    {
+      "id": "ptcg:crown-zenith:pikachu-vmax-special-collection",
+      "set": "Crown Zenith",
+      "name": "Pikachu VMAX Special Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:crown-zenith:galarian-bird-tins",
+      "set": "Crown Zenith",
+      "name": "Galarian Bird Tins",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:lost-origin:elite-trainer-box",
+      "set": "Lost Origin",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:fusion-strike:elite-trainer-box",
+      "set": "Fusion Strike",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:brilliant-stars:elite-trainer-box",
+      "set": "Brilliant Stars",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": "256138"
+    },
+    {
+      "id": "ptcg:evolving-skies:three-pack-blister",
+      "set": "Evolving Skies",
+      "name": "Three-Pack Blister",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:booster-box",
+      "set": "Mega Evolution",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:elite-trainer-box-styles-may-vary",
+      "set": "Mega Evolution",
+      "name": "Elite Trainer Box (Styles May Vary)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:pokemon-center-etb-mega-lucario",
+      "set": "Mega Evolution",
+      "name": "Pokémon Center ETB (Mega Lucario)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:booster-bundle",
+      "set": "Mega Evolution",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:build-battle-box",
+      "set": "Mega Evolution",
+      "name": "Build & Battle Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:phantasmal-flames:pokemon-center-etb",
+      "set": "Phantasmal Flames",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:phantasmal-flames:booster-bundle",
+      "set": "Phantasmal Flames",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": "654160"
+    },
+    {
+      "id": "ptcg:phantasmal-flames:build-battle-box",
+      "set": "Phantasmal Flames",
+      "name": "Build & Battle Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:perfect-order:booster-box",
+      "set": "Perfect Order",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:perfect-order:elite-trainer-box",
+      "set": "Perfect Order",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": "672401"
+    },
+    {
+      "id": "ptcg:perfect-order:pokemon-center-etb",
+      "set": "Perfect Order",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": "672404"
+    },
+    {
+      "id": "ptcg:perfect-order:booster-bundle",
+      "set": "Perfect Order",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:perfect-order:build-battle-box",
+      "set": "Perfect Order",
+      "name": "Build & Battle Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:chaos-rising:booster-box",
+      "set": "Chaos Rising",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:chaos-rising:elite-trainer-box",
+      "set": "Chaos Rising",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": "684450"
+    },
+    {
+      "id": "ptcg:chaos-rising:pokemon-center-etb",
+      "set": "Chaos Rising",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": "684452"
+    },
+    {
+      "id": "ptcg:chaos-rising:booster-bundle",
+      "set": "Chaos Rising",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:chaos-rising:build-battle-box",
+      "set": "Chaos Rising",
+      "name": "Build & Battle Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pitch-black:booster-box",
+      "set": "Pitch Black",
+      "name": "Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pitch-black:elite-trainer-box",
+      "set": "Pitch Black",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": "692947"
+    },
+    {
+      "id": "ptcg:pitch-black:pokemon-center-etb",
+      "set": "Pitch Black",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pitch-black:booster-bundle",
+      "set": "Pitch Black",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pitch-black:build-battle-box",
+      "set": "Pitch Black",
+      "name": "Build & Battle Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:delta-reign:build-battle-box",
+      "set": "Delta Reign",
+      "name": "Build & Battle Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:elite-trainer-box",
+      "set": "Ascended Heroes",
+      "name": "Elite Trainer Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:pokemon-center-etb",
+      "set": "Ascended Heroes",
+      "name": "Pokémon Center ETB",
+      "tcgplayerProductId": "668497"
+    },
+    {
+      "id": "ptcg:ascended-heroes:booster-bundle",
+      "set": "Ascended Heroes",
+      "name": "Booster Bundle",
+      "tcgplayerProductId": "668541"
+    },
+    {
+      "id": "ptcg:ascended-heroes:mini-tin",
+      "set": "Ascended Heroes",
+      "name": "Mini Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:premium-poster-collection-mega-lucario",
+      "set": "Ascended Heroes",
+      "name": "Premium Poster Collection: Mega Lucario",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:premium-poster-collection-mega-gardevoir",
+      "set": "Ascended Heroes",
+      "name": "Premium Poster Collection: Mega Gardevoir",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:first-partners-deluxe-pin-collection",
+      "set": "Ascended Heroes",
+      "name": "First Partners Deluxe Pin Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:mega-meganium-ex-box",
+      "set": "Ascended Heroes",
+      "name": "Mega Meganium ex Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:mega-emboar-ex-box",
+      "set": "Ascended Heroes",
+      "name": "Mega Emboar ex Box",
+      "tcgplayerProductId": "672734"
+    },
+    {
+      "id": "ptcg:ascended-heroes:mega-feraligatr-ex-box",
+      "set": "Ascended Heroes",
+      "name": "Mega Feraligatr ex Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-greninja-ex:premium-collection",
+      "set": "Mega Greninja ex",
+      "name": "Premium Collection",
+      "tcgplayerProductId": "690660"
+    },
+    {
+      "id": "ptcg:mega-lucario-ex:figure-collection",
+      "set": "Mega Lucario ex",
+      "name": "Figure Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-venusaur-ex:premium-collection",
+      "set": "Mega Venusaur ex",
+      "name": "Premium Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-zygarde-ex:premium-collection",
+      "set": "Mega Zygarde ex",
+      "name": "Premium Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-charizard-x-ex:ultra-premium-collection",
+      "set": "Mega Charizard X ex",
+      "name": "Ultra-Premium Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:erika-collection",
+      "set": "Ascended Heroes",
+      "name": "Erika Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:larry-collection",
+      "set": "Ascended Heroes",
+      "name": "Larry Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:tech-sticker-collection",
+      "set": "Ascended Heroes",
+      "name": "Tech Sticker Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:pokemon-day-2026:collection",
+      "set": "Pokémon Day 2026",
+      "name": "Collection",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-forces:mega-dragonite-ex-tin",
+      "set": "Mega Forces",
+      "name": "Mega Dragonite ex Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-forces:mega-darkrai-ex-tin",
+      "set": "Mega Forces",
+      "name": "Mega Darkrai ex Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-forces:mega-zeraora-ex-tin",
+      "set": "Mega Forces",
+      "name": "Mega Zeraora ex Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:mega-meganium-ex-tin",
+      "set": "Ascended Heroes",
+      "name": "Mega Meganium ex Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:mega-emboar-ex-tin",
+      "set": "Ascended Heroes",
+      "name": "Mega Emboar ex Tin",
+      "tcgplayerProductId": "702496"
+    },
+    {
+      "id": "ptcg:ascended-heroes:mega-feraligatr-ex-tin",
+      "set": "Ascended Heroes",
+      "name": "Mega Feraligatr ex Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:first-partner-illustration-collection:series-1",
+      "set": "First Partner Illustration Collection",
+      "name": "Series 1",
+      "tcgplayerProductId": "673436"
+    },
+    {
+      "id": "ptcg:first-partner-illustration-collection:series-2",
+      "set": "First Partner Illustration Collection",
+      "name": "Series 2",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:first-partner-illustration-collection:series-3",
+      "set": "First Partner Illustration Collection",
+      "name": "Series 3",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:lucario-ex-tyranitar-ex-premium-collection-sam-s-club",
+      "set": "Prismatic Evolutions",
+      "name": "Lucario ex & Tyranitar ex Premium Collection (Sam's Club)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:elite-trainer-box-mega-lucario",
+      "set": "Mega Evolution",
+      "name": "Elite Trainer Box (Mega Lucario)",
+      "tcgplayerProductId": "648394"
+    },
+    {
+      "id": "ptcg:mega-evolution:elite-trainer-box-mega-gardevoir",
+      "set": "Mega Evolution",
+      "name": "Elite Trainer Box (Mega Gardevoir)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:pokemon-center-etb-mega-gardevoir",
+      "set": "Mega Evolution",
+      "name": "Pokémon Center ETB (Mega Gardevoir)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:mega-evolution:enhanced-booster-box",
+      "set": "Mega Evolution",
+      "name": "Enhanced Booster Box",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:battle-deck-espeon-ex",
+      "set": "30th Anniversary Celebration",
+      "name": "Battle Deck: Espeon ex",
+      "tcgplayerProductId": "704187"
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:battle-deck-umbreon-ex",
+      "set": "30th Anniversary Celebration",
+      "name": "Battle Deck: Umbreon ex",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:ex-tin-sylveon-ex",
+      "set": "30th Anniversary Celebration",
+      "name": "ex Tin: Sylveon ex",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:tin-greninja-ex",
+      "set": "30th Anniversary Celebration",
+      "name": "Tin: Greninja ex",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:evolving-skies:elite-trainer-box-flareon-jolteon-umbreon-leafeon",
+      "set": "Evolving Skies",
+      "name": "Elite Trainer Box (Flareon/Jolteon/Umbreon/Leafeon)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:surging-sparks:booster-bundle-lgs",
+      "set": "Surging Sparks",
+      "name": "Booster Bundle (LGS)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:tech-sticker-collection-charmander",
+      "set": "Ascended Heroes",
+      "name": "Tech Sticker Collection (Charmander)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:ascended-heroes:tech-sticker-collection-gastly",
+      "set": "Ascended Heroes",
+      "name": "Tech Sticker Collection (Gastly)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:tech-sticker-collection-leafeon",
+      "set": "Prismatic Evolutions",
+      "name": "Tech Sticker Collection (Leafeon)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:tech-sticker-collection-glaceon",
+      "set": "Prismatic Evolutions",
+      "name": "Tech Sticker Collection (Glaceon)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:tech-sticker-collection-sylveon",
+      "set": "Prismatic Evolutions",
+      "name": "Tech Sticker Collection (Sylveon)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:crown-zenith:galarian-articuno-tin",
+      "set": "Crown Zenith",
+      "name": "Galarian Articuno Tin",
+      "tcgplayerProductId": "475628"
+    },
+    {
+      "id": "ptcg:crown-zenith:galarian-zapdos-tin",
+      "set": "Crown Zenith",
+      "name": "Galarian Zapdos Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:crown-zenith:galarian-moltres-tin",
+      "set": "Crown Zenith",
+      "name": "Galarian Moltres Tin",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:evolving-skies:three-pack-blister-eiscue",
+      "set": "Evolving Skies",
+      "name": "Three-Pack Blister (Eiscue)",
+      "tcgplayerProductId": null
+    },
+    {
+      "id": "ptcg:evolving-skies:three-pack-blister-umbreon",
+      "set": "Evolving Skies",
+      "name": "Three-Pack Blister (Umbreon)",
+      "tcgplayerProductId": "242444"
+    },
+    {
+      "id": "ptcg:30th-anniversary-celebration:mini-tin-umbreon",
+      "set": "30th Anniversary Celebration",
+      "name": "Mini Tin (Umbreon)",
+      "tcgplayerProductId": "704182"
+    },
+    {
+      "id": "ptcg:miscellaneous-cards-products:cynthia-s-garchomp-ex-premium-collection",
+      "set": "Miscellaneous Cards & Products",
+      "name": "Cynthia's Garchomp ex Premium Collection",
+      "tcgplayerProductId": "625952"
+    }
+  ]
+}
