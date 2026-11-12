@@ -33,3 +33,21 @@ Object.assign(CATALOG_ADDITION_META,{
 "30th Anniversary Celebration|Battle Deck: Espeon ex":{description:"Ready-to-play 60-card Espeon ex Battle Deck, deck accessories; no randomized booster packs."},
 "30th Anniversary Celebration|Battle Deck: Umbreon ex":{description:"Ready-to-play 60-card Umbreon ex Battle Deck, deck accessories; no randomized booster packs."}
 });
+/* Exact market variants omitted by generic-format records. */
+CATALOG_ADDITIONS.push(
+{set:"Evolving Skies",name:"Elite Trainer Box (Flareon/Jolteon/Umbreon/Leafeon)",type:"ETB",packs:8,source:"https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/swsh07-evolving-skies"},
+{set:"Surging Sparks",name:"Booster Bundle (LGS)",type:"Booster Bundle",packs:6,source:"https://www.tcgplayer.com/product/565629"},
+{set:"Ascended Heroes",name:"Tech Sticker Collection (Charmander)",type:"Collection",packs:3,source:"https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Tech+Sticker+Collection+-+Charmander"},
+{set:"Ascended Heroes",name:"Tech Sticker Collection (Gastly)",type:"Collection",packs:3,source:"https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Tech+Sticker+Collection+-+Gastly"},
+{set:"Prismatic Evolutions",name:"Tech Sticker Collection (Leafeon)",type:"Collection",packs:3,source:"https://www.tcgplayer.com/product/593453"},
+{set:"Prismatic Evolutions",name:"Tech Sticker Collection (Glaceon)",type:"Collection",packs:3,source:"https://www.tcgplayer.com/search/pokemon/sv-prismatic-evolutions?productLineName=pokemon&view=grid"},
+{set:"Prismatic Evolutions",name:"Tech Sticker Collection (Sylveon)",type:"Collection",packs:3,source:"https://www.tcgplayer.com/search/pokemon/sv-prismatic-evolutions?productLineName=pokemon&view=grid"}
+);
+Object.assign(CATALOG_ADDITION_META,{
+"Surging Sparks|Booster Bundle (LGS)":{msrp:26.94,description:"6 × Surging Sparks booster packs. LGS/hobby distribution product, distinct from retail bundle listing."},
+"Ascended Heroes|Tech Sticker Collection (Charmander)":{description:"3 × Ascended Heroes booster packs, Charmander foil promo and tech sticker sheet."},
+"Ascended Heroes|Tech Sticker Collection (Gastly)":{description:"3 × Ascended Heroes booster packs, Gastly foil promo and tech sticker sheet."},
+"Prismatic Evolutions|Tech Sticker Collection (Leafeon)":{description:"3 × Prismatic Evolutions booster packs, Leafeon foil promo and tech sticker sheet."},
+"Prismatic Evolutions|Tech Sticker Collection (Glaceon)":{description:"3 × Prismatic Evolutions booster packs, Glaceon foil promo and tech sticker sheet."},
+"Prismatic Evolutions|Tech Sticker Collection (Sylveon)":{description:"3 × Prismatic Evolutions booster packs, Sylveon foil promo and tech sticker sheet."}
+});
