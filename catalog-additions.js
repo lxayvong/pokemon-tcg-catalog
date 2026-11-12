@@ -6,3 +6,30 @@ Object.assign(CATALOG_ADDITION_META,{"Ascended Heroes|Erika Collection":{"descri
 
 CATALOG_ADDITIONS.push({set:"Prismatic Evolutions",name:"Lucario ex & Tyranitar ex Premium Collection (Sam's Club)",type:"Collection",packs:14,source:"https://www.pokebeach.com/2025/08/prismatic-evolutions-lucario-ex-tyranitar-ex-premium-collection-to-release-at-sams-club"});
 CATALOG_ADDITION_META["Prismatic Evolutions|Lucario ex & Tyranitar ex Premium Collection (Sam's Club)"]={description:"14 × Prismatic Evolutions booster packs; 4 foil promos featuring Lucario, Lucario ex, Tyranitar and Tyranitar ex; 1 oversize Lucario ex foil card; Pokémon TCG Live code.",msrp:55.98};
+
+/* Variant-normalized additions: a retailer's random assortment is not the same SKU
+   as a guaranteed artwork or Pokémon Center exclusive. */
+for(const p of CATALOG_ADDITIONS){
+ if(p.set==="Mega Evolution"&&p.name==="Elite Trainer Box")p.name="Elite Trainer Box (Styles May Vary)";
+ if(p.set==="Mega Evolution"&&p.name==="Pokémon Center ETB")p.name="Pokémon Center ETB (Mega Lucario)";
+}
+CATALOG_ADDITIONS.push(
+ {set:"Mega Evolution",name:"Elite Trainer Box (Mega Lucario)",type:"ETB",packs:9,source:"https://seller.tcgplayer.com/blog/mega-evolution-quick-facts"},
+ {set:"Mega Evolution",name:"Elite Trainer Box (Mega Gardevoir)",type:"ETB",packs:9,source:"https://seller.tcgplayer.com/blog/mega-evolution-quick-facts"},
+ {set:"Mega Evolution",name:"Pokémon Center ETB (Mega Gardevoir)",type:"PC ETB",packs:11,source:"https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?productLineName=pokemon&view=grid"},
+ {set:"Mega Evolution",name:"Enhanced Booster Box",type:"Booster Box",packs:36,source:"https://seller.tcgplayer.com/blog/mega-evolution-quick-facts"},
+ {set:"30th Anniversary Celebration",name:"Battle Deck: Espeon ex",type:"Collection",packs:0,source:"https://www.tcgplayer.com/content/article/Everything-We-Know-About-Pok%C3%A9mon-TCG-30th-Celebration/b899e1ad-8f3e-4513-8f76-463ba83d22b3/"},
+ {set:"30th Anniversary Celebration",name:"Battle Deck: Umbreon ex",type:"Collection",packs:0,source:"https://www.tcgplayer.com/content/article/Everything-We-Know-About-Pok%C3%A9mon-TCG-30th-Celebration/b899e1ad-8f3e-4513-8f76-463ba83d22b3/"},
+ {set:"30th Anniversary Celebration",name:"ex Tin: Sylveon ex",type:"Tin",packs:0,source:"https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&view=grid"},
+ {set:"30th Anniversary Celebration",name:"Tin: Greninja ex",type:"Tin",packs:0,source:"https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&view=grid"}
+);
+Object.assign(CATALOG_ADDITION_META,{
+"Mega Evolution|Elite Trainer Box (Styles May Vary)":{msrp:49.99,description:"9 Mega Evolution boosters; one promo featuring Riolu or Alakazam, depending on artwork; 65 sleeves, 40 Energy cards, guide, dice, markers, collector box and code."},
+"Mega Evolution|Elite Trainer Box (Mega Lucario)":{msrp:49.99,image:"https://tradingcardmarket.com/cdn/shop/files/PokemonMegaEvolutionEliteTrainerBox_MegaLucario.jpg?v=1752685705&width=1920",description:"9 Mega Evolution boosters; full-art foil Riolu promo; 65 sleeves, 40 Energy cards, guide, dice, markers, collector box and code."},
+"Mega Evolution|Elite Trainer Box (Mega Gardevoir)":{msrp:49.99,image:"https://n-hype.com/cdn/shop/files/ETB_GARDEVOIR.png?v=1770977962",description:"9 Mega Evolution boosters; full-art foil Alakazam promo; 65 sleeves, 40 Energy cards, guide, dice, markers, collector box and code."},
+"Mega Evolution|Pokémon Center ETB (Mega Lucario)":{msrp:59.99,description:"11 Mega Evolution booster packs, two Riolu promo cards including one Pokémon Center stamped card, sleeves and accessories."},
+"Mega Evolution|Pokémon Center ETB (Mega Gardevoir)":{msrp:59.99,description:"11 Mega Evolution booster packs, two Alakazam promo cards including one Pokémon Center stamped card, sleeves and accessories."},
+"Mega Evolution|Enhanced Booster Box":{msrp:161.64,description:"36 Mega Evolution booster packs and an illustration-rare-style Bulbasaur box-topper promo."},
+"30th Anniversary Celebration|Battle Deck: Espeon ex":{description:"Ready-to-play 60-card Espeon ex Battle Deck, deck accessories; no randomized booster packs."},
+"30th Anniversary Celebration|Battle Deck: Umbreon ex":{description:"Ready-to-play 60-card Umbreon ex Battle Deck, deck accessories; no randomized booster packs."}
+});
