@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#091224">
+<meta name="description" content="A mobile-first Pokémon TCG sealed-product catalog with shared Google Sheets wish lists.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./app.css?v=1">
+<title>TCG Catalog · Android</title>
+</head>
+<body>
+<main class="app">
+<header class="masthead">
+ <div class="brandmark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="3" width="24" height="26" rx="5" stroke="#062e2e" stroke-width="2.4"/><path d="M5 15h22" stroke="#062e2e" stroke-width="2.4"/><circle cx="16" cy="15" r="5.5" fill="#f2fff9" stroke="#062e2e" stroke-width="2.4"/></svg></div>
+ <div class="brand-copy"><b>TCG Catalog</b><small>Sealed products · Android edition</small></div>
+ <button id="install-button" class="top-action" type="button">↓ Install</button>
+</header>
+<div id="connection" class="connection" data-state="busy" role="status" aria-live="polite"><span class="dot"></span><span id="connection-text">Connecting to Google Sheets...</span><button id="retry-button" type="button">Retry</button></div>
+<section class="picker" aria-label="Wish list destination">
+ <label for="list-picker">DESTINATION WISH LIST</label>
+ <select id="list-picker" aria-required="true" disabled><option value="">Default · Select a wish list</option></select>
+ <div class="picker-foot"><span id="selection-info">Loading shared wish lists...</span><button type="button" id="add-list">＋ New list</button></div>
+</section>
+<section id="browse-page" class="page active" data-page="browse">
+ <div class="hero"><span class="eyebrow">Find your next pickup</span><h1>Explore sealed Pokémon TCG</h1><p>Research prices, compare products and add them straight to shared wish lists.</p></div>
+ <div class="stats"><div class="stat"><strong id="catalog-count">—</strong><small>Products</small></div><div class="stat"><strong id="market-count">—</strong><small>Market prices</small></div><div class="stat"><strong id="list-count">—</strong><small>In selected list</small></div></div>
+ <div class="controls"><input id="product-search" type="search" placeholder="Search product, set, type..." aria-label="Search catalog" autocomplete="off"><button type="button" class="filter-button" id="toggle-filters">☷ Filters</button></div>
+ <div id="filters" class="filters" hidden><select id="set-filter" aria-label="Filter by set"><option value="">All sets</option></select><select id="type-filter" aria-label="Filter by type"><option value="">All products</option></select><select id="sort-filter" aria-label="Sort products"><option value="default">Catalog order</option><option value="alpha">Set A–Z</option><option value="market-asc">Market: low to high</option><option value="market-desc">Market: high to low</option><option value="packs">Most booster packs</option></select></div>
+ <div id="quick-sets" class="chips" aria-label="Quick set filters"></div>
+ <div class="section-title"><h2>Products</h2><small id="results-count"></small></div>
+ <div id="products" class="products"></div>
+</section>
+<section id="wishlist-page" class="page" data-page="wishlist">
+ <div class="hero"><span class="eyebrow">Shared collection planning</span><h1 id="wishlist-title">Select a wish list</h1><p id="wishlist-sub">Choose a list from above.</p></div>
+ <div class="section-title"><h2>Saved products</h2><button id="refresh-button" class="button-quiet" type="button">↻ Refresh</button></div>
+ <div id="wishlist-items"></div>
+</section>
+<section id="settings-page" class="page" data-page="settings">
+ <div class="hero"><span class="eyebrow">App setup</span><h1>Your catalog, everywhere</h1><p>A separate mobile edition. Your original desktop website is unchanged.</p></div>
+ <article class="form-card"><h3>Install on Android</h3><p>Open this page in Chrome or Samsung Internet, then choose <b>Install app</b> from the browser's menu. The installed version opens without browser tabs.</p><button type="button" class="button-primary" onclick="installApp()">↓ Install this app</button></article>
+ <article class="form-card"><h3>Google Sheets is the database</h3><p>The app loads shared wish lists when opened, writes every change to the owner-managed Apps Script endpoint, and verifies saves by rereading the spreadsheet. No lists or profiles are saved as browser records.</p><p id="source-count" class="pill">Checking...</p><p><a id="source-url" target="_blank" rel="noopener">Open shared Google Sheet</a></p><button type="button" class="button-quiet" onclick="refreshShared()">↻ Refresh from Sheets</button></article>
+ <article class="form-card"><h3>Sync health</h3><p id="sync-detail">Not connected yet</p><p id="settings-status">Loading...</p><p class="small muted">Online access is required to change shared wish lists. If a save isn't confirmed, use Retry sync before closing the app.</p></article>
+ <article class="form-card"><h3>Original full catalog</h3><p>Prefer the desktop analytics, decision profiles and original layout?</p><a href="../index.html" target="_blank" rel="noopener">Open the original catalog ↗</a></article>
+ <article class="form-card"><h3>Pricing notes</h3><p>Market values are researched TCGplayer snapshots, not live quotes. Unverified prices are labeled. Product images reference existing catalog records. Scores are subjective, not investment advice.</p></article>
+</section>
+<div class="bottom-spacer"></div>
+</main>
+<nav class="nav" aria-label="App navigation">
+ <button class="active" data-nav="browse" type="button" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>Browse</button>
+ <button data-nav="wishlist" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21l-8-5-8 5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg><span>Wish list <span id="wishlist-nav-count"></span></span></button>
+ <button data-nav="settings" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19 13a7 7 0 0 0 0-2l2-1.5-2-3.5-2.4 1a7 7 0 0 0-1.7-1L14.5 3h-5L9 6a7 7 0 0 0-1.7 1L5 6l-2 3.5L5 11a7 7 0 0 0 0 2l-2 1.5L5 18l2.3-1a7 7 0 0 0 1.7 1l.5 3h5l.5-3a7 7 0 0 0 1.7-1l2.3 1 2-3.5z"/></svg>Settings</button>
+</nav>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script src="../catalog-schema.js"></script>
+<script src="../catalog-additions.js"></script>
+<script src="../market-and-packs.js"></script>
+<script src="../product-matcher.js"></script>
+<script src="../deal-advisor.js"></script>
+<script src="../catalog-research-20261112.js"></script>
+<script src="../pokemon-center-products.js"></script>
+<script src="../google-sheets-config.js"></script>
+<script src="./catalog-data.js?v=1"></script>
+<script src="./app.js?v=1"></script>
+</body>
+</html>
