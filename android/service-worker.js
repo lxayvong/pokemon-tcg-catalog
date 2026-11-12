@@ -1,13 +1,13 @@
 /* Offline catalog shell only. Google Sheets and Apps Script are NEVER cached.
    The app requires online access before displaying or editing shared wish lists. */
-const CACHE_NAME="tcg-android-shell-v2";
+const CACHE_NAME="tcg-android-shell-v3";
 const SHELL=[
  "./","./index.html","./app.css?v=1","./app.js?v=1",
  "../shared/catalog-core.js?v=shared1","../shared/pricing-refresh.js?v=pricing1","./manifest.webmanifest",
  "./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-512.png",
  "../catalog-schema.js","../catalog-additions.js","../market-and-packs.js",
  "../product-matcher.js","../deal-advisor.js","../catalog-research-20261112.js",
- "../pokemon-center-products.js","../google-sheets-config.js"
+ "../pokemon-center-products.js","../google-sheets-config.js","../shared/google-sheets-client.js?v=shared1"
 ];
 const shellUrls=new Set(SHELL.map(path=>new URL(path,self.location.href).href));
 self.addEventListener("install",event=>{
