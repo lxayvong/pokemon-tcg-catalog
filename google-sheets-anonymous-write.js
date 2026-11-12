@@ -17,7 +17,7 @@ function anonymousSaveURL(){
 function anonymousSaveReady(){return !!anonymousSaveURL();}
 function anonymousSaveNotice(text,error=false){
  const el=document.getElementById("anonymous-save-status");
- if(el){el.textContent=text;el.dataset.status=error?"error":(text.startsWith("Saving")?"pending":"ok");}
+ if(el){el.textContent=text;el.dataset.status=error?"error":(text.startsWith("Saving")||text.startsWith("Save sent")?"pending":"ok");}
  if(typeof workspaceNotify==="function")workspaceNotify(text);
  if(error&&typeof showCatalogToast==="function")showCatalogToast(text,true);
  if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
@@ -108,7 +108,7 @@ async function anonymousSaveImmediate(kind,requestedId=null){
   // The deployed Apps Script may be an older version without a receipt GET
   // endpoint. Verify against the actual public Sheet instead. The Visualization
   // API can lag behind a completed Apps Script write, so allow propagation.
-  let confirmed=false,conflict=false,readbackError="",sawExpected=false;
+  let confirmed=false,conflict=false,readbackError="",readFailures=0;
   const tab=kind==="profile"?(window.POKEMON_GOOGLE_SHEETS?.profilesTab||"Profiles"):(window.POKEMON_GOOGLE_SHEETS?.wishlistsTab||"Wishlists");
   const delays=[600,850,1100,1450,1900,2500,3300,4300];
   for(const delay of delays){
@@ -119,9 +119,9 @@ async function anonymousSaveImmediate(kind,requestedId=null){
     const row=(table.rows||[]).find(r=>String(r.c?.[0]?.v??"")===id);
     const content=row?.c?.[2]?.v==null?"":String(row.c[2].v);
     if(content===raw){confirmed=true;break;}
-    if(content===expected){sawExpected=true;continue;}
+    if(content===expected)continue;
     if(content!==expected){conflict=true;break;}
-   }catch(e){readbackError=e?.message||"Unable to read shared spreadsheet";}
+   }catch(e){readbackError=e?.message||"Unable to read shared spreadsheet";if(++readFailures>=2)break;}
   }
   if(confirmed){
    baseline[key]=raw;
