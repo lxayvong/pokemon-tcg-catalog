@@ -4,7 +4,7 @@ This is an **independent, installable Android-optimized app**, hosted at:
 
 https://lxayvong.github.io/pokemon-tcg-catalog/android/
 
-The original catalog at https://lxayvong.github.io/pokemon-tcg-catalog/ is unchanged.
+The original catalog at https://lxayvong.github.io/pokemon-tcg-catalog/ retains its separate desktop UI. Both apps now share product data, price sources, and Google Sheets network code.
 
 ## Install on Android
 
@@ -52,14 +52,14 @@ This directory is a static GitHub Pages app. There is no bundler or build step.
 - `index.html`: app shell and shared source script imports.
 - `app.css`: mobile layout and accessible touch targets.
 - `app.js`: UI, shared Google Sheets read/write, safe synchronization.
-- `catalog-data.js`: isolated copy of catalog data initialization extracted from the desktop source.
+- `../shared/catalog-core.js`: single canonical product catalog used by both interfaces.
+- `../shared/pricing-refresh.js`: dated market and retailer prices used by both interfaces.
+- `../shared/google-sheets-client.js`: shared Google Sheets reader and verified writer, used by both interfaces.
 - `manifest.webmanifest`: Android app registration and scoped launch.
 - `service-worker.js`: offline shell cache; never caches Google Sheets or Apps Script.
 - `icons/`: PNG app and maskable launcher icons.
 
-When changing product data in the original desktop catalog, regenerate
-`catalog-data.js` from its data initialization block. Keep standalone app files
-in this directory so the desktop site's look and behavior remain unchanged.
+Update shared product records in `../shared/catalog-core.js` and verified prices in `../shared/pricing-refresh.js`. Both interfaces then receive the changes automatically after deployment. Keep UI-specific changes in the desktop's `../index.html` or the Android app's `app.js`/`app.css`. Refresh the version strings in the manifest service-worker shell when deploying shared assets.
 
 ## PWA versus APK
 
