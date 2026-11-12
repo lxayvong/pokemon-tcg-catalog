@@ -66,3 +66,18 @@ function profileDecision(x,observed,record,ratings,profile){
  reasons.unshift("Profile: "+policy.name+" ("+policy.strategy+")");
  return {action,tone,confidence,reasons:reasons.slice(0,6),trend:"Trend not evaluated: price history unavailable"};
 }
+
+/* Repository JSON is the default configuration for first-time visitors. Never overwrite local edits. */
+async function hydrateDefaultsFromRepo(){
+ let hasLocal=false;try{hasLocal=!!localStorage.getItem(WORKSPACE_STORAGE_KEY)}catch(_){return}
+ if(hasLocal||typeof fetch!=="function")return;
+ try{
+  const [profilesResponse,listsResponse]=await Promise.all([fetch("data/decision-profiles.json?build=profiles2",{cache:"no-store"}),fetch("data/wishlists.json?build=profiles2",{cache:"no-store"})]);
+  if(!profilesResponse.ok||!listsResponse.ok)return;
+  const [p,w]=await Promise.all([profilesResponse.json(),listsResponse.json()]);
+  if(p.schemaVersion!==1||w.schemaVersion!==1||!Array.isArray(p.profiles)||!Array.isArray(w.wishlists))return;
+  if(localStorage.getItem(WORKSPACE_STORAGE_KEY))return;
+  workspace=cleanWorkspace({schemaVersion:1,profiles:p.profiles,wishlists:w.wishlists,activeProfileId:p.profiles[0]?.id,activeWishlistId:w.wishlists[0]?.id});
+  refreshWorkspace();render();
+ }catch(err){console.warn("Using bundled profile and wish-list defaults",err)}
+}
