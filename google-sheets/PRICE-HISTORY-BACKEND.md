@@ -14,17 +14,16 @@ The existing [Pokemon Catalog Shared Data](https://docs.google.com/spreadsheets/
 
 The baseline import contains **130 original catalog TCGplayer research snapshots** (129 researched Nov 11 2026; one Nov 10). Each row includes `Evidence Type = research-snapshot`, and its original research date. Some URLs are set/search pages rather than exact-product listings; their `Match Confidence` is `catalog-verified`, not `exact`. No historical 7/30/90 day trends are derived from these snapshots. These are not real-time prices, and one-day samples do not prove direction.
 
-One individual product's original launch date is confirmed in `ProductReleaseDates` (Mega Evolution Elite Trainer Box). Thirteen expansion dates are separately sourced in `SetReleaseDates`; many sealed products will have an **unknown original release date** until individually researched.
+The live database now has **48 individually verified product release dates**, sourced from official Pokémon product galleries, expansion product timelines, and press announcements. Thirteen expansion dates are also stored separately in `SetReleaseDates`. Never copy a set date to a distinct sealed-product release record without exact product evidence. The `PriceSummary` tab materializes the combined product-specific date and latest dated historical research reference for **134 products**.
 
 ## Installing the Apps Script backend
 
 1. Open the linked Google Sheet -> **Extensions -> Apps Script**.
-2. Create a new script file named `PriceHistory.gs`.
-3. Copy the complete content of this repository's [PriceHistory.gs](PriceHistory.gs) into that file.
-4. Save. The source file should be added alongside `AnonymousSave.gs`; **do not replace** it.
-5. Run `priceRunSelfTests` in the Script editor. It is read-only and tests UP/DOWN/STABLE and unknown-history rules.
-6. Optionally run `priceInstallSchema` to verify/create the five tabs (already initialized in the Sheet).
-7. **No existing public Web App redeployment is required** to use owner-run functions from the editor. If the catalog later needs a read-only endpoint, design and authorize it separately.
+2. Open the existing `PriceHistory.gs` file (or create it if not yet present).
+3. **Replace only the contents of `PriceHistory.gs`** with the latest [PriceHistory.gs](PriceHistory.gs) from GitHub; do not replace `AnonymousSave.gs`.
+4. Save. Run `priceRunSelfTests` to verify the trend and date-validation logic.
+5. Run `priceRefreshSummary` when you want the `PriceSummary` tab regenerated from the current history and release records. It creates or replaces the summary values, but leaves the source history and release tabs intact.
+6. No existing public web-app redeployment is needed for owner-run functions. A later read-only endpoint for UI integration should be designed independently.
 
 Keep write functions private to the script owner. The anonymous `doPost` handler is intentionally **not** extended to accept market-price uploads.
 
@@ -83,3 +82,12 @@ No day has a fabricated value. Missing points yield `insufficient-history`, not 
 ## Future integration (not yet enabled)
 
 A reliable authorized source adapter can call `priceIngestBatch` from an owner-installed trigger. A read-only endpoint and the UI's chart release date and badges can come later. Do not schedule GitHub research-snapshot reimports as fake price monitoring.
+
+## Latest backend enhancement
+
+- The `PriceSummary` materialized tab contains 134 product records as of Nov 12, 2026.
+- 48 exact-product original release dates are verified; some date confirmations differ **significantly** from expansion launches (e.g. Prismatic Evolutions Booster Bundle March 7, 2025 vs. Jan 17, 2025 expansion, and Ascended Heroes Booster Bundle April 24, 2026 vs. Jan 30, 2026 expansion).
+- The `PriceSummary` columns are: Product ID, original release date/source, latest dated market research price/date/source/evidence/confidence, directional trends and percent changes at 7/30/90 days, evidence counts, refresh timestamp.
+- The `priceRefreshSummary` Apps Script function regenerates this read model from the authoritative `MarketPriceHistory` and `ProductReleaseDates` tabs. It does **not** change historical observations and does not require wish-list or profile changes.
+- The current 130 observations are all research snapshots, so all 7/30/90-day directions remain `insufficient-history`. This is deliberate, not a script error.
+- Only manually verified or future authorized-provider **exact-match direct observations** count toward direction. Retail out-of-stock listings are kept separate and cannot contaminate market direction.
