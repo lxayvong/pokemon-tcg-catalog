@@ -206,7 +206,7 @@ function priceBuildSummaryRows_(marketRows,releaseRows,asOf){
  });
  return Object.keys(productIds).sort().map(function(id){
   var history=histories[id]||[];
-  var candidates=history.filter(function(r){return priceDate_(r.date)&&r.date<=validDate&&Number.isFinite(r.price)&&r.price>0;})
+  var candidates=history.filter(function(r){return r.matchConfidence==="exact"&&priceDate_(r.date)&&r.date<=validDate&&Number.isFinite(r.price)&&r.price>0;})
    .sort(function(a,b){return a.date.localeCompare(b.date)||Number(a.matchConfidence==="exact")-Number(b.matchConfidence==="exact");});
   var last=candidates.length?candidates[candidates.length-1]:null;
   var eligible=history.filter(function(r){return r.verified&&r.evidenceType==="direct-observation";});
