@@ -89,7 +89,13 @@ for(const [key,url] of Object.entries(research20261112.images)){
 }
 for(const item of research20261112.market){
  const p=researchKeys.get(item.key);if(!p||!Number.isFinite(item.amount))continue;
- p.pricing.market={amount:item.amount,currency:"USD",source:item.source||"TCGplayer sealed-market public product listing",reportedAt:item.sourceDate||research20261112.date,observedAt:null,verified:true,sourceUrl:item.url};
+ const sourceId=String(item.url||"").match(/^https:\/\/(?:www\.)?tcgplayer\.com\/product\/(\d+)(?:[/?#]|$)/i)?.[1];
+ if(!sourceId||(p.identifiers.tcgplayerProductId&&String(p.identifiers.tcgplayerProductId)!==sourceId)){
+  p.pricing.unverifiedMarketReference={amount:item.amount,currency:"USD",sourceUrl:item.url,reportedAt:item.sourceDate||research20261112.date,
+   reason:"Research source is not an exact matching TCGplayer product page"};
+  continue;
+ }
+ p.pricing.market={amount:item.amount,currency:"USD",source:item.source||"TCGplayer dated product reference",reportedAt:item.sourceDate||research20261112.date,observedAt:null,verified:true,sourceUrl:item.url};
 }
 for(const item of research20261112.retailer){
  const p=researchKeys.get(item.key);if(!p)continue;
@@ -113,7 +119,13 @@ for(const entry of OFFICIAL_POKEMON_CENTER_PRODUCTS){
  if(Number.isFinite(entry.msrp))p.pricing.msrp={amount:entry.msrp,currency:"USD",source:"Published US MSRP",sourceUrl:entry.msrpSource,verified:true};
  p.contents.description=entry.description;
  p.contents.verified=true;
- if(entry.market)p.pricing.market={amount:entry.market.amount,currency:"USD",source:entry.market.source,reportedAt:entry.market.reportedAt,observedAt:null,verified:true,sourceUrl:entry.market.sourceUrl};
+ if(entry.market){
+  const sourceId=String(entry.market.sourceUrl||"").match(/^https:\/\/(?:www\.)?tcgplayer\.com\/product\/(\d+)(?:[/?#]|$)/i)?.[1];
+  if(sourceId&&(!p.identifiers.tcgplayerProductId||String(p.identifiers.tcgplayerProductId)===sourceId))
+   p.pricing.market={amount:entry.market.amount,currency:"USD",source:entry.market.source,reportedAt:entry.market.reportedAt,observedAt:null,verified:true,sourceUrl:entry.market.sourceUrl};
+  else p.pricing.unverifiedMarketReference={amount:entry.market.amount,currency:"USD",sourceUrl:entry.market.sourceUrl,reportedAt:entry.market.reportedAt,
+   reason:"Third-party market source does not provide verified matching product identity"};
+ }
  for(const offer of entry.retailerOffers||[]){
   p.identifiers.retailerSkus[offer.retailer]=offer.sku;
   addRetailerOffer(p,{retailer:offer.retailer,retailerSku:offer.sku,amount:offer.amount,url:offer.url,availability:offer.availability,observedAt:offer.observedAt,matchMethod:"retailerSku"});
