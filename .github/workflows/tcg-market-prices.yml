@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
     inputs:
       market_date:
-        description: "Upstream TCGCSV price snapshot date (YYYY-MM-DD), blank for UTC today"
+        description: "Optional exact TCGCSV snapshot date (YYYY-MM-DD); blank uses upstream published date"
         required: false
         type: string
   schedule:
-    # TCGCSV publishes around 20:00 UTC; leave time for the daily build.
+    # Poll for new upstream dates; script harmlessly skips unchanged builds.
     - cron: "35 21 * * *"
 permissions:
   contents: write
@@ -30,8 +30,13 @@ jobs:
       - name: Pull exact TCGplayer Market Price records
         run: |
           EXPECTED="${{ github.event.inputs.market_date }}"
-          if [ -z "$EXPECTED" ]; then EXPECTED="$(date -u +%F)"; fi
-          python scripts/update_tcgplayer_markets.py --date "$EXPECTED"
+          if [ -n "$EXPECTED" ]; then
+            # A manually specified snapshot date must match TCGCSV exactly.
+            python scripts/update_tcgplayer_markets.py --date "$EXPECTED"
+          else
+            # Scheduled runs use the upstream's actual published snapshot date.
+            python scripts/update_tcgplayer_markets.py
+          fi
       - name: Commit actual verified price results
         run: |
           if git diff --quiet -- shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json; then
