@@ -115,7 +115,7 @@ def main():
     if args.date:
         dt.date.fromisoformat(args.date)
     modified = fetch_text("/last-updated.txt")
-    found = re.match(r"(\\d{4}-\\d{2}-\\d{2})", modified)
+    found = re.match(r"(\d{4}-\d{2}-\d{2})", modified)
     if not found:
         print(f"ERROR: unrecognized TCGCSV update timestamp {modified!r}. No file written.", file=sys.stderr)
         return 2
@@ -130,7 +130,7 @@ def main():
     actual_date = upstream_date
     if DESTINATION.exists():
         old = DESTINATION.read_text(encoding="utf-8")
-        previous = re.search(r'const TCGPLAYER_DAILY_AS_OF=\\s*"(\\d{4}-\\d{2}-\\d{2})"', old)
+        previous = re.search(r'const TCGPLAYER_DAILY_AS_OF=\s*"(\d{4}-\d{2}-\d{2})"', old)
         if previous and previous.group(1) >= actual_date:
             print(f"SKIP: published snapshot {actual_date} is not newer than imported {previous.group(1)}. Nothing to commit.")
             return 0
