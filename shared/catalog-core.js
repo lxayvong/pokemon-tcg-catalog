@@ -143,4 +143,13 @@ if(prismaticSpc){
  addRetailerOffer(prismaticSpc,{retailer:"Best Buy",amount:89.99,url:"https://www.bestbuy.com/product/-/6621081",retailerSku:"6621081",
   availability:"in-store-only",observedAt:"2026-11-12",matchMethod:"retailerSku"});
 }
+// Product identity corroborated by TCGplayer official 30th Celebration seller guide.
+const confirmed30thProductIds={"Elite Trainer Box":"704143","Pokémon Center ETB":"704144","Tech Sticker: Alolan Exeggutor":"704145","Tech Sticker: Lucario":"704146","2-Pack Blister":"704148","Knock Out Collection":"704152","Poster Collection":"704153","Sylveon ex Box":"704155","Greninja ex Box":"704168","Binder Collection":"704169","Booster Bundle":"704171","Battle Deck: Espeon ex":"704187","Battle Deck: Umbreon ex":"704188","Ditto Premium Collection":"704189","UPC Day":"704190","UPC Night":"704191","Figure Collection: Mew":"704193","Figure Collection: Mewtwo":"704194"};
+for(const p of productRecords){
+ if(p.set!=="30th Anniversary Celebration")continue;
+ const id=confirmed30thProductIds[p.name];if(!id)continue;
+ if(p.identifiers.tcgplayerProductId&&String(p.identifiers.tcgplayerProductId)!==id)
+  throw Error("Conflicting TCGplayer identity for "+p.id);
+ p.identifiers.tcgplayerProductId=id;
+}
 const productById=new Map(productRecords.map(p=>[p.id,p]));
