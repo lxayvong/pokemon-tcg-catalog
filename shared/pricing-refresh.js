@@ -161,10 +161,18 @@ const PRICE_RESEARCH_RETAIL=[
  ["30th Anniversary Celebration","Elite Trainer Box","Best Buy",49.99,"https://www.bestbuy.com/product/pokemon/6685559","6685559","10-10447-110","in-store-only"],
  ["Phantasmal Flames","Booster Box","Best Buy",160.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-mega-evolution-phantasmal-flames-booster-box-36-packs/6645341","6645341","10-10190-119","in-store-only"],
  ["Delta Reign","Booster Box","Best Buy",160.99,"https://www.bestbuy.com/product/pokemon/6689677","6689677","10-10446-120","coming-soon"]];
-const PRICING_REFRESH_STATS={markets:0,retailerOffers:0,missing:[]};
+const PRICING_REFRESH_STATS={markets:0,unverifiedMarketReferences:0,retailerOffers:0,missing:[]};
 for(const [set,name,amount,reportedAt,sourceUrl] of PRICE_RESEARCH_MARKET){
  const record=productById.get(canonicalId(set,name));
  if(!record){PRICING_REFRESH_STATS.missing.push("Market: "+set+" | "+name);continue;}
+ // A set-wide dashboard or landing page does not verify an exact product's market price.
+ // Preserve as unverified research, and do not overwrite a better exact-product source.
+ if(!/^https:\/\/catchemtcg\.com\/p\/tcgcsv-\d+(?:[/?#]|$)/.test(sourceUrl)){
+  record.pricing.unverifiedMarketReference={amount,currency:"USD",source:"Dated Catch'em tracker research, exact-product URL absent",sourceUrl,reportedAt,verified:false,
+   reason:"Generic tracker URL cannot substantiate the specific product"};
+  PRICING_REFRESH_STATS.unverifiedMarketReferences++;
+  continue;
+ }
  record.pricing.market={amount,currency:"USD",source:"TCGplayer market via dated Catch'em tracker",
  sourceUrl,reportedAt,observedAt:reportedAt,verified:true,
  checkedAt:PRICING_REFRESH_DATE,confidence:"third-party TCGplayer market mirror"};
