@@ -6,6 +6,7 @@
  */
 var PRICE_DB_V1 = {
   marketTab:"MarketPriceHistory", retailTab:"RetailPriceHistory",
+  summaryTab:"PriceSummary",
   releaseTab:"ProductReleaseDates", setTab:"SetReleaseDates", logTab:"PriceIngestionLog",
   marketHeaders:["Observation Key","Product ID","Price USD","Observed Date","Source","Source URL","Match Confidence","Evidence Type","Imported UTC","Batch ID","Notes"],
   retailHeaders:["Observation Key","Product ID","Retailer","Price USD","Observed Date","Availability","Source URL","Evidence Type","Imported UTC","Batch ID"],
@@ -175,4 +176,66 @@ function priceRunSelfTests(){
  };
  if(Object.keys(result).some(function(k){return !result[k];}))throw Error("Price-history test failed: "+JSON.stringify(result));
  Logger.log(JSON.stringify(result));return result;
+}
+
+/**
+ * Materialized read model for the future website, without changing its frontend.
+ * This is intentionally an OWNER-ONLY function, not callable from anonymous doPost.
+ * Research snapshots are visible as dated references but NEVER counted as fresh
+ * direct-observation trend evidence.
+ */
+function priceBuildSummaryRows_(marketRows,releaseRows,asOf){
+ var validDate=priceDate_(asOf);if(!validDate)throw Error("Invalid asOf date");
+ var histories={},productIds={};
+ marketRows.forEach(function(r){
+  var id=String(r[1]||"");
+  if(!priceId_(id))return;
+  productIds[id]=true;
+  (histories[id]||(histories[id]=[])).push({
+   price:Number(r[2]),date:String(r[3]||""),source:String(r[4]||""),
+   sourceUrl:String(r[5]||""),matchConfidence:String(r[6]||""),
+   evidenceType:String(r[7]||""),verified:r[6]==="exact"
+  });
+ });
+ var releases={};
+ releaseRows.forEach(function(r){
+  var id=String(r[0]||"");
+  if(!priceId_(id))return;
+  productIds[id]=true;
+  if(r[2]==="confirmed"&&priceDate_(String(r[1])))releases[id]={date:String(r[1]),url:String(r[3]||"")};
+ });
+ return Object.keys(productIds).sort().map(function(id){
+  var history=histories[id]||[];
+  var candidates=history.filter(function(r){return priceDate_(r.date)&&r.date<=validDate&&Number.isFinite(r.price)&&r.price>0;})
+   .sort(function(a,b){return a.date.localeCompare(b.date)||Number(a.matchConfidence==="exact")-Number(b.matchConfidence==="exact");});
+  var last=candidates.length?candidates[candidates.length-1]:null;
+  var eligible=history.filter(function(r){return r.verified&&r.evidenceType==="direct-observation";});
+  var seven=priceTrend_(eligible,7,validDate,2),month=priceTrend_(eligible,30,validDate,2),quarter=priceTrend_(eligible,90,validDate,2);
+  var release=releases[id]||null;
+  return [id,release?release.date:"",release?release.url:"",
+   last?last.price:"",last?last.date:"",last?last.source:"",last?last.sourceUrl:"",
+   last?last.evidenceType:"",last?last.matchConfidence:"",
+   seven.direction,seven.changePct===null?"":seven.changePct,
+   month.direction,month.changePct===null?"":month.changePct,
+   quarter.direction,quarter.changePct===null?"":quarter.changePct,
+   eligible.length,history.length,priceUtc_()];
+ });
+}
+function priceRefreshSummary(){
+ var ss=SpreadsheetApp.getActiveSpreadsheet(),lock=LockService.getScriptLock();lock.waitLock(30000);
+ try{
+  var market=priceDbTab_(PRICE_DB_V1.marketTab),release=priceDbTab_(PRICE_DB_V1.releaseTab);
+  var mr=market.getLastRow()>1?market.getRange(2,1,market.getLastRow()-1,11).getValues():[];
+  var rr=release.getLastRow()>1?release.getRange(2,1,release.getLastRow()-1,6).getValues():[];
+  var headers=["Product ID","Original Release Date","Release Source URL","Last Researched Price USD","Last Researched Date","Price Source","Price Source URL","Evidence Type","Match Confidence","7d Direction","7d Change %","30d Direction","30d Change %","90d Direction","90d Change %","Verified Direct Observations","Total Historical Observations","Refreshed UTC"];
+  var rows=priceBuildSummaryRows_(mr,rr,priceUtc_().slice(0,10));
+  var sh=ss.getSheetByName(PRICE_DB_V1.summaryTab)||ss.insertSheet(PRICE_DB_V1.summaryTab);
+  if(sh.getMaxColumns()<headers.length)sh.insertColumnsAfter(sh.getMaxColumns(),headers.length-sh.getMaxColumns());
+  if(sh.getMaxRows()<rows.length+1)sh.insertRowsAfter(sh.getMaxRows(),rows.length+1-sh.getMaxRows());
+  sh.getRange(1,1,1,headers.length).setValues([headers]);
+  if(rows.length)sh.getRange(2,1,rows.length,headers.length).setValues(rows);
+  if(sh.getLastRow()>rows.length+1)sh.getRange(rows.length+2,1,sh.getLastRow()-(rows.length+1),headers.length).clearContent();
+  sh.setFrozenRows(1);
+  return {products:rows.length,verifiedPriceObservations:rows.reduce(function(n,r){return n+Number(r[15]||0);},0),asOf:priceUtc_().slice(0,10)};
+ }finally{lock.releaseLock();}
 }
