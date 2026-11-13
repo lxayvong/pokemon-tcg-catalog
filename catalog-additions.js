@@ -54,3 +54,17 @@ Object.assign(CATALOG_ADDITION_META,{
 
 CATALOG_ADDITIONS.push(...[{"set":"Crown Zenith","name":"Galarian Articuno Tin","packs":5,"source":"https://www.pokemon.com/us/pokemon-tcg/product-gallery/crown-zenith-tin","type":"Tin"},{"set":"Crown Zenith","name":"Galarian Zapdos Tin","packs":5,"source":"https://www.pokemon.com/us/pokemon-tcg/product-gallery/crown-zenith-tin","type":"Tin"},{"set":"Crown Zenith","name":"Galarian Moltres Tin","packs":5,"source":"https://www.pokemon.com/us/pokemon-tcg/product-gallery/crown-zenith-tin","type":"Tin"},{"set":"Evolving Skies","name":"Three-Pack Blister (Eiscue)","packs":3,"source":"https://www.tcgplayer.com/search/pokemon/product?q=Eiscue+Evolving+Skies","type":"Blister"},{"set":"Evolving Skies","name":"Three-Pack Blister (Umbreon)","packs":3,"source":"https://www.tcgplayer.com/product/242444","type":"Blister"},{"set":"30th Anniversary Celebration","name":"Mini Tin (Umbreon)","packs":2,"source":"https://www.tcgplayer.com/product/704182","type":"Tin"}]);
 Object.assign(CATALOG_ADDITION_META,{"Crown Zenith|Galarian Articuno Tin":{"description":"5 × Crown Zenith booster packs; Galarian Articuno full-art foil promo and Pokémon TCG Live code."},"Crown Zenith|Galarian Zapdos Tin":{"description":"5 × Crown Zenith booster packs; Galarian Zapdos full-art foil promo and Pokémon TCG Live code."},"Crown Zenith|Galarian Moltres Tin":{"description":"5 × Crown Zenith booster packs; Galarian Moltres full-art foil promo and Pokémon TCG Live code."},"Evolving Skies|Three-Pack Blister (Eiscue)":{"description":"3 × Evolving Skies booster packs, promo card matching named Pokémon, collector coin and code."},"Evolving Skies|Three-Pack Blister (Umbreon)":{"description":"3 × Evolving Skies booster packs, promo card matching named Pokémon, collector coin and code."},"30th Anniversary Celebration|Mini Tin (Umbreon)":{"description":"2 × 30th Celebration booster packs, sticker sheet, collectible art card, TCG Live code."}});
+
+
+// Prismatic Evolutions Super-Premium Collection: exact product omitted from original catalog.
+// Official Pokémon product gallery confirms 15 packs, accessories and May 16, 2025 launch.
+CATALOG_ADDITIONS.push({
+ set:"Prismatic Evolutions",name:"Super-Premium Collection",type:"SPC",packs:15,
+ source:"https://www.pokemon.com/us/pokemon-tcg/product-gallery/scarlet-violet-prismatic-evolutions-super-premium-collection"
+});
+CATALOG_ADDITION_META["Prismatic Evolutions|Super-Premium Collection"]={
+ description:"15 × Prismatic Evolutions booster packs; full-art Eevee ex foil promo; fuzzy Eevee deck box; Eevee Evolutions playmat; 65 matching card sleeves; Pokémon TCG Live code.",
+ msrp:89.99,
+ upc:"196214112568",
+ tcgplayer:"622770"
+};
