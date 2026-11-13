@@ -5,8 +5,9 @@ Audit of 130 originally verified TCGplayer sealed-market snapshot entries. This 
 - **108** records pointed only to generic search/category/editorial pages. They are now flagged `verifiedMatch: false`; the raw amounts remain available for research/audit but no longer feed main market comparisons or Buy/Wait/Skip scoring.
 - **21** records point to product-specific `tcgplayer.com/product/<id>` URLs. URL specificity alone does not independently confirm the page title, package variant, or current market price. Where the repository supplied both IDs, no explicit ID mismatch was found.
 - **1** UPC Day reference uses a dated, specific TCGplayer seller guide article ($363.67 on 2026-11-06), not a live quote.
-- **24** newer Catch'em tracker research entries pointed to generic `/board` or `/rip` dashboards and were prevented from overwriting better exact-product benchmarks. One `/p/tcgcsv-704143` record has a product-specific tracker URL and remains provisional to later variant verification.
-- All 130 records' original amounts are preserved in `MarketPriceHistory` (the invalid 108 are labeled `unverified`). `PriceSummary` no longer presents those 108 as an actual market price.
+- **24** newer Catch'em tracker research entries pointed to generic `/board` or `/rip` dashboards and were prevented from overwriting better exact-product benchmarks. One `/p/tcgcsv-704143` record has a product-specific tracker URL but is **not** treated as verified until its TCGplayer product ID is matched to the catalog variant.
+- All 130 original snapshot records' amounts are preserved in `MarketPriceHistory` (the invalid 108 are labeled `unverified`). `PriceSummary` no longer presents those 108 as an actual market price.
+- A final runtime integrity gate now checks **every source overlay** after it loads and rejects any remaining generic or ambiguous market quote, protecting scores and Buy / Wait / Skip recommendations. Product-specific links are still dated sources, not necessarily live quotes.
 - All historical 7/30/90-day directions still require independent exact product direct observations.
 
 ## Source snapshot inventory
