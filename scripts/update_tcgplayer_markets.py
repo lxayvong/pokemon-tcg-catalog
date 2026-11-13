@@ -4,8 +4,8 @@
 Usage:
     python scripts/update_tcgplayer_markets.py --date 2026-11-12
 
-The --date requirement is STRICT: the upstream TCGCSV last-updated date must
-equal the requested date. All other catalog products remain unchanged/undated.
+For scheduled runs, TCGCSV's actual published snapshot date is authoritative.
+A manual --date remains strict; unchanged/older source builds are successful no-ops.
 The app never stamps an unverified quote with a newer observation date.
 """
 from __future__ import annotations
@@ -109,15 +109,32 @@ def get_latest_price(prices, product_id):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--date", required=True, help="Actual TCGCSV update date YYYY-MM-DD (never relabel prior-day prices).")
+    parser.add_argument("--date", help="Optional strict date (YYYY-MM-DD). Omit to use TCGCSV's actual snapshot date.")
     parser.add_argument("--max-groups", type=int, default=0, help="Testing only: cap processed groups.")
     args = parser.parse_args()
-    dt.date.fromisoformat(args.date)
+    if args.date:
+        dt.date.fromisoformat(args.date)
     modified = fetch_text("/last-updated.txt")
-    found = re.match(r"(\d{4}-\d{2}-\d{2})", modified)
-    if not found or found.group(1) != args.date:
-        print(f"STOP: TCGCSV upstream timestamp {modified!r} does not equal requested {args.date!r}. No file written.", file=sys.stderr)
+    found = re.match(r"(\\d{4}-\\d{2}-\\d{2})", modified)
+    if not found:
+        print(f"ERROR: unrecognized TCGCSV update timestamp {modified!r}. No file written.", file=sys.stderr)
         return 2
+    upstream_date = found.group(1)
+    dt.date.fromisoformat(upstream_date)
+    if upstream_date > dt.datetime.now(dt.timezone.utc).date().isoformat():
+        print(f"ERROR: source date {upstream_date} is in the future. No file written.", file=sys.stderr)
+        return 2
+    if args.date and upstream_date != args.date:
+        print(f"STOP: upstream date {upstream_date!r} differs from manually requested {args.date!r}. No file written.", file=sys.stderr)
+        return 2
+    actual_date = upstream_date
+    if DESTINATION.exists():
+        old = DESTINATION.read_text(encoding="utf-8")
+        previous = re.search(r'const TCGPLAYER_DAILY_AS_OF=\\s*"(\\d{4}-\\d{2}-\\d{2})"', old)
+        if previous and previous.group(1) >= actual_date:
+            print(f"SKIP: published snapshot {actual_date} is not newer than imported {previous.group(1)}. Nothing to commit.")
+            return 0
+    print(f"Using actual TCGCSV snapshot date {actual_date} (source marker: {modified!r}).")
 
     mapped = json.loads(CATALOG.read_text(encoding="utf-8"))["products"]
     sets = set(p["set"] for p in mapped)
@@ -152,7 +169,7 @@ def main():
         print(f"Group {gid} {g.get('name')}: {len(products)} products, {len(prices)} prices")
 
     output = {}
-    audit = {"asOf": args.date, "upstreamUpdated": modified, "catalogProducts": len(mapped),
+    audit = {"asOf": actual_date, "upstreamUpdated": modified, "catalogProducts": len(mapped),
              "groupsScanned": len(candidates), "matched": [], "unmatched": [], "ambiguous": []}
     for wanted in mapped:
         tcg_id = wanted.get("tcgplayerProductId")
@@ -178,8 +195,8 @@ def main():
         item = matches[0]
         output[wanted["id"]] = {
             "amount": item["price"],
-            "reportedAt": args.date,
-            "checkedAt": args.date,
+            "reportedAt": actual_date,
+            "checkedAt": actual_date,
             "source": "TCGplayer Market Price via TCGCSV daily mirror",
             "sourceUrl": item["url"],
             "tcgplayerProductId": item["productId"],
@@ -201,7 +218,7 @@ def main():
         " * Individual exact matches only. No inferred prices or relabeled old dates.\n"
         " * Missing catalog products retain their previous source date.\n"
         " */\n"
-        "const TCGPLAYER_DAILY_AS_OF=" + json.dumps(args.date) + ";\n"
+        "const TCGPLAYER_DAILY_AS_OF=" + json.dumps(actual_date) + ";\n"
         "const TCGPLAYER_DAILY_PRICES=" + new_data + ";\n"
         "for(const [id,quote] of Object.entries(TCGPLAYER_DAILY_PRICES)){\n"
         " const record=productById.get(id); if(!record)continue;\n"
