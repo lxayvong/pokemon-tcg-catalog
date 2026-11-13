@@ -1,0 +1,145 @@
+# Market-price source audit: 2026-11-13
+
+Audit of 130 originally verified TCGplayer sealed-market snapshot entries. This is a URL-evidence audit, NOT an independent live-market-price refresh or exhaustive verification of TCGplayer product titles.
+
+- **108** records pointed only to generic search/category/editorial pages. They are now flagged `verifiedMatch: false`; the raw amounts remain available for research/audit but no longer feed main market comparisons or Buy/Wait/Skip scoring.
+- **21** records point to product-specific `tcgplayer.com/product/<id>` URLs. URL specificity alone does not independently confirm the page title, package variant, or current market price. Where the repository supplied both IDs, no explicit ID mismatch was found.
+- **1** UPC Day reference uses a dated, specific TCGplayer seller guide article ($363.67 on 2026-11-06), not a live quote.
+- **24** newer Catch'em tracker research entries pointed to generic `/board` or `/rip` dashboards and were prevented from overwriting better exact-product benchmarks. One `/p/tcgcsv-704143` record has a product-specific tracker URL and remains provisional to later variant verification.
+- All 130 records' original amounts are preserved in `MarketPriceHistory` (the invalid 108 are labeled `unverified`). `PriceSummary` no longer presents those 108 as an actual market price.
+- All historical 7/30/90-day directions still require independent exact product direct observations.
+
+## Source snapshot inventory
+
+| Product | Dated amount | Source type | Review status | Evidence link |
+|---|---:|---|---|---|
+| Mega Evolution / Booster Box | $317.58 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me01-mega-evolution&view=grid |
+| Mega Evolution / Booster Bundle | $63.77 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me01-mega-evolution&view=grid |
+| Phantasmal Flames / Booster Box | $398.85 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/654137 |
+| Phantasmal Flames / Elite Trainer Box | $155.68 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me02-phantasmal-flames |
+| Phantasmal Flames / Booster Bundle | $82.87 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me02-phantasmal-flames |
+| Phantasmal Flames / Pokémon Center ETB | $288.44 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me02-phantasmal-flames |
+| Phantasmal Flames / Build & Battle Box | $64.34 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me02-phantasmal-flames |
+| Perfect Order / Booster Box | $171.52 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me03-perfect-order?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me03-perfect-order&view=grid |
+| Perfect Order / Elite Trainer Box | $64.69 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me03-perfect-order?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me03-perfect-order&view=grid |
+| Perfect Order / Booster Bundle | $38.47 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me03-perfect-order?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me03-perfect-order&view=grid |
+| Perfect Order / Pokémon Center ETB | $121.24 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me03-perfect-order?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=me03-perfect-order&view=grid |
+| Perfect Order / Build & Battle Box | $37.74 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Perfect+Order |
+| Chaos Rising / Booster Box | $186.35 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me04-chaos-rising?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me04-chaos-rising&view=grid |
+| Chaos Rising / Booster Bundle | $34.85 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me04-chaos-rising?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me04-chaos-rising&view=grid |
+| Chaos Rising / Elite Trainer Box | $63.57 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me04-chaos-rising?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me04-chaos-rising&view=grid |
+| Chaos Rising / Pokémon Center ETB | $126.60 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me04-chaos-rising?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me04-chaos-rising&view=grid |
+| Pitch Black / Booster Box | $198.95 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me05-pitch-black |
+| Pitch Black / Elite Trainer Box | $70.69 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me05-pitch-black |
+| Pitch Black / Booster Bundle | $38.39 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me05-pitch-black |
+| Pitch Black / Pokémon Center ETB | $123.69 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me05-pitch-black |
+| Ascended Heroes / Booster Bundle | $86.82 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Ascended Heroes / Elite Trainer Box | $161.76 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Mega Venusaur ex / Premium Collection | $68.78 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Mega+Venusaur+ex&view=grid |
+| Mega Zygarde ex / Premium Collection | $48.92 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/682939 |
+| Mega Charizard X ex / Ultra-Premium Collection | $237.97 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/654213 |
+| Mega Lucario ex / Figure Collection | $56.72 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/miscellaneous-cards-and-products |
+| Surging Sparks / Booster Box | $302.13 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv08-surging-sparks?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv08-surging-sparks&view=grid |
+| Surging Sparks / Elite Trainer Box | $121.48 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv08-surging-sparks?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv08-surging-sparks&view=grid |
+| Surging Sparks / Pokémon Center ETB | $270.31 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv08-surging-sparks?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv08-surging-sparks&view=grid |
+| Stellar Crown / Booster Box | $308.69 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/557354 |
+| 30th Anniversary Celebration / Booster Bundle | $90.86 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/704171 |
+| 30th Anniversary Celebration / Elite Trainer Box | $176.70 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Knock Out Collection | $30.37 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Binder Collection | $91.85 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Greninja ex Box | $51.80 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Tech Sticker: Alolan Exeggutor | $44.00 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Tech Sticker: Lucario | $47.59 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / UPC Night | $664.20 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=me-30th-celebration&view=grid |
+| Mega Greninja ex / Premium Collection | $51.52 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/miscellaneous-cards-and-products |
+| Pokémon Day 2026 / Collection | $38.17 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/miscellaneous-cards-and-products |
+| Prismatic Evolutions / Elite Trainer Box | $149.79 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/593355 |
+| Prismatic Evolutions / Pokémon Center ETB | $417.48 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/all/product?q=Prismatic+Evolutions+Elite+Trainer+Box |
+| Crown Zenith / Sea & Sky Collection | $388.09 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Crown+Zenith+Sea+%26+Sky+Premium+Collection&view=grid |
+| Crown Zenith / Pikachu VMAX Special Collection | $218.35 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Crown+Zenith+Sea+%26+Sky+Premium+Collection&view=grid |
+| Shrouded Fable / Kingdra ex Special Illustration Collection | $178.13 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/553001 |
+| Shrouded Fable / Greninja ex Special Illustration Collection | $212.23 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Shrouded+Fable+Kingdra+ex+Special+Illustration+Collection&view=grid |
+| Shrouded Fable / Booster Bundle | $54.90 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Shrouded+Fable+Kingdra+ex+Special+Illustration+Collection&view=grid |
+| Twilight Masquerade / Booster Box | $363.62 | editorial-reference | Unverified, excluded | https://www.tcgplayer.com/content/article/Buyer-s-Guide-to-Pok%C3%A9mon-TCG-Twilight-Masquerade/5631cdf7-d3e2-48a2-b989-d6c6f9bb7ccc/ |
+| Twilight Masquerade / Booster Bundle | $73.41 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv06-twilight-masquerade?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=sv06-twilight-masquerade&view=grid |
+| Stellar Crown / Elite Trainer Box | $154.95 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?page=1&productLineName=pokemon&q=elite+trainer+box&view=grid |
+| Lost Origin / Elite Trainer Box | $194.05 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?page=1&productLineName=pokemon&q=elite+trainer+box&view=grid |
+| Evolving Skies / Booster Box | $2458.04 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/242436 |
+| Brilliant Stars / Booster Box | $559.45 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/256141 |
+| Fusion Strike / Booster Box | $968.74 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Pokemon+Booster+Box+Fusion+Strike |
+| Fusion Strike / Elite Trainer Box | $327.59 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Pokemon+Booster+Box+Fusion+Strike |
+| Pokémon 151 / Booster Bundle | $178.12 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv-scarlet-and-violet-151&view=grid |
+| Pokémon 151 / Elite Trainer Box | $554.55 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv-scarlet-and-violet-151&view=grid |
+| Pokémon 151 / Blooming Waters | $325.82 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv-scarlet-and-violet-151&view=grid |
+| Pokémon 151 / Ultra-Premium Collection | $924.38 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/502005 |
+| Pokémon 151 / Poster Collection | $85.59 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=sv-scarlet-and-violet-151&view=grid |
+| Pokémon 151 / Binder Collection | $232.36 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=sv-scarlet-and-violet-151&view=grid |
+| Pokémon 151 / Zapdos ex Collection | $120.74 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=sv-scarlet-and-violet-151&view=grid |
+| Pokémon 151 / Alakazam ex Collection | $118.02 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-scarlet-and-violet-151?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=sv-scarlet-and-violet-151&view=grid |
+| Delta Reign / Booster Box | $265.72 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me06-delta-reign?productLineName=pokemon&view=grid |
+| Delta Reign / Elite Trainer Box | $136.84 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/712102 |
+| Delta Reign / Booster Bundle | $85.68 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/712097 |
+| Delta Reign / Pokémon Center ETB | $588.26 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/712104 |
+| Stellar Crown / Booster Bundle | $72.23 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv07-stellar-crown?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=pack&setName=sv07-stellar-crown&view=grid |
+| Crown Zenith / Elite Trainer Box | $322.12 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Crown+Zenith+Elite+Trainer+Box&view=grid |
+| Brilliant Stars / Elite Trainer Box | $161.85 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=elite+trainer+box&view=grid |
+| Prismatic Evolutions / Lucario ex & Tyranitar ex Premium Collection (Sam's Club) | $197.32 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/miscellaneous-cards-and-products |
+| Mega Evolution / Elite Trainer Box (Mega Lucario) | $124.14 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?productLineName=pokemon&productTypeName=Sealed+Products&view=grid |
+| Mega Evolution / Elite Trainer Box (Mega Gardevoir) | $121.86 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?productLineName=pokemon&productTypeName=Sealed+Products&view=grid |
+| Mega Evolution / Pokémon Center ETB (Mega Lucario) | $222.53 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Mega+Evolution+Pokemon+Center+Elite+Trainer+Box+Mega+Lucario |
+| Mega Evolution / Pokémon Center ETB (Mega Gardevoir) | $188.27 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?productLineName=pokemon&productTypeName=Sealed+Products&view=grid |
+| Mega Evolution / Enhanced Booster Box | $290.73 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me01-mega-evolution?productLineName=pokemon&productTypeName=Sealed+Products&view=grid |
+| 30th Anniversary Celebration / Figure Collection: Mewtwo | $96.85 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Figure Collection: Mew | $125.12 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Ditto Premium Collection | $196.39 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Sylveon ex Box | $77.17 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / 2-Pack Blister | $48.07 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Pokémon Center ETB | $493.92 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Poster Collection | $48.84 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / UPC Day | $363.67 | editorial-reference | Source-specific (not a current quote) | https://seller.tcgplayer.com/blog/30th-celebration-quick-facts |
+| 30th Anniversary Celebration / Battle Deck: Espeon ex | $37.23 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Battle Deck: Umbreon ex | $37.74 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / ex Tin: Sylveon ex | $57.92 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| 30th Anniversary Celebration / Tin: Greninja ex | $49.01 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/me-30th-celebration?productLineName=pokemon&setName=me-30th-celebration&view=grid |
+| Ascended Heroes / Pokémon Center ETB | $387.37 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=pokemon+ascended+heroes+elite+trainer+box |
+| Prismatic Evolutions / Booster Bundle | $89.41 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Booster+Bundle+Prismatic+Evolutions |
+| Prismatic Evolutions / Poster Collection | $40.93 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Sealed+Poster+Collection+Prismatic+Evolutions |
+| Prismatic Evolutions / Binder Collection | $110.12 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-prismatic-evolutions?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv-prismatic-evolutions&view=grid |
+| Surging Sparks / Booster Bundle | $61.92 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Surging+Sparks+Booster+Bundle |
+| Twilight Masquerade / Elite Trainer Box | $104.06 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/543845 |
+| Shrouded Fable / Elite Trainer Box | $114.42 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/552999 |
+| Twilight Masquerade / Pokémon Center ETB | $185.71 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/543844 |
+| Ascended Heroes / Premium Poster Collection: Mega Lucario | $155.80 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Ascended Heroes / Premium Poster Collection: Mega Gardevoir | $147.41 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Ascended Heroes / First Partners Deluxe Pin Collection | $67.53 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Ascended Heroes / Mega Meganium ex Tin | $47.83 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Pitch Black / Build & Battle Box | $37.12 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me05-pitch-black |
+| Ascended Heroes / Mega Meganium ex Box | $58.62 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Ascended Heroes / Mega Emboar ex Tin | $45.90 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Ascended Heroes / Mega Feraligatr ex Tin | $47.67 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/me-ascended-heroes |
+| Evolving Skies / Elite Trainer Box (Glaceon/Vaporeon/Sylveon/Espeon) | $506.78 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/swsh07-evolving-skies |
+| Evolving Skies / Elite Trainer Box (Flareon/Jolteon/Umbreon/Leafeon) | $570.59 | generic-category | Unverified, excluded | https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/swsh07-evolving-skies |
+| Surging Sparks / Booster Bundle (Retail) | $61.92 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Surging+Sparks+Booster+Bundle |
+| Surging Sparks / Booster Bundle (LGS) | $64.24 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/565629 |
+| Ascended Heroes / Tech Sticker Collection (Gastly) | $44.73 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Tech+Sticker+Collection+-+Gastly |
+| Ascended Heroes / Tech Sticker Collection (Charmander) | $45.22 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Tech+Sticker+Collection+-+Charmander |
+| Prismatic Evolutions / Tech Sticker Collection (Leafeon) | $41.02 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/593453 |
+| Prismatic Evolutions / Tech Sticker Collection (Glaceon) | $42.47 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-prismatic-evolutions?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv-prismatic-evolutions&view=grid |
+| Prismatic Evolutions / Tech Sticker Collection (Sylveon) | $43.19 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/sv-prismatic-evolutions?page=1&productLineName=pokemon&productTypeName=Sealed+Products&setName=sv-prismatic-evolutions&view=grid |
+| First Partner Illustration Collection / Series 1 | $68.37 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/673436 |
+| First Partner Illustration Collection / Series 2 | $29.84 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/first-partner-collection-2026?productLineName=pokemon&view=grid |
+| First Partner Illustration Collection / Series 3 | $28.37 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/first-partner-collection-2026?productLineName=pokemon&view=grid |
+| Ascended Heroes / Mega Emboar ex Box | $58.29 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Mega+Emboar+ex+Box |
+| Ascended Heroes / Mega Feraligatr ex Box | $59.01 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Mega+Feraligatr+ex+Box |
+| Chaos Rising / Build & Battle Box | $43.67 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Chaos+Rising+Build+and+Battle+Box |
+| Lost Origin / Booster Box | $730.85 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/swsh11-lost-origin?page=1&productLineName=pokemon&productTypeName=Sealed+Products&q=box&setName=swsh11-lost-origin&view=grid |
+| Mega Evolution / Build & Battle Box | $60.61 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Mega+Evolution+Build+%26+Battle+Box&view=grid |
+| Crown Zenith / Galarian Articuno Tin | $147.81 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Crown+Zenith+Galarian+Articuno+Tin |
+| Crown Zenith / Galarian Zapdos Tin | $136.37 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Crown+Zenith+Galarian+Zapdos+Tin |
+| Crown Zenith / Galarian Moltres Tin | $157.08 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Crown+Zenith+Galarian+Moltres+Tin |
+| Evolving Skies / Three-Pack Blister (Eiscue) | $198.20 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Blister+Pack+Octillery+Evolving+Skies |
+| Evolving Skies / Three-Pack Blister (Umbreon) | $241.67 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/242444 |
+| 30th Anniversary Celebration / Mini Tin (Umbreon) | $56.06 | product-specific-url | Source-specific (not a current quote) | https://www.tcgplayer.com/product/704182 |
+| Delta Reign / Build & Battle Box | $45.91 | editorial-reference | Unverified, excluded | https://seller.tcgplayer.com/blog/delta-reign-quick-facts |
+| Ascended Heroes / Erika Collection | $31.23 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Collection+case&view=grid |
+| Ascended Heroes / Larry Collection | $31.05 | generic-search | Unverified, excluded | https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Collection+case&view=grid |
