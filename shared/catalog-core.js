@@ -133,6 +133,8 @@ for(const entry of OFFICIAL_POKEMON_CENTER_PRODUCTS){
 }
 const prismaticSpc=productRecords.find(p=>p.set==="Prismatic Evolutions"&&p.name==="Super-Premium Collection");
 if(prismaticSpc){
+ prismaticSpc.pricing.msrp={amount:89.99,currency:"USD",source:"Best Buy original first-party listed price",sourceUrl:"https://www.bestbuy.com/product/-/6621081",verified:true};
+ if(prismaticSpc.images[0])prismaticSpc.images[0].source="TCGplayer exact product image 622770";
  prismaticSpc.identifiers.upc="196214112568";
  prismaticSpc.identifiers.manufacturerSku="10-10027-101";
  prismaticSpc.identifiers.tcgplayerProductId="622770";
