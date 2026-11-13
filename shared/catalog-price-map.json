@@ -847,6 +847,12 @@
       "set": "Miscellaneous Cards & Products",
       "name": "Cynthia's Garchomp ex Premium Collection",
       "tcgplayerProductId": "625952"
+    },
+    {
+      "id": "ptcg:prismatic-evolutions:super-premium-collection",
+      "set": "Prismatic Evolutions",
+      "name": "Super-Premium Collection",
+      "tcgplayerProductId": "622770"
     }
   ]
 }
