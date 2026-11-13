@@ -77,7 +77,7 @@ body.light .price-history .trend-chip small,body.light .price-history .trend-chi
 <script src="shared/google-sheets-client.js?v=shared-price2"></script><script src="shared/price-history-ui.js?v=history-ui1"></script><script src="google-sheets-public.js?build=2026-11-12.images-msrp1"></script><script src="google-sheets-anonymous-write.js?build=2026-11-12.images-msrp1"></script><script src="catalog-research-20261112.js?build=2026-11-12.images-msrp1"></script><script src="pokemon-center-products.js?build=2026-11-12.images-msrp1"></script>
 <script src="shared/catalog-core.js?v=market-source-audit1"></script>
 <script src="shared/pricing-refresh.js?v=market-source-audit1"></script>
-<script src="shared/tcgplayer-market-daily.js?v=daily1"></script><script>
+<script src="shared/tcgplayer-market-daily.js?v=daily1"></script><script src="shared/market-source-integrity.js?v=market-audit1"></script><script>
 const catalogIssues=validateCatalog(productRecords);function workspaceNotify(msg){el("workspace-notice").textContent=msg}
 let toastTimer;
 function showCatalogToast(msg,error=false){const t=el("catalog-toast");t.textContent=(error?"⚠ ":"✓ ")+msg;t.dataset.status=error?"error":"ok";t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{t.hidden=true},error?7000:3500)}
