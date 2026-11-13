@@ -33,6 +33,6 @@ Object.assign(TCG_MARKET_SNAPSHOTS,{"Ascended Heroes|Erika Collection":{"amount"
 /* Exact Prismatic Evolutions Super-Premium Collection, TCGplayer ID 622770.
  * Dated TCGCSV research snapshot, NOT a live quote and not the expansion release date. */
 TCG_MARKET_SNAPSHOTS["Prismatic Evolutions|Super-Premium Collection"]={
- amount:245.14,url:"https://www.tcgplayer.com/product/622770",checkedAt:"2026-10-29",
+ amount:245.14,url:"https://catchemtcg.com/p/tcgcsv-622770",checkedAt:"2026-10-29",
  marketType:"TCGplayer market via dated Catch'em TCGCSV product 622770 (Oct 29, 2026)",verifiedMatch:true
 };
