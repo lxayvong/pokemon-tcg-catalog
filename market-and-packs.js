@@ -29,3 +29,10 @@ Object.assign(TCG_MARKET_SNAPSHOTS,{"Crown Zenith|Galarian Articuno Tin":{"amoun
 Object.assign(TCG_MARKET_SNAPSHOTS,{"Delta Reign|Build & Battle Box":{"amount":45.91,"url":"https://seller.tcgplayer.com/blog/delta-reign-quick-facts","checkedAt":"2026-11-10","marketType":"TCGplayer published historical market snapshot, not current market price","verifiedMatch":false}});
 
 Object.assign(TCG_MARKET_SNAPSHOTS,{"Ascended Heroes|Erika Collection":{"amount":31.23,"url":"https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Collection+case&view=grid","checkedAt":"2026-11-11","marketType":"TCGplayer 3-Tab Erika Collection sealed market listing","verifiedMatch":false},"Ascended Heroes|Larry Collection":{"amount":31.05,"url":"https://www.tcgplayer.com/search/pokemon/product?q=Ascended+Heroes+Collection+case&view=grid","checkedAt":"2026-11-11","marketType":"TCGplayer 3-Tab Larry Collection sealed market listing","verifiedMatch":false}});
+
+/* Exact Prismatic Evolutions Super-Premium Collection, TCGplayer ID 622770.
+ * Dated TCGCSV research snapshot, NOT a live quote and not the expansion release date. */
+TCG_MARKET_SNAPSHOTS["Prismatic Evolutions|Super-Premium Collection"]={
+ amount:245.14,url:"https://www.tcgplayer.com/product/622770",checkedAt:"2026-10-29",
+ marketType:"TCGplayer market via dated Catch'em TCGCSV product 622770 (Oct 29, 2026)",verifiedMatch:true
+};
