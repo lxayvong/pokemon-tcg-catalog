@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Regression tests for actual published TCGCSV date handling. Offline, stdlib only."""
 import contextlib
+import hashlib
+import json
 import datetime as dt
 import importlib.util
 import io
@@ -15,24 +17,32 @@ sync = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sync)
 
 class MarketDateTests(unittest.TestCase):
-    def run_case(self, marker, cli=None, prior=None):
+    def run_case(self, marker, cli=None, prior=None, changed_mapping=False):
         with tempfile.TemporaryDirectory() as folder:
             dest = Path(folder) / "daily.js"
+            catalog = Path(folder) / "catalog.json"
+            audit = Path(folder) / "audit.json"
+            catalog.write_text(json.dumps({"products":[]}), encoding="utf-8")
             if prior:
                 dest.write_text('const TCGPLAYER_DAILY_AS_OF="'+prior+'";\n', encoding="utf-8")
+                fingerprint=hashlib.sha256(catalog.read_bytes()).hexdigest()
+                audit.write_text(json.dumps({"catalogFingerprint":"older-mapping" if changed_mapping else fingerprint}), encoding="utf-8")
             argv = ["market_sync.py"] + (cli or [])
             # Force a deliberate stop immediately after validation, before groups are fetched.
             # The script must not relabel source quotes based on the runner clock.
             with patch.object(sync, "DESTINATION", dest), \
                  patch.object(sync, "fetch_text", return_value=marker), \
                  patch.object(sync, "fetch_json", side_effect=RuntimeError("Reached data fetch")), \
-                 patch.object(sync, "CATALOG", Path(folder) / "missing.json"), \
+                 patch.object(sync, "CATALOG", catalog), \
+                 patch.object(sync, "REPORT", audit), \
                  patch("sys.argv", argv):
                 out=io.StringIO()
                 with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
                     try:
                         result=sync.main()
-                    except FileNotFoundError:
+                    except RuntimeError as e:
+                        if str(e)!="Reached data fetch":
+                            raise
                         result="validated-and-continuing"
                 return result,out.getvalue()
 
@@ -45,6 +55,11 @@ class MarketDateTests(unittest.TestCase):
         result,output=self.run_case("2026-11-12T20:06:19+0000", prior="2026-11-12")
         self.assertEqual(result,0)
         self.assertIn("SKIP:",output)
+
+    def test_same_snapshot_with_new_product_mapping_retries(self):
+        result,output=self.run_case("2026-11-12T20:06:19+0000",prior="2026-11-12",changed_mapping=True)
+        self.assertEqual(result,"validated-and-continuing")
+        self.assertIn("Using actual TCGCSV snapshot date",output)
 
     def test_older_upstream_is_successful_noop(self):
         result,output=self.run_case("2026-11-11T20:06:19+0000", prior="2026-11-12")
