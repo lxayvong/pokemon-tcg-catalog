@@ -207,21 +207,41 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:ascended-heroes:elite-trainer-box": {
     "amount": 125.53,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/668496/pokemon-me-ascended-heroes-ascended-heroes-elite-trainer-box",
     "tcgplayerProductId": "668496",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
+  "ptcg:ascended-heroes:erika-collection": {
+    "amount": 29.35,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/666906/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-collection-erika-3-tab",
+    "tcgplayerProductId": "666906",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
   "ptcg:ascended-heroes:first-partners-deluxe-pin-collection": {
     "amount": 59.82,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/672391/pokemon-me-ascended-heroes-ascended-heroes-first-partners-deluxe-pin-collection",
     "tcgplayerProductId": "672391",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:ascended-heroes:larry-collection": {
+    "amount": 30.18,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/666907/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-collection-larry-3-tab",
+    "tcgplayerProductId": "666907",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:ascended-heroes:mega-emboar-ex-box": {
@@ -247,7 +267,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:ascended-heroes:mega-feraligatr-ex-box": {
     "amount": 53.12,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/672735/pokemon-me-ascended-heroes-ascended-heroes-mega-feraligatr-ex-box",
@@ -257,7 +277,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:ascended-heroes:mega-meganium-ex-box": {
     "amount": 47.07,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/672733/pokemon-me-ascended-heroes-ascended-heroes-mega-meganium-ex-box",
@@ -277,7 +297,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:ascended-heroes:premium-poster-collection-mega-gardevoir": {
     "amount": 138.3,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/668537/pokemon-me-ascended-heroes-premium-poster-collection-mega-gardevoir",
@@ -287,11 +307,31 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:ascended-heroes:premium-poster-collection-mega-lucario": {
     "amount": 144.86,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/668536/pokemon-me-ascended-heroes-premium-poster-collection-mega-lucario",
     "tcgplayerProductId": "668536",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:ascended-heroes:tech-sticker-collection-charmander": {
+    "amount": 32.49,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/666908/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-tech-sticker-collection-charmander",
+    "tcgplayerProductId": "666908",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:ascended-heroes:tech-sticker-collection-gastly": {
+    "amount": 33.28,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/666909/pokemon-me-ascended-heroes-mega-evolution-ascended-heroes-tech-sticker-collection-gastly",
+    "tcgplayerProductId": "666909",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:brilliant-stars:booster-box": {
@@ -317,7 +357,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:chaos-rising:booster-box": {
     "amount": 183.49,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/684444/pokemon-me04-chaos-rising-chaos-rising-booster-box",
@@ -327,7 +367,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:chaos-rising:booster-bundle": {
     "amount": 37.21,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/684456/pokemon-me04-chaos-rising-chaos-rising-booster-bundle",
@@ -337,7 +377,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:chaos-rising:build-battle-box": {
     "amount": 37.42,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/684454/pokemon-me04-chaos-rising-chaos-rising-build-and-battle-box",
@@ -367,7 +407,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:crown-zenith:elite-trainer-box": {
     "amount": 313.37,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/453470/pokemon-swsh-crown-zenith-crown-zenith-elite-trainer-box",
@@ -387,7 +427,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:crown-zenith:pikachu-vmax-special-collection": {
     "amount": 163.77,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/454452/pokemon-swsh-crown-zenith-pikachu-vmax-special-collection",
@@ -427,7 +467,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:delta-reign:build-battle-box": {
     "amount": 46.9,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/712101/pokemon-me06-delta-reign-delta-reign-build-and-battle-box",
@@ -467,7 +507,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:evolving-skies:elite-trainer-box-flareon-jolteon-umbreon-leafeon": {
     "amount": 542.41,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/242434/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-flareon-jolteon-umbreon-leafeon",
@@ -477,7 +517,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:evolving-skies:elite-trainer-box-glaceon-vaporeon-sylveon-espeon": {
     "amount": 456.52,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/242443/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
@@ -497,7 +537,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:fusion-strike:booster-box": {
     "amount": 1007.74,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/247654/pokemon-swsh08-fusion-strike-fusion-strike-booster-box",
@@ -507,7 +547,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:fusion-strike:elite-trainer-box": {
     "amount": 332.39,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/247671/pokemon-swsh08-fusion-strike-fusion-strike-elite-trainer-box",
@@ -517,7 +557,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:lost-origin:booster-box": {
     "amount": 732.8,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/277324/pokemon-swsh11-lost-origin-lost-origin-booster-box",
@@ -527,7 +567,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:lost-origin:elite-trainer-box": {
     "amount": 193.99,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/277335/pokemon-swsh11-lost-origin-lost-origin-elite-trainer-box",
@@ -547,7 +587,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:mega-evolution:booster-box": {
     "amount": 300.11,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/644298/pokemon-me01-mega-evolution-mega-evolution-booster-box",
@@ -557,7 +597,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:mega-evolution:booster-bundle": {
     "amount": 66.4,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/644362/pokemon-me01-mega-evolution-mega-evolution-booster-bundle",
@@ -567,7 +607,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:mega-evolution:build-battle-box": {
     "amount": 62.71,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/644363/pokemon-me01-mega-evolution-mega-evolution-build-and-battle-box",
@@ -577,7 +617,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:mega-evolution:elite-trainer-box-mega-gardevoir": {
     "amount": 109.56,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/644279/pokemon-me01-mega-evolution-mega-evolution-elite-trainer-box-mega-gardevoir",
@@ -597,7 +637,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:mega-evolution:enhanced-booster-box": {
     "amount": 287.97,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/644300/pokemon-me01-mega-evolution-mega-evolution-enhanced-booster-box",
@@ -617,7 +657,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:mega-venusaur-ex:premium-collection": {
     "amount": 67.18,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/654212/pokemon-miscellaneous-cards-and-products-mega-venusaur-ex-premium-collection",
@@ -647,7 +687,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:perfect-order:booster-box": {
     "amount": 172.02,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/672394/pokemon-me03-perfect-order-perfect-order-booster-box",
@@ -657,7 +697,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:perfect-order:booster-bundle": {
     "amount": 37.5,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/672396/pokemon-me03-perfect-order-perfect-order-booster-bundle",
@@ -667,7 +707,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:perfect-order:build-battle-box": {
     "amount": 36.65,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/672400/pokemon-me03-perfect-order-perfect-order-build-and-battle-box",
@@ -717,7 +757,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:phantasmal-flames:build-battle-box": {
     "amount": 63.95,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/662725/pokemon-me02-phantasmal-flames-phantasmal-flames-build-and-battle-box",
@@ -727,7 +767,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:phantasmal-flames:elite-trainer-box": {
     "amount": 134.58,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/654136/pokemon-me02-phantasmal-flames-phantasmal-flames-elite-trainer-box",
@@ -737,7 +777,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pitch-black:booster-box": {
     "amount": 170.98,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/692939/pokemon-me05-pitch-black-pitch-black-booster-box",
@@ -747,7 +787,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pitch-black:booster-bundle": {
     "amount": 38.66,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/692942/pokemon-me05-pitch-black-pitch-black-booster-bundle",
@@ -757,7 +797,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pitch-black:build-battle-box": {
     "amount": 34.12,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/692946/pokemon-me05-pitch-black-pitch-black-build-and-battle-box",
@@ -777,7 +817,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pokemon-151:alakazam-ex-collection": {
     "amount": 114.16,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/502006/pokemon-sv-scarlet-and-violet-151-151-alakazam-ex-collection",
@@ -787,7 +827,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pokemon-151:binder-collection": {
     "amount": 214.64,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/502004/pokemon-sv-scarlet-and-violet-151-151-binder-collection",
@@ -797,7 +837,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pokemon-151:booster-bundle": {
     "amount": 165.12,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/502000/pokemon-sv-scarlet-and-violet-151-151-booster-bundle",
@@ -807,7 +847,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pokemon-151:elite-trainer-box": {
     "amount": 492.46,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/503313/pokemon-sv-scarlet-and-violet-151-151-elite-trainer-box",
@@ -817,7 +857,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pokemon-151:poster-collection": {
     "amount": 79.56,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/502001/pokemon-sv-scarlet-and-violet-151-151-poster-collection",
@@ -847,7 +887,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:pokemon-day-2026:collection": {
     "amount": 36.51,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/668590/pokemon-miscellaneous-cards-and-products-pokemon-day-2026-collection",
@@ -857,7 +897,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:prismatic-evolutions:binder-collection": {
     "amount": 105.32,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/593356/pokemon-sv-prismatic-evolutions-prismatic-evolutions-binder-collection",
@@ -867,7 +907,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:prismatic-evolutions:booster-bundle": {
     "amount": 72.93,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/600518/pokemon-sv-prismatic-evolutions-prismatic-evolutions-booster-bundle",
@@ -887,7 +927,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:prismatic-evolutions:lucario-ex-tyranitar-ex-premium-collection-sam-s-club": {
     "amount": 193.63,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/648365/pokemon-miscellaneous-cards-and-products-prismatic-evolutions-lucario-ex-and-tyranitar-ex-premium-collection-sams-club",
@@ -897,7 +937,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:prismatic-evolutions:poster-collection": {
     "amount": 39.1,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/593359/pokemon-sv-prismatic-evolutions-prismatic-evolutions-poster-collection",
@@ -917,7 +957,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:prismatic-evolutions:tech-sticker-collection-glaceon": {
     "amount": 40.66,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/593451/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-glaceon",
@@ -937,7 +977,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:prismatic-evolutions:tech-sticker-collection-sylveon": {
     "amount": 46.07,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/593450/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-sylveon",
@@ -997,7 +1037,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:stellar-crown:booster-bundle": {
     "amount": 68.56,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/557345/pokemon-sv07-stellar-crown-stellar-crown-booster-bundle",
@@ -1007,7 +1047,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:stellar-crown:elite-trainer-box": {
     "amount": 160.97,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/557350/pokemon-sv07-stellar-crown-stellar-crown-elite-trainer-box",
@@ -1017,7 +1057,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:surging-sparks:booster-box": {
     "amount": 302.92,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/565606/pokemon-sv08-surging-sparks-surging-sparks-booster-box",
@@ -1037,7 +1077,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:surging-sparks:booster-bundle-retail": {
     "amount": 60.82,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/679564/pokemon-sv08-surging-sparks-surging-sparks-booster-bundle-retail",
@@ -1047,7 +1087,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:surging-sparks:elite-trainer-box": {
     "amount": 115.3,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/565630/pokemon-sv08-surging-sparks-surging-sparks-elite-trainer-box",
@@ -1057,7 +1097,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:twilight-masquerade:booster-box": {
     "amount": 334.41,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/543846/pokemon-sv06-twilight-masquerade-twilight-masquerade-booster-box",
@@ -1067,7 +1107,7 @@ const TCGPLAYER_DAILY_PRICES={
   "ptcg:twilight-masquerade:booster-bundle": {
     "amount": 77.14,
     "checkedAt": "2026-11-13",
-    "matchMethod": "exact-full-product-title",
+    "matchMethod": "exact-TCGplayer-product-ID",
     "reportedAt": "2026-11-13",
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/543852/pokemon-sv06-twilight-masquerade-twilight-masquerade-booster-bundle",

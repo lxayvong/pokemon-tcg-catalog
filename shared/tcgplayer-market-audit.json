@@ -14,19 +14,19 @@
       "id": "ptcg:evolving-skies:elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
       "market": 456.52,
       "productId": "242443",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:booster-bundle",
       "market": 165.12,
       "productId": "502000",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:elite-trainer-box",
       "market": 492.46,
       "productId": "503313",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:ultra-premium-collection",
@@ -44,13 +44,13 @@
       "id": "ptcg:prismatic-evolutions:booster-bundle",
       "market": 72.93,
       "productId": "600518",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:crown-zenith:elite-trainer-box",
       "market": 313.37,
       "productId": "453470",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:crown-zenith:sea-sky-collection",
@@ -62,19 +62,19 @@
       "id": "ptcg:surging-sparks:booster-box",
       "market": 302.92,
       "productId": "565606",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:surging-sparks:elite-trainer-box",
       "market": 115.3,
       "productId": "565630",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:twilight-masquerade:booster-box",
       "market": 334.41,
       "productId": "543846",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:twilight-masquerade:elite-trainer-box",
@@ -86,13 +86,13 @@
       "id": "ptcg:lost-origin:booster-box",
       "market": 732.8,
       "productId": "277324",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:fusion-strike:booster-box",
       "market": 1007.74,
       "productId": "247654",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:brilliant-stars:booster-box",
@@ -134,7 +134,7 @@
       "id": "ptcg:phantasmal-flames:elite-trainer-box",
       "market": 134.58,
       "productId": "654136",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:shrouded-fable:elite-trainer-box",
@@ -248,19 +248,19 @@
       "id": "ptcg:pokemon-151:poster-collection",
       "market": 79.56,
       "productId": "502001",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:binder-collection",
       "market": 214.64,
       "productId": "502004",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:alakazam-ex-collection",
       "market": 114.16,
       "productId": "502006",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:zapdos-ex-collection",
@@ -272,25 +272,25 @@
       "id": "ptcg:prismatic-evolutions:poster-collection",
       "market": 39.1,
       "productId": "593359",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:prismatic-evolutions:binder-collection",
       "market": 105.32,
       "productId": "593356",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:surging-sparks:booster-bundle-retail",
       "market": 60.82,
       "productId": "679564",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:twilight-masquerade:booster-bundle",
       "market": 77.14,
       "productId": "543852",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:twilight-masquerade:pokemon-center-etb",
@@ -302,13 +302,13 @@
       "id": "ptcg:stellar-crown:elite-trainer-box",
       "market": 160.97,
       "productId": "557350",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:stellar-crown:booster-bundle",
       "market": 68.56,
       "productId": "557345",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:shrouded-fable:booster-bundle",
@@ -332,19 +332,19 @@
       "id": "ptcg:crown-zenith:pikachu-vmax-special-collection",
       "market": 163.77,
       "productId": "454452",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:lost-origin:elite-trainer-box",
       "market": 193.99,
       "productId": "277335",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:fusion-strike:elite-trainer-box",
       "market": 332.39,
       "productId": "247671",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:brilliant-stars:elite-trainer-box",
@@ -356,19 +356,19 @@
       "id": "ptcg:mega-evolution:booster-box",
       "market": 300.11,
       "productId": "644298",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:booster-bundle",
       "market": 66.4,
       "productId": "644362",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:build-battle-box",
       "market": 62.71,
       "productId": "644363",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:phantasmal-flames:booster-bundle",
@@ -380,13 +380,13 @@
       "id": "ptcg:phantasmal-flames:build-battle-box",
       "market": 63.95,
       "productId": "662725",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:perfect-order:booster-box",
       "market": 172.02,
       "productId": "672394",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:perfect-order:elite-trainer-box",
@@ -404,19 +404,19 @@
       "id": "ptcg:perfect-order:booster-bundle",
       "market": 37.5,
       "productId": "672396",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:perfect-order:build-battle-box",
       "market": 36.65,
       "productId": "672400",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:booster-box",
       "market": 183.49,
       "productId": "684444",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:elite-trainer-box",
@@ -434,19 +434,19 @@
       "id": "ptcg:chaos-rising:booster-bundle",
       "market": 37.21,
       "productId": "684456",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:build-battle-box",
       "market": 37.42,
       "productId": "684454",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:booster-box",
       "market": 170.98,
       "productId": "692939",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:elite-trainer-box",
@@ -458,25 +458,25 @@
       "id": "ptcg:pitch-black:booster-bundle",
       "market": 38.66,
       "productId": "692942",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:build-battle-box",
       "market": 34.12,
       "productId": "692946",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:delta-reign:build-battle-box",
       "market": 46.9,
       "productId": "712101",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:elite-trainer-box",
       "market": 125.53,
       "productId": "668496",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:pokemon-center-etb",
@@ -494,25 +494,25 @@
       "id": "ptcg:ascended-heroes:premium-poster-collection-mega-lucario",
       "market": 144.86,
       "productId": "668536",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:premium-poster-collection-mega-gardevoir",
       "market": 138.3,
       "productId": "668537",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:first-partners-deluxe-pin-collection",
       "market": 59.82,
       "productId": "672391",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:mega-meganium-ex-box",
       "market": 47.07,
       "productId": "672733",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:mega-emboar-ex-box",
@@ -524,7 +524,7 @@
       "id": "ptcg:ascended-heroes:mega-feraligatr-ex-box",
       "market": 53.12,
       "productId": "672735",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-greninja-ex:premium-collection",
@@ -536,7 +536,7 @@
       "id": "ptcg:mega-venusaur-ex:premium-collection",
       "market": 67.18,
       "productId": "654212",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-zygarde-ex:premium-collection",
@@ -551,10 +551,22 @@
       "method": "exact-TCGplayer-product-ID"
     },
     {
+      "id": "ptcg:ascended-heroes:erika-collection",
+      "market": 29.35,
+      "productId": "666906",
+      "method": "exact-TCGplayer-product-ID"
+    },
+    {
+      "id": "ptcg:ascended-heroes:larry-collection",
+      "market": 30.18,
+      "productId": "666907",
+      "method": "exact-TCGplayer-product-ID"
+    },
+    {
       "id": "ptcg:pokemon-day-2026:collection",
       "market": 36.51,
       "productId": "668590",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:mega-emboar-ex-tin",
@@ -566,7 +578,7 @@
       "id": "ptcg:prismatic-evolutions:lucario-ex-tyranitar-ex-premium-collection-sam-s-club",
       "market": 193.63,
       "productId": "648365",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:elite-trainer-box-mega-lucario",
@@ -578,13 +590,13 @@
       "id": "ptcg:mega-evolution:elite-trainer-box-mega-gardevoir",
       "market": 109.56,
       "productId": "644279",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:enhanced-booster-box",
       "market": 287.97,
       "productId": "644300",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:battle-deck-espeon-ex",
@@ -602,12 +614,24 @@
       "id": "ptcg:evolving-skies:elite-trainer-box-flareon-jolteon-umbreon-leafeon",
       "market": 542.41,
       "productId": "242434",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:surging-sparks:booster-bundle-lgs",
       "market": 69.48,
       "productId": "565629",
+      "method": "exact-TCGplayer-product-ID"
+    },
+    {
+      "id": "ptcg:ascended-heroes:tech-sticker-collection-charmander",
+      "market": 32.49,
+      "productId": "666908",
+      "method": "exact-TCGplayer-product-ID"
+    },
+    {
+      "id": "ptcg:ascended-heroes:tech-sticker-collection-gastly",
+      "market": 33.28,
+      "productId": "666909",
       "method": "exact-TCGplayer-product-ID"
     },
     {
@@ -620,13 +644,13 @@
       "id": "ptcg:prismatic-evolutions:tech-sticker-collection-glaceon",
       "market": 40.66,
       "productId": "593451",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:prismatic-evolutions:tech-sticker-collection-sylveon",
       "market": 46.07,
       "productId": "593450",
-      "method": "exact-full-product-title"
+      "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:crown-zenith:galarian-articuno-tin",
@@ -731,16 +755,6 @@
       "name": "Figure Collection"
     },
     {
-      "id": "ptcg:ascended-heroes:erika-collection",
-      "set": "Ascended Heroes",
-      "name": "Erika Collection"
-    },
-    {
-      "id": "ptcg:ascended-heroes:larry-collection",
-      "set": "Ascended Heroes",
-      "name": "Larry Collection"
-    },
-    {
       "id": "ptcg:ascended-heroes:tech-sticker-collection",
       "set": "Ascended Heroes",
       "name": "Tech Sticker Collection"
@@ -801,16 +815,6 @@
       "name": "Tin: Greninja ex"
     },
     {
-      "id": "ptcg:ascended-heroes:tech-sticker-collection-charmander",
-      "set": "Ascended Heroes",
-      "name": "Tech Sticker Collection (Charmander)"
-    },
-    {
-      "id": "ptcg:ascended-heroes:tech-sticker-collection-gastly",
-      "set": "Ascended Heroes",
-      "name": "Tech Sticker Collection (Gastly)"
-    },
-    {
       "id": "ptcg:crown-zenith:galarian-zapdos-tin",
       "set": "Crown Zenith",
       "name": "Galarian Zapdos Tin"
@@ -827,416 +831,8 @@
     }
   ],
   "ambiguous": [],
-  "matchedCount": 109,
-  "newlyMapped": [
-    {
-      "id": "ptcg:evolving-skies:elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
-      "tcgplayerProductId": "242443",
-      "method": "exact-full-product-title",
-      "group": "SWSH07: Evolving Skies",
-      "productName": "Evolving Skies Elite Trainer Box [Glaceon/Vaporeon/Sylveon/Espeon]",
-      "sourceUrl": "https://www.tcgplayer.com/product/242443/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-glaceon-vaporeon-sylveon-espeon"
-    },
-    {
-      "id": "ptcg:pokemon-151:booster-bundle",
-      "tcgplayerProductId": "502000",
-      "method": "exact-full-product-title",
-      "group": "SV: Scarlet & Violet 151",
-      "productName": "151 Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/502000/pokemon-sv-scarlet-and-violet-151-151-booster-bundle"
-    },
-    {
-      "id": "ptcg:pokemon-151:elite-trainer-box",
-      "tcgplayerProductId": "503313",
-      "method": "exact-full-product-title",
-      "group": "SV: Scarlet & Violet 151",
-      "productName": "151 Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/503313/pokemon-sv-scarlet-and-violet-151-151-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:prismatic-evolutions:booster-bundle",
-      "tcgplayerProductId": "600518",
-      "method": "exact-full-product-title",
-      "group": "SV: Prismatic Evolutions",
-      "productName": "Prismatic Evolutions Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/600518/pokemon-sv-prismatic-evolutions-prismatic-evolutions-booster-bundle"
-    },
-    {
-      "id": "ptcg:crown-zenith:elite-trainer-box",
-      "tcgplayerProductId": "453470",
-      "method": "exact-full-product-title",
-      "group": "SWSH: Crown Zenith",
-      "productName": "Crown Zenith Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/453470/pokemon-swsh-crown-zenith-crown-zenith-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:surging-sparks:booster-box",
-      "tcgplayerProductId": "565606",
-      "method": "exact-full-product-title",
-      "group": "SV08: Surging Sparks",
-      "productName": "Surging Sparks Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/565606/pokemon-sv08-surging-sparks-surging-sparks-booster-box"
-    },
-    {
-      "id": "ptcg:surging-sparks:elite-trainer-box",
-      "tcgplayerProductId": "565630",
-      "method": "exact-full-product-title",
-      "group": "SV08: Surging Sparks",
-      "productName": "Surging Sparks Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/565630/pokemon-sv08-surging-sparks-surging-sparks-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:twilight-masquerade:booster-box",
-      "tcgplayerProductId": "543846",
-      "method": "exact-full-product-title",
-      "group": "SV06: Twilight Masquerade",
-      "productName": "Twilight Masquerade Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/543846/pokemon-sv06-twilight-masquerade-twilight-masquerade-booster-box"
-    },
-    {
-      "id": "ptcg:lost-origin:booster-box",
-      "tcgplayerProductId": "277324",
-      "method": "exact-full-product-title",
-      "group": "SWSH11: Lost Origin",
-      "productName": "Lost Origin Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/277324/pokemon-swsh11-lost-origin-lost-origin-booster-box"
-    },
-    {
-      "id": "ptcg:fusion-strike:booster-box",
-      "tcgplayerProductId": "247654",
-      "method": "exact-full-product-title",
-      "group": "SWSH08: Fusion Strike",
-      "productName": "Fusion Strike Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/247654/pokemon-swsh08-fusion-strike-fusion-strike-booster-box"
-    },
-    {
-      "id": "ptcg:phantasmal-flames:elite-trainer-box",
-      "tcgplayerProductId": "654136",
-      "method": "exact-full-product-title",
-      "group": "ME02: Phantasmal Flames",
-      "productName": "Phantasmal Flames Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/654136/pokemon-me02-phantasmal-flames-phantasmal-flames-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:pokemon-151:poster-collection",
-      "tcgplayerProductId": "502001",
-      "method": "exact-full-product-title",
-      "group": "SV: Scarlet & Violet 151",
-      "productName": "151 Poster Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/502001/pokemon-sv-scarlet-and-violet-151-151-poster-collection"
-    },
-    {
-      "id": "ptcg:pokemon-151:binder-collection",
-      "tcgplayerProductId": "502004",
-      "method": "exact-full-product-title",
-      "group": "SV: Scarlet & Violet 151",
-      "productName": "151 Binder Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/502004/pokemon-sv-scarlet-and-violet-151-151-binder-collection"
-    },
-    {
-      "id": "ptcg:pokemon-151:alakazam-ex-collection",
-      "tcgplayerProductId": "502006",
-      "method": "exact-full-product-title",
-      "group": "SV: Scarlet & Violet 151",
-      "productName": "151: Alakazam ex Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/502006/pokemon-sv-scarlet-and-violet-151-151-alakazam-ex-collection"
-    },
-    {
-      "id": "ptcg:prismatic-evolutions:poster-collection",
-      "tcgplayerProductId": "593359",
-      "method": "exact-full-product-title",
-      "group": "SV: Prismatic Evolutions",
-      "productName": "Prismatic Evolutions Poster Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/593359/pokemon-sv-prismatic-evolutions-prismatic-evolutions-poster-collection"
-    },
-    {
-      "id": "ptcg:prismatic-evolutions:binder-collection",
-      "tcgplayerProductId": "593356",
-      "method": "exact-full-product-title",
-      "group": "SV: Prismatic Evolutions",
-      "productName": "Prismatic Evolutions Binder Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/593356/pokemon-sv-prismatic-evolutions-prismatic-evolutions-binder-collection"
-    },
-    {
-      "id": "ptcg:surging-sparks:booster-bundle-retail",
-      "tcgplayerProductId": "679564",
-      "method": "exact-full-product-title",
-      "group": "SV08: Surging Sparks",
-      "productName": "Surging Sparks Booster Bundle (Retail)",
-      "sourceUrl": "https://www.tcgplayer.com/product/679564/pokemon-sv08-surging-sparks-surging-sparks-booster-bundle-retail"
-    },
-    {
-      "id": "ptcg:twilight-masquerade:booster-bundle",
-      "tcgplayerProductId": "543852",
-      "method": "exact-full-product-title",
-      "group": "SV06: Twilight Masquerade",
-      "productName": "Twilight Masquerade Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/543852/pokemon-sv06-twilight-masquerade-twilight-masquerade-booster-bundle"
-    },
-    {
-      "id": "ptcg:stellar-crown:elite-trainer-box",
-      "tcgplayerProductId": "557350",
-      "method": "exact-full-product-title",
-      "group": "SV07: Stellar Crown",
-      "productName": "Stellar Crown Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/557350/pokemon-sv07-stellar-crown-stellar-crown-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:stellar-crown:booster-bundle",
-      "tcgplayerProductId": "557345",
-      "method": "exact-full-product-title",
-      "group": "SV07: Stellar Crown",
-      "productName": "Stellar Crown Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/557345/pokemon-sv07-stellar-crown-stellar-crown-booster-bundle"
-    },
-    {
-      "id": "ptcg:crown-zenith:pikachu-vmax-special-collection",
-      "tcgplayerProductId": "454452",
-      "method": "exact-full-product-title",
-      "group": "SWSH: Crown Zenith",
-      "productName": "Pikachu VMAX Special Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/454452/pokemon-swsh-crown-zenith-pikachu-vmax-special-collection"
-    },
-    {
-      "id": "ptcg:lost-origin:elite-trainer-box",
-      "tcgplayerProductId": "277335",
-      "method": "exact-full-product-title",
-      "group": "SWSH11: Lost Origin",
-      "productName": "Lost Origin Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/277335/pokemon-swsh11-lost-origin-lost-origin-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:fusion-strike:elite-trainer-box",
-      "tcgplayerProductId": "247671",
-      "method": "exact-full-product-title",
-      "group": "SWSH08: Fusion Strike",
-      "productName": "Fusion Strike Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/247671/pokemon-swsh08-fusion-strike-fusion-strike-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:mega-evolution:booster-box",
-      "tcgplayerProductId": "644298",
-      "method": "exact-full-product-title",
-      "group": "ME01: Mega Evolution",
-      "productName": "Mega Evolution Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/644298/pokemon-me01-mega-evolution-mega-evolution-booster-box"
-    },
-    {
-      "id": "ptcg:mega-evolution:booster-bundle",
-      "tcgplayerProductId": "644362",
-      "method": "exact-full-product-title",
-      "group": "ME01: Mega Evolution",
-      "productName": "Mega Evolution Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/644362/pokemon-me01-mega-evolution-mega-evolution-booster-bundle"
-    },
-    {
-      "id": "ptcg:mega-evolution:build-battle-box",
-      "tcgplayerProductId": "644363",
-      "method": "exact-full-product-title",
-      "group": "ME01: Mega Evolution",
-      "productName": "Mega Evolution Build & Battle Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/644363/pokemon-me01-mega-evolution-mega-evolution-build-and-battle-box"
-    },
-    {
-      "id": "ptcg:phantasmal-flames:build-battle-box",
-      "tcgplayerProductId": "662725",
-      "method": "exact-full-product-title",
-      "group": "ME02: Phantasmal Flames",
-      "productName": "Phantasmal Flames Build & Battle Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/662725/pokemon-me02-phantasmal-flames-phantasmal-flames-build-and-battle-box"
-    },
-    {
-      "id": "ptcg:perfect-order:booster-box",
-      "tcgplayerProductId": "672394",
-      "method": "exact-full-product-title",
-      "group": "ME03: Perfect Order",
-      "productName": "Perfect Order Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/672394/pokemon-me03-perfect-order-perfect-order-booster-box"
-    },
-    {
-      "id": "ptcg:perfect-order:booster-bundle",
-      "tcgplayerProductId": "672396",
-      "method": "exact-full-product-title",
-      "group": "ME03: Perfect Order",
-      "productName": "Perfect Order Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/672396/pokemon-me03-perfect-order-perfect-order-booster-bundle"
-    },
-    {
-      "id": "ptcg:perfect-order:build-battle-box",
-      "tcgplayerProductId": "672400",
-      "method": "exact-full-product-title",
-      "group": "ME03: Perfect Order",
-      "productName": "Perfect Order Build & Battle Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/672400/pokemon-me03-perfect-order-perfect-order-build-and-battle-box"
-    },
-    {
-      "id": "ptcg:chaos-rising:booster-box",
-      "tcgplayerProductId": "684444",
-      "method": "exact-full-product-title",
-      "group": "ME04: Chaos Rising",
-      "productName": "Chaos Rising Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/684444/pokemon-me04-chaos-rising-chaos-rising-booster-box"
-    },
-    {
-      "id": "ptcg:chaos-rising:booster-bundle",
-      "tcgplayerProductId": "684456",
-      "method": "exact-full-product-title",
-      "group": "ME04: Chaos Rising",
-      "productName": "Chaos Rising Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/684456/pokemon-me04-chaos-rising-chaos-rising-booster-bundle"
-    },
-    {
-      "id": "ptcg:chaos-rising:build-battle-box",
-      "tcgplayerProductId": "684454",
-      "method": "exact-full-product-title",
-      "group": "ME04: Chaos Rising",
-      "productName": "Chaos Rising Build & Battle Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/684454/pokemon-me04-chaos-rising-chaos-rising-build-and-battle-box"
-    },
-    {
-      "id": "ptcg:pitch-black:booster-box",
-      "tcgplayerProductId": "692939",
-      "method": "exact-full-product-title",
-      "group": "ME05: Pitch Black",
-      "productName": "Pitch Black Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/692939/pokemon-me05-pitch-black-pitch-black-booster-box"
-    },
-    {
-      "id": "ptcg:pitch-black:booster-bundle",
-      "tcgplayerProductId": "692942",
-      "method": "exact-full-product-title",
-      "group": "ME05: Pitch Black",
-      "productName": "Pitch Black Booster Bundle",
-      "sourceUrl": "https://www.tcgplayer.com/product/692942/pokemon-me05-pitch-black-pitch-black-booster-bundle"
-    },
-    {
-      "id": "ptcg:pitch-black:build-battle-box",
-      "tcgplayerProductId": "692946",
-      "method": "exact-full-product-title",
-      "group": "ME05: Pitch Black",
-      "productName": "Pitch Black Build & Battle Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/692946/pokemon-me05-pitch-black-pitch-black-build-and-battle-box"
-    },
-    {
-      "id": "ptcg:delta-reign:build-battle-box",
-      "tcgplayerProductId": "712101",
-      "method": "exact-full-product-title",
-      "group": "ME06: Delta Reign",
-      "productName": "Delta Reign Build & Battle Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/712101/pokemon-me06-delta-reign-delta-reign-build-and-battle-box"
-    },
-    {
-      "id": "ptcg:ascended-heroes:elite-trainer-box",
-      "tcgplayerProductId": "668496",
-      "method": "exact-full-product-title",
-      "group": "ME: Ascended Heroes",
-      "productName": "Ascended Heroes Elite Trainer Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/668496/pokemon-me-ascended-heroes-ascended-heroes-elite-trainer-box"
-    },
-    {
-      "id": "ptcg:ascended-heroes:premium-poster-collection-mega-lucario",
-      "tcgplayerProductId": "668536",
-      "method": "exact-full-product-title",
-      "group": "ME: Ascended Heroes",
-      "productName": "Premium Poster Collection: Mega Lucario",
-      "sourceUrl": "https://www.tcgplayer.com/product/668536/pokemon-me-ascended-heroes-premium-poster-collection-mega-lucario"
-    },
-    {
-      "id": "ptcg:ascended-heroes:premium-poster-collection-mega-gardevoir",
-      "tcgplayerProductId": "668537",
-      "method": "exact-full-product-title",
-      "group": "ME: Ascended Heroes",
-      "productName": "Premium Poster Collection: Mega Gardevoir",
-      "sourceUrl": "https://www.tcgplayer.com/product/668537/pokemon-me-ascended-heroes-premium-poster-collection-mega-gardevoir"
-    },
-    {
-      "id": "ptcg:ascended-heroes:first-partners-deluxe-pin-collection",
-      "tcgplayerProductId": "672391",
-      "method": "exact-full-product-title",
-      "group": "ME: Ascended Heroes",
-      "productName": "Ascended Heroes First Partners Deluxe Pin Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/672391/pokemon-me-ascended-heroes-ascended-heroes-first-partners-deluxe-pin-collection"
-    },
-    {
-      "id": "ptcg:ascended-heroes:mega-meganium-ex-box",
-      "tcgplayerProductId": "672733",
-      "method": "exact-full-product-title",
-      "group": "ME: Ascended Heroes",
-      "productName": "Ascended Heroes Mega Meganium ex Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/672733/pokemon-me-ascended-heroes-ascended-heroes-mega-meganium-ex-box"
-    },
-    {
-      "id": "ptcg:ascended-heroes:mega-feraligatr-ex-box",
-      "tcgplayerProductId": "672735",
-      "method": "exact-full-product-title",
-      "group": "ME: Ascended Heroes",
-      "productName": "Ascended Heroes Mega Feraligatr ex Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/672735/pokemon-me-ascended-heroes-ascended-heroes-mega-feraligatr-ex-box"
-    },
-    {
-      "id": "ptcg:mega-venusaur-ex:premium-collection",
-      "tcgplayerProductId": "654212",
-      "method": "exact-full-product-title",
-      "group": "Miscellaneous Cards & Products",
-      "productName": "Mega Venusaur ex Premium Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/654212/pokemon-miscellaneous-cards-and-products-mega-venusaur-ex-premium-collection"
-    },
-    {
-      "id": "ptcg:pokemon-day-2026:collection",
-      "tcgplayerProductId": "668590",
-      "method": "exact-full-product-title",
-      "group": "Miscellaneous Cards & Products",
-      "productName": "Pokemon Day 2026 Collection",
-      "sourceUrl": "https://www.tcgplayer.com/product/668590/pokemon-miscellaneous-cards-and-products-pokemon-day-2026-collection"
-    },
-    {
-      "id": "ptcg:prismatic-evolutions:lucario-ex-tyranitar-ex-premium-collection-sam-s-club",
-      "tcgplayerProductId": "648365",
-      "method": "exact-full-product-title",
-      "group": "Miscellaneous Cards & Products",
-      "productName": "Prismatic Evolutions Lucario ex & Tyranitar ex Premium Collection (Sam's Club)",
-      "sourceUrl": "https://www.tcgplayer.com/product/648365/pokemon-miscellaneous-cards-and-products-prismatic-evolutions-lucario-ex-and-tyranitar-ex-premium-collection-sams-club"
-    },
-    {
-      "id": "ptcg:mega-evolution:elite-trainer-box-mega-gardevoir",
-      "tcgplayerProductId": "644279",
-      "method": "exact-full-product-title",
-      "group": "ME01: Mega Evolution",
-      "productName": "Mega Evolution Elite Trainer Box [Mega Gardevoir]",
-      "sourceUrl": "https://www.tcgplayer.com/product/644279/pokemon-me01-mega-evolution-mega-evolution-elite-trainer-box-mega-gardevoir"
-    },
-    {
-      "id": "ptcg:mega-evolution:enhanced-booster-box",
-      "tcgplayerProductId": "644300",
-      "method": "exact-full-product-title",
-      "group": "ME01: Mega Evolution",
-      "productName": "Mega Evolution Enhanced Booster Box",
-      "sourceUrl": "https://www.tcgplayer.com/product/644300/pokemon-me01-mega-evolution-mega-evolution-enhanced-booster-box"
-    },
-    {
-      "id": "ptcg:evolving-skies:elite-trainer-box-flareon-jolteon-umbreon-leafeon",
-      "tcgplayerProductId": "242434",
-      "method": "exact-full-product-title",
-      "group": "SWSH07: Evolving Skies",
-      "productName": "Evolving Skies Elite Trainer Box [Flareon/Jolteon/Umbreon/Leafeon]",
-      "sourceUrl": "https://www.tcgplayer.com/product/242434/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-flareon-jolteon-umbreon-leafeon"
-    },
-    {
-      "id": "ptcg:prismatic-evolutions:tech-sticker-collection-glaceon",
-      "tcgplayerProductId": "593451",
-      "method": "exact-full-product-title",
-      "group": "SV: Prismatic Evolutions",
-      "productName": "Prismatic Evolutions Tech Sticker Collection [Glaceon]",
-      "sourceUrl": "https://www.tcgplayer.com/product/593451/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-glaceon"
-    },
-    {
-      "id": "ptcg:prismatic-evolutions:tech-sticker-collection-sylveon",
-      "tcgplayerProductId": "593450",
-      "method": "exact-full-product-title",
-      "group": "SV: Prismatic Evolutions",
-      "productName": "Prismatic Evolutions Tech Sticker Collection [Sylveon]",
-      "sourceUrl": "https://www.tcgplayer.com/product/593450/pokemon-sv-prismatic-evolutions-prismatic-evolutions-tech-sticker-collection-sylveon"
-    }
-  ],
-  "newlyMappedCount": 51
+  "matchedCount": 113,
+  "newlyMapped": [],
+  "newlyMappedCount": 0,
+  "catalogFingerprint": "c3f7bc48639140b98d43aad343bab342d105017cea84145f52aca1e5f21a0d78"
 }
