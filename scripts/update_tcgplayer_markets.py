@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import re
 import sys
@@ -128,12 +129,26 @@ def main():
         print(f"STOP: upstream date {upstream_date!r} differs from manually requested {args.date!r}. No file written.", file=sys.stderr)
         return 2
     actual_date = upstream_date
+    # A new exact product-ID mapping can enrich an already published snapshot
+    # without altering its original observed date. Track the catalog mapping
+    # fingerprint so same-date updates aren't skipped prematurely.
+    current_fingerprint = hashlib.sha256(CATALOG.read_bytes()).hexdigest()
     if DESTINATION.exists():
         old = DESTINATION.read_text(encoding="utf-8")
         previous = re.search(r'const TCGPLAYER_DAILY_AS_OF=\s*"(\d{4}-\d{2}-\d{2})"', old)
-        if previous and previous.group(1) >= actual_date:
-            print(f"SKIP: published snapshot {actual_date} is not newer than imported {previous.group(1)}. Nothing to commit.")
-            return 0
+        if previous:
+            prior_date = previous.group(1)
+            if prior_date > actual_date:
+                print(f"SKIP: upstream {actual_date} is older than imported {prior_date}; no rollback.")
+                return 0
+            if prior_date == actual_date and REPORT.exists():
+                try:
+                    prior_audit = json.loads(REPORT.read_text(encoding="utf-8"))
+                except (ValueError, OSError):
+                    prior_audit = {}
+                if prior_audit.get("catalogFingerprint") == current_fingerprint:
+                    print(f"SKIP: upstream {actual_date} and product ID mappings are unchanged.")
+                    return 0
     print(f"Using actual TCGCSV snapshot date {actual_date} (source marker: {modified!r}).")
 
     mapped = json.loads(CATALOG.read_text(encoding="utf-8"))["products"]
@@ -224,9 +239,9 @@ def main():
     audit["newlyMappedCount"] = len(newly_mapped)
     print(f"Found {len(output)}/{len(mapped)} exact matches; new product IDs {len(newly_mapped)}; unpriced {len(audit['unmatched'])}, ambiguous {len(audit['ambiguous'])}")
 
-    # Always write an evidence log even when coverage is incomplete.
-    REPORT.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if not output:
+        audit["catalogFingerprint"] = current_fingerprint
+        REPORT.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print("STOP: no market-price matches. Retaining prior catalog snapshot.", file=sys.stderr)
         return 3
     new_data = json.dumps(output, ensure_ascii=False, sort_keys=True, indent=2)
@@ -234,6 +249,8 @@ def main():
         existing_document = json.loads(CATALOG.read_text(encoding="utf-8"))
         existing_document["products"] = mapped
         CATALOG.write_text(json.dumps(existing_document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    audit["catalogFingerprint"] = hashlib.sha256(CATALOG.read_bytes()).hexdigest()
+    REPORT.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     DESTINATION.write_text(
         "/* Auto-generated dated TCGplayer Market Price snapshots via TCGCSV.\n"
         " * Individual exact matches only. No inferred prices or relabeled old dates.\n"
