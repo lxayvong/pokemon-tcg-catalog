@@ -59,7 +59,8 @@ const sourceLinks={
 "30th Anniversary Celebration":"https://www.pokemon.com/uk/news/pokemon-tcg-30th-celebration-product-showcase"
 };
 function score(x){let inv=5,col=5,rip=6;
-const premium=x.market!=null&&x.msrp?x.market/x.msrp:1;
+const referenceMarket=x.market??x.indicativePrice??null;
+const premium=referenceMarket!=null&&x.msrp?referenceMarket/x.msrp:1;
 if(x.set==="Pokémon 151"){inv=9;col=9;rip=8}
 else if(x.set==="Evolving Skies"){inv=9;col=9;rip=8}
 else if(x.set==="30th Anniversary Celebration"){inv=8;col=9;rip=8}
@@ -71,7 +72,7 @@ if(x.type==="UPC"){col=Math.min(10,col+1);rip=Math.max(1,rip-2)}
 if(x.type==="Booster Box"){inv=Math.min(10,inv+1);col=Math.max(1,col-1)}
 if(x.type==="Booster Bundle"){rip=Math.min(10,rip+1)}
 if(premium>3){rip=Math.max(2,rip-3)}else if(premium>1.8){rip=Math.max(3,rip-2)}
-if(x.market==null)inv=Math.min(inv,7);
+if(referenceMarket==null)inv=Math.min(inv,7);
 return {inv,col,rip,hold:Math.round((inv+col)/2),note:"Subjective 1–10 assessment; not a return forecast."}
 }
 function fullContents(x){const record=productById?.get(x.id);if(record?.contents.verified&&record.contents.description)return {text:record.contents.description,confidence:"Official product configuration"};const mix=COMMUNITY_PACK_FACTS[key(x)];if(mix){const groups=mix.mix.map(([set,n])=>n+" × "+set+" booster packs").join("; ");const extras=CATALOG_ADDITION_META[key(x)]?.description||"";return {text:groups+". "+extras+(mix.alternatives?.length?" Other reported mixes: "+mix.alternatives.join("; ")+".":""),confidence:mix.status,source:mix.source,alternateSource:mix.alternateSource};}const added=CATALOG_ADDITION_META[key(x)]?.description;if(added)return {text:added,confidence:"Official product contents; mixed pack expansions not independently confirmed"};const v=completeContents[key(x)];if(v)return {text:v,confidence:"Researched product description"};if(["Booster Box","Booster Bundle"].includes(x.type))return {text:x.packs+" × "+x.set+" booster packs; no additional promo cards expected.",confidence:"Format-based, verify variant"};if(["ETB","PC ETB"].includes(x.type))return {text:x.packs+" × "+x.set+" booster packs; typical ETB includes promo card (varies by release), sleeves, Energy, dice, markers, guide, storage box and code card. Exact accessories not confirmed for this listing.",confidence:"Format-based, not fully verified"};return {text:"Pack count: "+x.packs+". Exact expansion mix and all accessories not reliably documented for this specific product; verify box/back label before buying.",confidence:"Incomplete: verify before purchase"}}
