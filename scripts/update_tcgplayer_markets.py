@@ -169,6 +169,8 @@ def main():
         print(f"Group {gid} {g.get('name')}: {len(products)} products, {len(prices)} prices")
 
     output = {}
+    newly_mapped = []
+    catalog_id_owner = {str(p["tcgplayerProductId"]):p["id"] for p in mapped if p.get("tcgplayerProductId")}
     audit = {"asOf": actual_date, "upstreamUpdated": modified, "catalogProducts": len(mapped),
              "groupsScanned": len(candidates), "matched": [], "unmatched": [], "ambiguous": []}
     for wanted in mapped:
@@ -193,6 +195,19 @@ def main():
             audit["ambiguous"].append({"id": wanted["id"], "candidates": matches})
             continue
         item = matches[0]
+        resolved_id = str(item["productId"])
+        # Persist IDs only after an exact single variant match. Never create
+        # two catalog products pointing to the same TCGplayer product ID.
+        existing_owner = catalog_id_owner.get(resolved_id)
+        if existing_owner and existing_owner != wanted["id"]:
+            audit["ambiguous"].append({"id": wanted["id"], "reason":"TCGplayer ID already belongs to "+existing_owner, "candidates":matches})
+            continue
+        if not wanted.get("tcgplayerProductId"):
+            wanted["tcgplayerProductId"] = resolved_id
+            newly_mapped.append({"id":wanted["id"],"tcgplayerProductId":resolved_id,
+                                 "method":method,"group":item["groupName"],"productName":item["name"],
+                                 "sourceUrl":item["url"]})
+            catalog_id_owner[resolved_id] = wanted["id"]
         output[wanted["id"]] = {
             "amount": item["price"],
             "reportedAt": actual_date,
@@ -205,7 +220,9 @@ def main():
         }
         audit["matched"].append({"id": wanted["id"], "market": item["price"], "productId": item["productId"], "method": method})
     audit["matchedCount"] = len(output)
-    print(f"Found {len(output)}/{len(mapped)} exact matches; unpriced {len(audit['unmatched'])}, ambiguous {len(audit['ambiguous'])}")
+    audit["newlyMapped"] = newly_mapped
+    audit["newlyMappedCount"] = len(newly_mapped)
+    print(f"Found {len(output)}/{len(mapped)} exact matches; new product IDs {len(newly_mapped)}; unpriced {len(audit['unmatched'])}, ambiguous {len(audit['ambiguous'])}")
 
     # Always write an evidence log even when coverage is incomplete.
     REPORT.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -213,6 +230,10 @@ def main():
         print("STOP: no market-price matches. Retaining prior catalog snapshot.", file=sys.stderr)
         return 3
     new_data = json.dumps(output, ensure_ascii=False, sort_keys=True, indent=2)
+    if newly_mapped:
+        existing_document = json.loads(CATALOG.read_text(encoding="utf-8"))
+        existing_document["products"] = mapped
+        CATALOG.write_text(json.dumps(existing_document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     DESTINATION.write_text(
         "/* Auto-generated dated TCGplayer Market Price snapshots via TCGCSV.\n"
         " * Individual exact matches only. No inferred prices or relabeled old dates.\n"
