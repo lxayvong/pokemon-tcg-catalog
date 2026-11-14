@@ -1,5 +1,11 @@
 name: Refresh TCGplayer sealed market prices
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/tcg-market-prices.yml"
+      - "scripts/update_tcgplayer_markets.py"
+      - "tests/test_tcg_market_dates.py"
   workflow_dispatch:
     inputs:
       market_date:
@@ -41,12 +47,12 @@ jobs:
           fi
       - name: Commit actual verified price results
         run: |
-          if git diff --quiet -- shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json; then
+          if git diff --quiet -- shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json shared/catalog-price-map.json; then
             echo "No updated prices returned."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json
-          git commit -m "Refresh dated TCGplayer Market Price snapshot from TCGCSV"
+          git add shared/tcgplayer-market-daily.js shared/tcgplayer-market-audit.json shared/catalog-price-map.json
+          git commit -m "Refresh exact sealed market prices and confirmed TCGplayer product ID mapping"
           git push
