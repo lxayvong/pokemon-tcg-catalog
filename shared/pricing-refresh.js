@@ -158,6 +158,8 @@ const PRICE_RESEARCH_RETAIL=[
   "in-store-only"
  ]
 ,
+ ["30th Anniversary Celebration","Booster Bundle","GameStop",79.99,"https://www.gamestop.com/toys-games/trading-cards/pokemon-tcg-30th-celebration?prefn1=bvConsolidatedRating&prefv1=4%26up","","","unknown"],
+ ["30th Anniversary Celebration","Ditto Premium Collection","GameStop",99.99,"https://www.gamestop.com/toys-games/trading-cards/pokemon-tcg-30th-celebration?prefn1=bvConsolidatedRating&prefv1=4%26up","","","unknown"],
  ["30th Anniversary Celebration","Binder Collection","GameStop",69.99,"https://www.gamestop.com/toys-games/trading-cards/pokemon-tcg-30th-celebration?prefn1=bvConsolidatedRating&prefv1=4%26up","","","coming-soon"],
  ["30th Anniversary Celebration","Binder Collection","Best Buy",31.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-30th-celebration-binder-collection/6685568","6685568","10-10450-108","coming-soon"],
  ["30th Anniversary Celebration","Elite Trainer Box","Best Buy",49.99,"https://www.bestbuy.com/product/pokemon/6685559","6685559","10-10447-110","in-store-only"],
