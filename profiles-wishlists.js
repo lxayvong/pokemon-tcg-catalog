@@ -38,7 +38,13 @@ function profileDecision(x,observed,record,ratings,profile){
  const policy=profile||currentProfile(),s=ratings||{};
  if(observed===null||observed===""||observed===undefined)return {action:"ENTER PRICE",tone:"neutral",confidence:"—",reasons:["Enter an asking price to apply the selected rule profile."],trend:"Trend not evaluated"};
  const n=Number(observed);if(!Number.isFinite(n)||n<0)return {action:"ENTER PRICE",tone:"neutral",confidence:"—",reasons:["Enter a valid non-negative price."],trend:"Trend not evaluated"};
- const market=x.market>0?x.market:null,msrp=x.msrp>0?x.msrp:null,offers=(record?.offers||[]).filter(o=>Number.isFinite(o.amount)&&o.amount>0);
+ const verifiedMarket=Number.isFinite(Number(x.market))&&Number(x.market)>0;
+ const indicativeMarket=Number.isFinite(Number(x.indicativePrice))&&Number(x.indicativePrice)>0;
+ const market=verifiedMarket?Number(x.market):indicativeMarket?Number(x.indicativePrice):null;
+ const marketIsVerified=verifiedMarket;
+ const referenceDate=marketIsVerified?(x.marketDate||record?.pricing?.market?.reportedAt):
+  indicativeMarket?(x.indicativeDate||record?.pricing?.unverifiedMarketReference?.reportedAt):null;
+ const msrp=x.msrp>0?x.msrp:null,offers=(record?.offers||[]).filter(o=>Number.isFinite(o.amount)&&o.amount>0);
  const lowest=offers.length?Math.min(...offers.map(o=>o.amount)):null;
  const buy=Math.max(0,Math.min(95,Number(policy.buyDiscountPct)||0))/100,consider=Math.max(0,Math.min(95,Number(policy.considerDiscountPct)||0))/100;
  const maxMsrp=Math.max(0,Number(policy.maxMsrpPremiumPct)||0)/100;
@@ -47,11 +53,11 @@ function profileDecision(x,observed,record,ratings,profile){
  const maxPack=policy.maxPricePerPack==null||policy.maxPricePerPack===""?null:Number(policy.maxPricePerPack);
  const perPack=x.packs>0?n/x.packs:null;
  let action="RESEARCH",tone="neutral";let reasons=[];
- if(market!=null){const ratio=n/market;
-   if(ratio<=1-buy){action="BUY";tone="good";reasons.push(Math.round((1-ratio)*100)+"% below recorded TCGplayer market");}
-   else if(ratio<=1-consider){action="CONSIDER";tone="good";reasons.push(Math.round((1-ratio)*100)+"% below market");}
-   else if(ratio<=1.05){action="WAIT";tone="caution";reasons.push("Near market price; limited margin");}
-   else{action="SKIP";tone="bad";reasons.push(Math.round((ratio-1)*100)+"% above recorded market");}
+ if(market!=null){const ratio=n/market;const label=marketIsVerified?"sourced market price":"unverified market reference";
+   if(ratio<=1-buy){action="BUY";tone="good";reasons.push(Math.round((1-ratio)*100)+"% below "+label);}
+   else if(ratio<=1-consider){action="CONSIDER";tone="good";reasons.push(Math.round((1-ratio)*100)+"% below "+label);}
+   else if(ratio<=1.05){action="WAIT";tone="caution";reasons.push("Near "+label+"; limited margin");}
+   else{action="SKIP";tone="bad";reasons.push(Math.round((ratio-1)*100)+"% above "+label);}
  } else if(msrp!=null){action=n<=msrp?"CONSIDER":"WAIT";tone="caution";reasons.push("Market price unavailable; assessed against retail benchmark");}
  else if(lowest!=null){action=n<=lowest?"CONSIDER":"WAIT";tone="caution";reasons.push("Market price unavailable; assessed against retailer listings");}
  else reasons.push("No verified price benchmarks");
@@ -60,11 +66,14 @@ function profileDecision(x,observed,record,ratings,profile){
  if(minScore>0&&score<minScore){if(action==="BUY"||action==="CONSIDER"){action="WAIT";tone="caution"}reasons.push("Strategy score "+score+"/10 below profile minimum "+minScore+"/10");}
  if(lowest!=null&&n>lowest*1.12)reasons.push("Lower documented first-party retailer price: $"+lowest.toFixed(2));
  if(perPack!=null)reasons.push("$"+perPack.toFixed(2)+" per pack");
- const referenceDate=record?.pricing?.market?.reportedAt||record?.pricing?.market?.observedAt;
  const days=referenceDate?Math.floor((Date.now()-Date.parse(referenceDate+"T00:00:00Z"))/86400000):null;
- const fresh=record?.pricing?.market?.verified&&days!==null&&days>=0&&days<=14;
- let confidence=market!=null&&fresh?"Medium":"Low";
- if(action==="BUY"&&!fresh){action="CONSIDER";tone="neutral";reasons.unshift("Price reference is stale or unverified; firm BUY withheld");}
+ const fresh=marketIsVerified&&days!==null&&days>=0&&days<=14;
+ const confidence=market!=null&&fresh?"Medium":"Low";
+ if(market!=null&&!marketIsVerified){
+  reasons.unshift("Indicative market $"+market.toFixed(2)+(referenceDate?" ("+referenceDate+")":"")+
+   ": exact-product validation pending. Verdict uses this estimate with low confidence.");
+ }
+ if(action==="BUY"&&!fresh){action="CONSIDER";tone="neutral";reasons.unshift("Market reference is stale or unverified; firm BUY withheld");}
  reasons.unshift("Profile: "+policy.name+" ("+policy.strategy+")");
  return {action,tone,confidence,reasons:reasons.slice(0,6),trend:"Trend not evaluated: price history unavailable"};
 }
