@@ -6,6 +6,7 @@ on:
       - ".github/workflows/tcg-market-prices.yml"
       - "scripts/update_tcgplayer_markets.py"
       - "tests/test_tcg_market_dates.py"
+      - "shared/catalog-price-map.json"
   workflow_dispatch:
     inputs:
       market_date:
