@@ -1,5 +1,5 @@
 /* Canonical product and retailer offer model. No unverified identifiers or offers are synthesized. */
-const RETAILERS=Object.freeze(["Pokémon Center","Target","Meijer","Best Buy","Walmart","Sam's Club","Costco"]);
+const RETAILERS=Object.freeze(["Pokémon Center","Target","Meijer","Best Buy","Walmart","Sam's Club","Costco","GameStop","Barnes & Noble","Walgreens","CVS","Five Below","H-E-B","Kroger","Fred Meyer","Macy's"]);
 const slug=v=>String(v).normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 function canonicalId(set,name){return "ptcg:"+slug(set)+":"+slug(name)}
 function makeProduct(row,images,contents){
