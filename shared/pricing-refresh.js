@@ -165,6 +165,19 @@ const PRICE_RESEARCH_RETAIL=[
  ["30th Anniversary Celebration","Elite Trainer Box","Best Buy",49.99,"https://www.bestbuy.com/product/pokemon/6685559","6685559","10-10447-110","in-store-only"],
  ["Phantasmal Flames","Booster Box","Best Buy",160.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-mega-evolution-phantasmal-flames-booster-box-36-packs/6645341","6645341","10-10190-119","in-store-only"],
  ["Delta Reign","Booster Box","Best Buy",160.99,"https://www.bestbuy.com/product/pokemon/6689677","6689677","10-10446-120","coming-soon"]];
+// Additional first-party listed prices researched 2026-11-14. Not proof of current stock.
+PRICE_RESEARCH_RETAIL.push(
+ ["Pokémon 151","Blooming Waters","Best Buy",59.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-blooming-waters-premium-collection/6609201","6609201","10-10124-103","sold-out"],
+ ["Prismatic Evolutions","Poster Collection","Best Buy",11.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-scarlet-violet-prismatic-evolutions-poster-collection/6606080","6606080","10-10024-101","in-store-only"],
+ ["Prismatic Evolutions","Poster Collection","Target",19.99,"https://www.target.com/p/-/A-93803457","93803457","","out-of-stock"],
+ ["Prismatic Evolutions","Binder Collection","Best Buy",29.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-scarlet-violet-prismatic-evolutions-binder-collection/6606079","6606079","10-10023-101","in-store-only"],
+ ["Stellar Crown","Elite Trainer Box","Target",49.99,"https://www.target.com/p/-/A-91619912","91619912","","out-of-stock"],
+ ["Shrouded Fable","Elite Trainer Box","Target",49.99,"https://www.target.com/p/-/A-91600215","91600215","","out-of-stock"],
+ ["Mega Evolution","Booster Bundle","Best Buy",26.94,"https://www.bestbuy.com/product/pokemon-trading-card-game-mega-evolution-booster-bundle/6639108","6639108","10-10054-108","in-store-only"],
+ ["Delta Reign","Booster Bundle","Best Buy",26.94,"https://www.bestbuy.com/product/pokemon-trading-card-game-mega-evolution-delta-reign-booster-bundle-6-packs/6689678","6689678","10-10439-109","in-store-only"],
+ ["Ascended Heroes","Booster Bundle","Best Buy",26.94,"https://www.bestbuy.com/product/-/6665401","6665401","10-10311-114","in-store-only"],
+ ["Pitch Black","Booster Bundle","Best Buy",26.94,"https://www.bestbuy.com/product/a/6678359","6678359","10-10422-109","in-store-only"]
+);
 const PRICING_REFRESH_STATS={markets:0,unverifiedMarketReferences:0,retailerOffers:0,missing:[]};
 for(const [set,name,amount,reportedAt,sourceUrl] of PRICE_RESEARCH_MARKET){
  const record=productById.get(canonicalId(set,name));
