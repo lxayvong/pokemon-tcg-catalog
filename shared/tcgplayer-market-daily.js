@@ -424,6 +424,26 @@ const TCGPLAYER_DAILY_PRICES={
     "tcgplayerProductId": "475628",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
+  "ptcg:crown-zenith:galarian-moltres-tin": {
+    "amount": 154.94,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/475629/pokemon-swsh-crown-zenith-crown-zenith-tin-galarian-moltres",
+    "tcgplayerProductId": "475629",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:crown-zenith:galarian-zapdos-tin": {
+    "amount": 141.41,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/475630/pokemon-swsh-crown-zenith-crown-zenith-tin-galarian-zapdos",
+    "tcgplayerProductId": "475630",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
   "ptcg:crown-zenith:pikachu-vmax-special-collection": {
     "amount": 163.77,
     "checkedAt": "2026-11-13",
@@ -522,6 +542,16 @@ const TCGPLAYER_DAILY_PRICES={
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/242443/pokemon-swsh07-evolving-skies-evolving-skies-elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
     "tcgplayerProductId": "242443",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:evolving-skies:three-pack-blister-eiscue": {
+    "amount": 218.03,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/242435/pokemon-swsh07-evolving-skies-evolving-skies-3-pack-blister-eiscue",
+    "tcgplayerProductId": "242435",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:evolving-skies:three-pack-blister-umbreon": {
@@ -642,6 +672,26 @@ const TCGPLAYER_DAILY_PRICES={
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/644300/pokemon-me01-mega-evolution-mega-evolution-enhanced-booster-box",
     "tcgplayerProductId": "644300",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:mega-evolution:pokemon-center-etb-mega-gardevoir": {
+    "amount": 170.17,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/648415/pokemon-me01-mega-evolution-mega-evolution-pokemon-center-elite-trainer-box-exclusive-mega-gardevoir",
+    "tcgplayerProductId": "648415",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:mega-evolution:pokemon-center-etb-mega-lucario": {
+    "amount": 190.14,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/644282/pokemon-me01-mega-evolution-mega-evolution-pokemon-center-elite-trainer-box-exclusive-mega-lucario",
+    "tcgplayerProductId": "644282",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:mega-greninja-ex:premium-collection": {
@@ -774,6 +824,16 @@ const TCGPLAYER_DAILY_PRICES={
     "tcgplayerProductId": "654136",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
+  "ptcg:phantasmal-flames:pokemon-center-etb": {
+    "amount": 267.37,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/654135/pokemon-me02-phantasmal-flames-phantasmal-flames-pokemon-center-elite-trainer-box-exclusive",
+    "tcgplayerProductId": "654135",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
   "ptcg:pitch-black:booster-box": {
     "amount": 170.98,
     "checkedAt": "2026-11-13",
@@ -814,6 +874,16 @@ const TCGPLAYER_DAILY_PRICES={
     "tcgplayerProductId": "692947",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
+  "ptcg:pitch-black:pokemon-center-etb": {
+    "amount": 111.7,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/692949/pokemon-me05-pitch-black-pitch-black-pokemon-center-elite-trainer-box-exclusive",
+    "tcgplayerProductId": "692949",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
   "ptcg:pokemon-151:alakazam-ex-collection": {
     "amount": 114.16,
     "checkedAt": "2026-11-13",
@@ -832,6 +902,16 @@ const TCGPLAYER_DAILY_PRICES={
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/502004/pokemon-sv-scarlet-and-violet-151-151-binder-collection",
     "tcgplayerProductId": "502004",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:pokemon-151:blooming-waters": {
+    "amount": 321.07,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/609597/pokemon-sv-scarlet-and-violet-151-blooming-waters-premium-collection",
+    "tcgplayerProductId": "609597",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:pokemon-151:booster-bundle": {
@@ -932,6 +1012,16 @@ const TCGPLAYER_DAILY_PRICES={
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/648365/pokemon-miscellaneous-cards-and-products-prismatic-evolutions-lucario-ex-and-tyranitar-ex-premium-collection-sams-club",
     "tcgplayerProductId": "648365",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:prismatic-evolutions:pokemon-center-etb": {
+    "amount": 374.49,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/593324/pokemon-sv-prismatic-evolutions-prismatic-evolutions-pokemon-center-elite-trainer-box-exclusive",
+    "tcgplayerProductId": "593324",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:prismatic-evolutions:poster-collection": {
@@ -1092,6 +1182,16 @@ const TCGPLAYER_DAILY_PRICES={
     "source": "TCGplayer Market Price via TCGCSV daily mirror",
     "sourceUrl": "https://www.tcgplayer.com/product/565630/pokemon-sv08-surging-sparks-surging-sparks-elite-trainer-box",
     "tcgplayerProductId": "565630",
+    "upstreamBuild": "2026-11-13T20:05:52+0000"
+  },
+  "ptcg:surging-sparks:pokemon-center-etb": {
+    "amount": 243.94,
+    "checkedAt": "2026-11-13",
+    "matchMethod": "exact-TCGplayer-product-ID",
+    "reportedAt": "2026-11-13",
+    "source": "TCGplayer Market Price via TCGCSV daily mirror",
+    "sourceUrl": "https://www.tcgplayer.com/product/565632/pokemon-sv08-surging-sparks-surging-sparks-pokemon-center-elite-trainer-box-exclusive",
+    "tcgplayerProductId": "565632",
     "upstreamBuild": "2026-11-13T20:05:52+0000"
   },
   "ptcg:twilight-masquerade:booster-box": {
