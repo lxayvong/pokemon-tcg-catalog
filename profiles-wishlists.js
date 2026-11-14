@@ -25,8 +25,8 @@ function savedProductRecord(product,observed,details,ratings,verdict){
  const price=observed==null||observed===""?null:Number(observed);
  return {productId:product.id,set:product.set,name:product.name,type:product.type,packs:product.packCount,image:product.images?.[0]?.url||null,
  contents:details?.text||product.contents?.description||"",contentsConfidence:details?.confidence||null,
- snapshot:{savedAt:new Date().toISOString(),msrp:product.pricing?.msrp?.amount??null,market:product.pricing?.market?.amount??null,
- marketDate:product.pricing?.market?.reportedAt??null,retailerPrices:(product.offers||[]).map(o=>({retailer:o.retailer,amount:o.amount,url:o.url,observedAt:o.observedAt})),
+ snapshot:{savedAt:new Date().toISOString(),msrp:product.pricing?.msrp?.amount??null,market:product.pricing?.market?.amount??product.pricing?.unverifiedMarketReference?.amount??null,marketConfidence:product.pricing?.market?.verified===true?"verified":product.pricing?.unverifiedMarketReference?.amount!=null?"indicative":"missing",marketSourceUrl:product.pricing?.market?.sourceUrl??product.pricing?.unverifiedMarketReference?.sourceUrl??null,
+ marketDate:product.pricing?.market?.reportedAt??product.pricing?.unverifiedMarketReference?.reportedAt??null,retailerPrices:(product.offers||[]).map(o=>({retailer:o.retailer,amount:o.amount,url:o.url,observedAt:o.observedAt})),
  observedPrice:Number.isFinite(price)&&price>=0?price:null,ratings:ratings||{},action:verdict?.action||null},
  desiredPrice:null,quantity:1,notes:""};
 }
