@@ -68,3 +68,23 @@ CATALOG_ADDITION_META["Prismatic Evolutions|Super-Premium Collection"]={
  upc:"196214112568",
  tcgplayer:"622770"
 };
+
+// Audited 2026-11-17: Flowing Fists variants are retailer preorder listings; TPCI confirmation pending.
+CATALOG_ADDITIONS.push(
+ {set:"Flowing Fists",name:"Booster Box",type:"Booster Box",packs:36,source:"https://forgeandfiregaming.com/flowing-fists/"},
+ {set:"Flowing Fists",name:"Elite Trainer Box",type:"ETB",packs:9,source:"https://forgeandfiregaming.com/flowing-fists/flowing-fists-elite-trainer-box/"},
+ {set:"Flowing Fists",name:"Booster Bundle",type:"Booster Bundle",packs:6,source:"https://forgeandfiregaming.com/flowing-fists/"},
+ {set:"Flowing Fists",name:"3-Pack Blister",type:"Blister",packs:3,source:"https://forgeandfiregaming.com/flowing-fists/"},
+ {set:"Flowing Fists",name:"Checklane Blister",type:"Blister",packs:1,source:"https://forgeandfiregaming.com/flowing-fists/flowing-fists-checklane-blister/"},
+ {set:"Flowing Fists",name:"Sleeved Booster Pack (Random Art)",type:"Booster Pack",packs:1,source:"https://forgeandfiregaming.com/flowing-fists/"},
+ {set:"Mega Greninja ex",name:"League Battle Deck",type:"Deck",packs:0,source:"https://www.pokemon.com/us/news/check-out-every-pokemon-tcg-product-release-in-november-2026"}
+);
+Object.assign(CATALOG_ADDITION_META,{
+ "Flowing Fists|Booster Box":{description:"Retailer preorder; expected February 5, 2027. Official Pokémon product lineup, MSRP and market price unconfirmed."},
+ "Flowing Fists|Elite Trainer Box":{description:"Retailer preorder; expected February 5, 2027. Official Pokémon product lineup, MSRP and market price unconfirmed."},
+ "Flowing Fists|Booster Bundle":{description:"Retailer preorder; expected February 5, 2027. Official Pokémon product lineup, MSRP and market price unconfirmed."},
+ "Flowing Fists|3-Pack Blister":{description:"Retailer preorder; expected February 5, 2027. Official Pokémon product lineup, MSRP and market price unconfirmed."},
+ "Flowing Fists|Checklane Blister":{description:"Retailer preorder; expected February 5, 2027. Official Pokémon product lineup, MSRP and market price unconfirmed."},
+ "Flowing Fists|Sleeved Booster Pack (Random Art)":{description:"Retailer preorder; expected February 5, 2027. Official Pokémon product lineup, MSRP and market price unconfirmed."},
+ "Mega Greninja ex|League Battle Deck":{description:"Official Pokémon 60-card ready-to-play League Battle Deck, released November 13, 2026."}
+});
