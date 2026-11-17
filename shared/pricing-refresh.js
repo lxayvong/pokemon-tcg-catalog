@@ -178,6 +178,8 @@ PRICE_RESEARCH_RETAIL.push(
  ["Ascended Heroes","Booster Bundle","Best Buy",26.94,"https://www.bestbuy.com/product/-/6665401","6665401","10-10311-114","in-store-only"],
  ["Pitch Black","Booster Bundle","Best Buy",26.94,"https://www.bestbuy.com/product/a/6678359","6678359","10-10422-109","in-store-only"]
 );
+// Exact Best Buy retailer listing; no guessed Flowing Fists retail prices.
+PRICE_RESEARCH_RETAIL.push(["Mega Greninja ex","League Battle Deck","Best Buy",29.99,"https://www.bestbuy.com/product/pokemon-trading-card-game-mega-greninja-ex-league-battle-deck/6690163","6690163","10-10633-101","coming-soon"]);
 const PRICING_REFRESH_STATS={markets:0,unverifiedMarketReferences:0,retailerOffers:0,missing:[]};
 for(const [set,name,amount,reportedAt,sourceUrl] of PRICE_RESEARCH_MARKET){
  const record=productById.get(canonicalId(set,name));
