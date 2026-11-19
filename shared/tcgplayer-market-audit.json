@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-11-17",
-  "upstreamUpdated": "2026-11-17T20:05:43+0000",
+  "asOf": "2026-11-18",
+  "upstreamUpdated": "2026-11-18T20:05:56+0000",
   "catalogProducts": 142,
   "groupsScanned": 26,
   "matched": [
@@ -12,73 +12,73 @@
     },
     {
       "id": "ptcg:evolving-skies:elite-trainer-box-glaceon-vaporeon-sylveon-espeon",
-      "market": 453.53,
+      "market": 454.33,
       "productId": "242443",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:booster-bundle",
-      "market": 166.89,
+      "market": 166.04,
       "productId": "502000",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:elite-trainer-box",
-      "market": 488.87,
+      "market": 486.35,
       "productId": "503313",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:blooming-waters",
-      "market": 319.83,
+      "market": 320.63,
       "productId": "609597",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:ultra-premium-collection",
-      "market": 841.15,
+      "market": 842.37,
       "productId": "502005",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:prismatic-evolutions:elite-trainer-box",
-      "market": 114.71,
+      "market": 109.98,
       "productId": "593355",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:prismatic-evolutions:booster-bundle",
-      "market": 73.41,
+      "market": 72.53,
       "productId": "600518",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:crown-zenith:elite-trainer-box",
-      "market": 313.61,
+      "market": 313.47,
       "productId": "453470",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:crown-zenith:sea-sky-collection",
-      "market": 379.41,
+      "market": 381.09,
       "productId": "563307",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:surging-sparks:booster-box",
-      "market": 301.04,
+      "market": 299.26,
       "productId": "565606",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:surging-sparks:elite-trainer-box",
-      "market": 118.75,
+      "market": 120.0,
       "productId": "565630",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:twilight-masquerade:booster-box",
-      "market": 334.05,
+      "market": 333.63,
       "productId": "543846",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -90,7 +90,7 @@
     },
     {
       "id": "ptcg:lost-origin:booster-box",
-      "market": 731.97,
+      "market": 731.25,
       "productId": "277324",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -102,49 +102,49 @@
     },
     {
       "id": "ptcg:brilliant-stars:booster-box",
-      "market": 561.0,
+      "market": 561.52,
       "productId": "256141",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:delta-reign:booster-box",
-      "market": 181.2,
+      "market": 184.37,
       "productId": "712094",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:delta-reign:booster-bundle",
-      "market": 42.66,
+      "market": 42.68,
       "productId": "712097",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:delta-reign:elite-trainer-box",
-      "market": 81.33,
+      "market": 80.23,
       "productId": "712102",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:delta-reign:pokemon-center-etb",
-      "market": 134.16,
+      "market": 132.44,
       "productId": "712104",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:phantasmal-flames:booster-box",
-      "market": 377.09,
+      "market": 375.96,
       "productId": "654137",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:phantasmal-flames:elite-trainer-box",
-      "market": 131.32,
+      "market": 133.35,
       "productId": "654136",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:shrouded-fable:elite-trainer-box",
-      "market": 108.9,
+      "market": 109.03,
       "productId": "552999",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -156,25 +156,25 @@
     },
     {
       "id": "ptcg:30th-anniversary-celebration:booster-bundle",
-      "market": 63.45,
+      "market": 63.12,
       "productId": "704171",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:elite-trainer-box",
-      "market": 105.8,
+      "market": 110.58,
       "productId": "704143",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:pokemon-center-etb",
-      "market": 251.9,
+      "market": 249.55,
       "productId": "704144",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:knock-out-collection",
-      "market": 22.0,
+      "market": 21.3,
       "productId": "704152",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -186,73 +186,73 @@
     },
     {
       "id": "ptcg:30th-anniversary-celebration:poster-collection",
-      "market": 29.84,
+      "market": 30.8,
       "productId": "704153",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:tech-sticker-lucario",
-      "market": 35.84,
+      "market": 37.25,
       "productId": "704146",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:tech-sticker-alolan-exeggutor",
-      "market": 33.11,
+      "market": 33.37,
       "productId": "704145",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:greninja-ex-box",
-      "market": 42.1,
+      "market": 43.19,
       "productId": "704168",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:sylveon-ex-box",
-      "market": 47.33,
+      "market": 48.31,
       "productId": "704155",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:binder-collection",
-      "market": 93.18,
+      "market": 92.4,
       "productId": "704169",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:ditto-premium-collection",
-      "market": 83.76,
+      "market": 76.41,
       "productId": "704189",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:figure-collection-mew",
-      "market": 69.02,
+      "market": 66.22,
       "productId": "704193",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:figure-collection-mewtwo",
-      "market": 66.94,
+      "market": 66.74,
       "productId": "704194",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:upc-day",
-      "market": 333.71,
+      "market": 318.75,
       "productId": "704190",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:upc-night",
-      "market": 355.88,
+      "market": 356.53,
       "productId": "704191",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pokemon-151:poster-collection",
-      "market": 78.19,
+      "market": 77.84,
       "productId": "502001",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -264,7 +264,7 @@
     },
     {
       "id": "ptcg:pokemon-151:alakazam-ex-collection",
-      "market": 113.15,
+      "market": 112.91,
       "productId": "502006",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -276,13 +276,13 @@
     },
     {
       "id": "ptcg:prismatic-evolutions:pokemon-center-etb",
-      "market": 362.69,
+      "market": 356.72,
       "productId": "593324",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:prismatic-evolutions:poster-collection",
-      "market": 38.25,
+      "market": 38.01,
       "productId": "593359",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -306,7 +306,7 @@
     },
     {
       "id": "ptcg:twilight-masquerade:booster-bundle",
-      "market": 76.95,
+      "market": 76.9,
       "productId": "543852",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -330,13 +330,13 @@
     },
     {
       "id": "ptcg:shrouded-fable:booster-bundle",
-      "market": 56.39,
+      "market": 55.11,
       "productId": "553031",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:shrouded-fable:kingdra-ex-special-illustration-collection",
-      "market": 183.73,
+      "market": 182.77,
       "productId": "553001",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -354,7 +354,7 @@
     },
     {
       "id": "ptcg:lost-origin:elite-trainer-box",
-      "market": 193.71,
+      "market": 193.31,
       "productId": "277335",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -366,25 +366,25 @@
     },
     {
       "id": "ptcg:brilliant-stars:elite-trainer-box",
-      "market": 165.37,
+      "market": 164.54,
       "productId": "256138",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:booster-box",
-      "market": 299.25,
+      "market": 299.85,
       "productId": "644298",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:pokemon-center-etb-mega-lucario",
-      "market": 188.64,
+      "market": 188.44,
       "productId": "644282",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:booster-bundle",
-      "market": 65.29,
+      "market": 65.2,
       "productId": "644362",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -396,13 +396,13 @@
     },
     {
       "id": "ptcg:phantasmal-flames:pokemon-center-etb",
-      "market": 260.22,
+      "market": 258.58,
       "productId": "654135",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:phantasmal-flames:booster-bundle",
-      "market": 76.85,
+      "market": 77.43,
       "productId": "654160",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -414,25 +414,25 @@
     },
     {
       "id": "ptcg:perfect-order:booster-box",
-      "market": 167.19,
+      "market": 167.51,
       "productId": "672394",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:perfect-order:elite-trainer-box",
-      "market": 67.25,
+      "market": 65.98,
       "productId": "672401",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:perfect-order:pokemon-center-etb",
-      "market": 102.91,
+      "market": 102.89,
       "productId": "672404",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:perfect-order:booster-bundle",
-      "market": 37.16,
+      "market": 37.76,
       "productId": "672396",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -444,85 +444,85 @@
     },
     {
       "id": "ptcg:chaos-rising:booster-box",
-      "market": 177.36,
+      "market": 177.45,
       "productId": "684444",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:elite-trainer-box",
-      "market": 70.64,
+      "market": 68.3,
       "productId": "684450",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:pokemon-center-etb",
-      "market": 114.42,
+      "market": 112.0,
       "productId": "684452",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:booster-bundle",
-      "market": 37.63,
+      "market": 37.42,
       "productId": "684456",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:chaos-rising:build-battle-box",
-      "market": 37.99,
+      "market": 37.87,
       "productId": "684454",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:booster-box",
-      "market": 174.57,
+      "market": 172.92,
       "productId": "692939",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:elite-trainer-box",
-      "market": 68.5,
+      "market": 63.79,
       "productId": "692947",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:pokemon-center-etb",
-      "market": 109.22,
+      "market": 107.7,
       "productId": "692949",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:booster-bundle",
-      "market": 38.99,
+      "market": 39.89,
       "productId": "692942",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:pitch-black:build-battle-box",
-      "market": 33.64,
+      "market": 33.63,
       "productId": "692946",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:delta-reign:build-battle-box",
-      "market": 44.35,
+      "market": 42.79,
       "productId": "712101",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:elite-trainer-box",
-      "market": 127.38,
+      "market": 126.77,
       "productId": "668496",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:pokemon-center-etb",
-      "market": 284.81,
+      "market": 281.75,
       "productId": "668497",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:booster-bundle",
-      "market": 79.38,
+      "market": 78.24,
       "productId": "668541",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -534,7 +534,7 @@
     },
     {
       "id": "ptcg:ascended-heroes:premium-poster-collection-mega-gardevoir",
-      "market": 136.97,
+      "market": 136.57,
       "productId": "668537",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -552,7 +552,7 @@
     },
     {
       "id": "ptcg:ascended-heroes:mega-emboar-ex-box",
-      "market": 50.05,
+      "market": 49.65,
       "productId": "672734",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -564,7 +564,7 @@
     },
     {
       "id": "ptcg:mega-greninja-ex:premium-collection",
-      "market": 49.59,
+      "market": 49.63,
       "productId": "690660",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -582,7 +582,7 @@
     },
     {
       "id": "ptcg:mega-charizard-x-ex:ultra-premium-collection",
-      "market": 209.3,
+      "market": 206.95,
       "productId": "654213",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -606,25 +606,25 @@
     },
     {
       "id": "ptcg:ascended-heroes:mega-emboar-ex-tin",
-      "market": 39.61,
+      "market": 39.56,
       "productId": "702496",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:prismatic-evolutions:lucario-ex-tyranitar-ex-premium-collection-sam-s-club",
-      "market": 194.15,
+      "market": 194.27,
       "productId": "648365",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:elite-trainer-box-mega-lucario",
-      "market": 113.37,
+      "market": 113.28,
       "productId": "648394",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:mega-evolution:elite-trainer-box-mega-gardevoir",
-      "market": 108.24,
+      "market": 107.93,
       "productId": "644279",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -636,19 +636,19 @@
     },
     {
       "id": "ptcg:mega-evolution:enhanced-booster-box",
-      "market": 280.55,
+      "market": 282.15,
       "productId": "644300",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:battle-deck-espeon-ex",
-      "market": 27.62,
+      "market": 28.1,
       "productId": "704187",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:30th-anniversary-celebration:battle-deck-umbreon-ex",
-      "market": 27.17,
+      "market": 27.1,
       "productId": "704188",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -660,19 +660,19 @@
     },
     {
       "id": "ptcg:surging-sparks:booster-bundle-lgs",
-      "market": 69.18,
+      "market": 70.3,
       "productId": "565629",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:tech-sticker-collection-charmander",
-      "market": 31.38,
+      "market": 30.63,
       "productId": "666908",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:ascended-heroes:tech-sticker-collection-gastly",
-      "market": 32.21,
+      "market": 32.26,
       "productId": "666909",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -696,7 +696,7 @@
     },
     {
       "id": "ptcg:crown-zenith:galarian-articuno-tin",
-      "market": 151.37,
+      "market": 151.49,
       "productId": "475628",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -708,13 +708,13 @@
     },
     {
       "id": "ptcg:crown-zenith:galarian-moltres-tin",
-      "market": 154.94,
+      "market": 155.65,
       "productId": "475629",
       "method": "exact-TCGplayer-product-ID"
     },
     {
       "id": "ptcg:evolving-skies:three-pack-blister-eiscue",
-      "market": 217.65,
+      "market": 217.03,
       "productId": "242435",
       "method": "exact-TCGplayer-product-ID"
     },
@@ -738,7 +738,7 @@
     },
     {
       "id": "ptcg:prismatic-evolutions:super-premium-collection",
-      "market": 238.3,
+      "market": 237.06,
       "productId": "622770",
       "method": "exact-TCGplayer-product-ID"
     }
