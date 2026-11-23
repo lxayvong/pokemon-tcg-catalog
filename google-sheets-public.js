@@ -100,29 +100,51 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
  for(const record of remote){
   const index=next.findIndex(x=>x.id===record.id);
   if(index<0){next.push(record);continue;}
-  const existing=byId.get(record.id),k=kind+":"+record.id;
-  let clean=!hasExistingStorage||initialDocumentUnmodified(kind,existing);
-  if(Object.prototype.hasOwnProperty.call(previousBaseline,k))clean=JSON.stringify(existing)===previousBaseline[k];
-  // Google Sheets is authoritative for both profiles and wish lists,
-  // except when this browser has an explicitly pending unsynced edit.
-  if(!pendingSheetWrites()[k]){
-   if(JSON.stringify(existing)!==JSON.stringify(record)){
-    try{const backup=JSON.parse(localStorage.getItem(PUBLIC_LOCAL_BACKUP_KEY)||"{}");backup[k]=existing;localStorage.setItem(PUBLIC_LOCAL_BACKUP_KEY,JSON.stringify(backup))}catch(_){}
-   }
-   next[index]=record;
+  const existing=byId.get(record.id),k=kind+":"+record.id,hasPending=!!pendingSheetWrites()[k];
+  if(kind!=="wishlist"){
+   if(!hasPending)next[index]=record;
+   else protectedCount++;
    continue;
   }
-  if(clean)next[index]=record;
-  else if(kind==="wishlist"){
-   // Never let an unsynced local snapshot hide already-published items.
-   // Preserve local edits for matching products and import remote-only items.
-   // Pending removals are tracked as tombstones until Google confirms them.
-   const removed=typeof pendingWishlistDeletes==="function"?pendingWishlistDeletes(record.id):new Set();
-   const incoming=new Map((record.items||[]).filter(x=>!removed.has(x.productId)).map(x=>[x.productId,x]));
-   for(const item of existing.items||[])incoming.set(item.productId,item);
-   next[index]={...record,...existing,items:[...incoming.values()]};
+  // Reconcile on EVERY startup. Recover locally added items before adopting the
+  // latest remote snapshot, including legacy installations with no pending flag.
+  // The previous confirmed baseline distinguishes unsynced additions from items
+  // another device deliberately removed. Never resurrect a remote deletion.
+  let oldItems=null;
+  if(Object.prototype.hasOwnProperty.call(previousBaseline,k)){
+   try{const old=JSON.parse(previousBaseline[k]);if(Array.isArray(old.items))oldItems=new Set(old.items.map(item=>item.productId));}
+   catch(_){}
+  }
+  const remoteItems=new Map((record.items||[]).map(item=>[item.productId,item]));
+  const localItems=Array.isArray(existing.items)?existing.items:[];
+  const removed=pendingWishlistDeletes(record.id);
+  // A pending write with no recorded tombstones must not delete remote items.
+  for(const productId of removed)remoteItems.delete(productId);
+  let additions=0;
+  for(const item of localItems){
+   if(remoteItems.has(item.productId)){
+    // Keep local edits on a document with pending changes. Otherwise sheet wins.
+    if(hasPending)remoteItems.set(item.productId,item);
+   }else if(!removed.has(item.productId)&&
+      (hasPending||oldItems===null||!oldItems.has(item.productId))){
+    remoteItems.set(item.productId,item);
+    additions++;
+   }
+  }
+  const merged={...record,items:[...remoteItems.values()]};
+  const changed=JSON.stringify(merged)!==JSON.stringify(record);
+  if(changed){
+   next[index]=merged;
+   if(!hasPending)markSheetPending("wishlist",record.id);
    protectedCount++;
-  }else protectedCount++;
+  }else if(hasPending&&JSON.stringify(existing)!==JSON.stringify(record)){
+   next[index]=merged;
+   protectedCount++;
+  }else{
+   next[index]=record;
+   // A stale pending marker is safe to clear only if the remote row now matches.
+   if(hasPending&&JSON.stringify(existing)===JSON.stringify(record))clearSheetPending("wishlist",record.id);
+  }
  }
  workspace[prop]=next;
  return protectedCount;
@@ -166,6 +188,10 @@ async function autoLoadPublicSheets(){
    (protectedCount?"; "+protectedCount+" locally edited record(s) preserved":"")+
    (warnings.length?"; "+warnings.join("; "):""),warnings.length>0);
   if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
+  // Queue only after a successful remote read and merge; local additions must
+  // never be replaced by an empty or stale cloud copy during startup.
+  if(wishlistResult.status==="fulfilled"&&typeof resumePendingWishlistSync==="function")
+   void resumePendingWishlistSync();
  }catch(err){
   publicSheetNotice("Google Sheets read failed: "+(err?.message||"Unknown read error")+". Browser-saved data is still available.",true);
   if(typeof updateWishlistIndicators==="function")updateWishlistIndicators();
