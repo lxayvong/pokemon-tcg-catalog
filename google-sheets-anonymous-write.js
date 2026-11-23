@@ -100,6 +100,7 @@ async function anonymousSaveImmediate(kind,requestedId=null){
  }catch(error){
   if(kind==="wishlist")setCatalogSheetSync(id,error?.code==="unconfirmed"?"unconfirmed":"error");
   anonymousSaveNotice("Shared save not confirmed; browser copy retained: "+error.message,error?.code!=="unconfirmed");
+  schedulePendingWishlistRetry();
  }finally{publicWriteState.busy=false;if(field)field.disabled=false;}
 
 }
@@ -125,6 +126,29 @@ async function anonymousSave(kind,requestedId=null){
   }
  }finally{writeDrainActive=false;}
 }
+let pendingWishlistRetryTimer=null;
+let pendingWishlistRetryDelay=15000;
+function schedulePendingWishlistRetry(){
+ if(pendingWishlistRetryTimer||!navigator.onLine)return;
+ pendingWishlistRetryTimer=setTimeout(()=>{
+  pendingWishlistRetryTimer=null;
+  void resumePendingWishlistSync();
+ },pendingWishlistRetryDelay);
+ pendingWishlistRetryDelay=Math.min(300000,pendingWishlistRetryDelay*2);
+}
+async function resumePendingWishlistSync(){
+ if(!navigator.onLine)return;
+ if(pendingWishlistRetryTimer){clearTimeout(pendingWishlistRetryTimer);pendingWishlistRetryTimer=null;}
+ const pending=pendingSheetWrites();
+ const ids=workspace.wishlists.filter(w=>pending["wishlist:"+w.id]).map(w=>w.id);
+ if(!ids.length){pendingWishlistRetryDelay=15000;return;}
+ // Do not enqueue a retry while an earlier save is still being verified.
+ if(writeDrainActive){schedulePendingWishlistRetry();return;}
+ for(const id of ids)await anonymousSave("wishlist",id);
+ if(workspace.wishlists.some(w=>pendingSheetWrites()["wishlist:"+w.id]))
+  schedulePendingWishlistRetry();
+ else pendingWishlistRetryDelay=15000;
+}
 function setupAnonymousSaveUI(){
  const status=document.getElementById("anonymous-save-status");
  if(status){
@@ -133,6 +157,15 @@ function setupAnonymousSaveUI(){
    :"Shared save endpoint not configured. Edits are stored only in this browser.";
   status.dataset.status=anonymousSaveReady()?"ready":"error";
  }
+ // Reconcile changes made elsewhere whenever a dormant app becomes active.
+ window.addEventListener("online",()=>{void autoLoadPublicSheets();});
+ window.addEventListener("pageshow",event=>{if(event.persisted)void autoLoadPublicSheets();});
+ document.addEventListener("visibilitychange",()=>{
+  if(!document.hidden&&!writeDrainActive)void autoLoadPublicSheets();
+ });
+ setInterval(()=>{
+  if(!document.hidden&&navigator.onLine&&!writeDrainActive)void autoLoadPublicSheets();
+ },120000);
  const b=document.getElementById("anonymous-save-wishlist");
  if(b)b.onclick=()=>anonymousSave("wishlist");
 }
