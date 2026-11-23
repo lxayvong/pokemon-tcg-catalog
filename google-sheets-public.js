@@ -126,7 +126,7 @@ function mergePublicDocs(kind,remote,previousBaseline,hasExistingStorage){
     // Keep local edits on a document with pending changes. Otherwise sheet wins.
     if(hasPending)remoteItems.set(item.productId,item);
    }else if(!removed.has(item.productId)&&
-      (hasPending||oldItems===null||!oldItems.has(item.productId))){
+      (oldItems===null||!oldItems.has(item.productId))){
     remoteItems.set(item.productId,item);
     additions++;
    }
