@@ -63,7 +63,7 @@ function profileDecision(x,observed,record,ratings,profile){
  else reasons.push("No verified price benchmarks");
  if(msrp!=null&&n>msrp*(1+maxMsrp)){if(action==="BUY"||action==="CONSIDER"){action="WAIT";tone="caution"}reasons.push("Exceeds profile MSRP premium ceiling ("+policy.maxMsrpPremiumPct+"%)");}
  if(maxPack!=null&&Number.isFinite(maxPack)&&x.packs>0&&perPack>maxPack){action="SKIP";tone="bad";reasons.push("Pack cost exceeds profile maximum of $"+maxPack.toFixed(2));}
- if(minScore>0&&score<minScore){if(action==="BUY"||action==="CONSIDER"){action="WAIT";tone="caution"}reasons.push("Strategy score "+score+"/10 below profile minimum "+minScore+"/10");}
+ if(minScore>0&&score<minScore){reasons.push("Advisory only: strategy score "+score+"/10 below preferred "+minScore+"/10; verdict unchanged");}
  if(lowest!=null&&n>lowest*1.12)reasons.push("Lower documented first-party retailer price: $"+lowest.toFixed(2));
  if(perPack!=null)reasons.push("$"+perPack.toFixed(2)+" per pack");
  const days=referenceDate?Math.floor((Date.now()-Date.parse(referenceDate+"T00:00:00Z"))/86400000):null;
